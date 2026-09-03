@@ -1,9 +1,10 @@
-﻿name: Build and Deploy Release Branch
+﻿name: Build and Deploy Release Branches
 
 on:
   push:
     branches:
       - main
+      - public-server
   workflow_dispatch:
 
 permissions:
@@ -31,20 +32,36 @@ jobs:
       - name: Build Frontend
         run: npm run build --prefix frontend
 
+      - name: Determine Target Release Branch
+        id: branch-info
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/public-server" ]; then
+            echo "target_branch=release-server" >> $GITHUB_OUTPUT
+            echo "artifact_name=riichi-scoreboard-server-release.zip" >> $GITHUB_OUTPUT
+          else
+            echo "target_branch=release" >> $GITHUB_OUTPUT
+            echo "artifact_name=riichi-scoreboard-lan-release.zip" >> $GITHUB_OUTPUT
+          fi
+
       - name: Prepare Release Artifacts
         run: |
           mkdir -p ../release-bundle
           cp server.js package.json package-lock.json start.sh start-server.bat README.md ../release-bundle/
+          if [ -f Dockerfile ]; then cp Dockerfile ../release-bundle/; fi
+          if [ -f docker-compose.yml ]; then cp docker-compose.yml ../release-bundle/; fi
+          if [ -f nginx.conf.example ]; then cp nginx.conf.example ../release-bundle/; fi
+          if [ -f .env.example ]; then cp .env.example ../release-bundle/; fi
+          
           mkdir -p ../release-bundle/frontend
           cp -r frontend/dist ../release-bundle/frontend/
           cd ../release-bundle
-          zip -r ../riichi-scoreboard-release.zip .
+          zip -r ../${{ steps.branch-info.outputs.artifact_name }} .
 
       - name: Deploy to Release Branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: release
+          publish_branch: ${{ steps.branch-info.outputs.target_branch }}
           publish_dir: ../release-bundle
           keep_files: false
           force_orphan: true
@@ -53,4 +70,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ../riichi-scoreboard-release.zip
+          files: ../${{ steps.branch-info.outputs.artifact_name }}
