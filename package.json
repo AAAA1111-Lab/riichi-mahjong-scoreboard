@@ -1,0 +1,26 @@
+{
+  "name": "riichi-mahjong-scoreboard",
+  "version": "1.0.0",
+  "description": "Riichi Mahjong Scoreboard - Multi-device Synchronized Scoring Web Application",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "backend": "nodemon server.js",
+    "frontend:install": "npm install --prefix frontend",
+    "frontend:dev": "npm run dev --prefix frontend",
+    "frontend:build": "npm run build --prefix frontend",
+    "build": "npm run frontend:build",
+    "backup": "node scripts/backup.js",
+    "restore": "node scripts/restore.js",
+    "install-all": "npm install && npm run frontend:install"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
