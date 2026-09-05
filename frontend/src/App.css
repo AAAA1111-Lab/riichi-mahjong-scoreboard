@@ -529,14 +529,19 @@ body {
   line-height: 1;
 }
 
-/* 自家 (Self) 前缀指示器 [自家] (非雀魂主题) */
+/* 自家 (Self) 前缀指示器 [自家] (非雀魂主题：半透明底 + 细边框) */
 .jika-prefix {
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   font-weight: 800;
   color: var(--color-accent);
+  background-color: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 26%, transparent);
+  padding: 1px 4px;
+  border-radius: 4px;
   letter-spacing: 0.5px;
   flex-shrink: 0;
-  line-height: 1;
+  line-height: 1.1;
+  box-sizing: border-box;
 }
 
 /* 自家玩家ID强调效果 (非雀魂主题) */
@@ -1612,31 +1617,31 @@ body {
 }
 
 /* =========================================================
-   雀魂点数与点差显示 - 基于浅色主题数字文本，直接附加专属渐变配色
+   雀魂点数与点差显示 - 基于浅色主题数字文本，增加亮色占比与边缘微暗效果
    ========================================================= */
 .theme-majsoul .player-score {
-  background: linear-gradient(180deg, #f6cf67 0%, #e59c5d 100%) !important;
+  background: linear-gradient(180deg, #e59c5d 0%, #f6cf67 10%, #f6cf67 75%, #cf7832 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #f6cf67 !important;
 }
 
-/* 点差+ 蓝: 50c2ed>2c6882 */
+/* 点差+ 蓝: 50c2ed>2c6882 (增加亮蓝占比，上下微暗) */
 .theme-majsoul .player-score.majsoul-diff-pos,
 .theme-majsoul .majsoul-diff-pos {
-  background: linear-gradient(180deg, #50c2ed 0%, #2c6882 100%) !important;
+  background: linear-gradient(180deg, #3882a3 0%, #50c2ed 10%, #50c2ed 75%, #24586f 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #50c2ed !important;
 }
 
-/* 点差- 与 0 负差红: fe639a>b9395d */
+/* 点差- 与 0 负差红: fe639a>b9395d (增加亮红占比，上下微暗) */
 .theme-majsoul .player-score.majsoul-diff-neg,
 .theme-majsoul .majsoul-diff-neg,
 .theme-majsoul .majsoul-diff-zero {
-  background: linear-gradient(180deg, #fe639a 0%, #b9395d 100%) !important;
+  background: linear-gradient(180deg, #c7426a 0%, #fe639a 10%, #fe639a 75%, #9c2847 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;

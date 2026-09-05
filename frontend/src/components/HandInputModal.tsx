@@ -1344,7 +1344,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
               {mode === 'draw' && isChombo && tenpaiStates.filter(t => t).length === 0 ? (
                 <div style={{ marginTop: '16px' }}>
                   <div className="validation-warning-text" style={{ padding: '8px 0' }}>
-                    请至少勾选 1 名发生诈和犯规的玩家进行罚符结算
+                    至少选择 1 名发生诈和犯规的玩家进行罚符结算
                   </div>
                 </div>
               ) : preview && (
