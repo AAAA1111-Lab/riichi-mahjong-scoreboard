@@ -529,71 +529,44 @@ body {
   line-height: 1;
 }
 
-/* 自家 (Self) 前缀指示器 [自家] (非雀魂主题) */
+/* 自家 (Self) 前缀指示器 [自家] (非雀魂主题：透明底仅加在自家上) */
 .jika-prefix {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  color: inherit;
   letter-spacing: 0.5px;
   flex-shrink: 0;
-  line-height: 1;
-}
-
-/* 自家玩家标识 (非雀魂主题：覆盖 [自家] 与 ID 文本) */
-.theme-light .player-name.is-self {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background-color: #f6ebe6 !important;
-  border: 1px solid var(--border-color) !important;
-  padding: 1px 6px;
+  line-height: 1.1;
+  padding: 1px 5px;
   border-radius: 4px;
-  color: var(--color-accent) !important;
-  font-weight: 800 !important;
   box-sizing: border-box;
-  line-height: 1.2;
 }
 
-.theme-light .player-name.is-self:hover {
-  background-color: #ebdcd6 !important;
+.theme-light .jika-prefix {
+  color: var(--color-accent);
+  background-color: #f6ebe6;
+  border: 1px solid var(--border-color);
 }
 
-.theme-electronic .player-name.is-self {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background-color: #cddff0 !important;
-  border: 1px solid var(--border-color) !important;
-  padding: 1px 6px;
-  border-radius: 4px;
-  color: var(--color-accent) !important;
-  font-weight: 800 !important;
-  box-sizing: border-box;
-  line-height: 1.2;
+.theme-electronic .jika-prefix {
+  color: var(--color-accent);
+  background-color: #cddff0;
+  border: 1px solid var(--border-color);
 }
 
-.theme-electronic .player-name.is-self:hover {
-  background-color: #bccfe0 !important;
-}
-
-.theme-dark .player-name.is-self,
-.theme-rexx .player-name.is-self {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background-color: color-mix(in srgb, var(--color-accent) 12%, transparent);
+.theme-dark .jika-prefix,
+.theme-rexx .jika-prefix {
+  color: var(--color-accent);
+  background-color: color-mix(in srgb, var(--color-accent) 14%, transparent);
   border: 1px solid color-mix(in srgb, var(--color-accent) 26%, transparent);
-  padding: 1px 6px;
-  border-radius: 4px;
-  color: var(--color-accent) !important;
-  font-weight: 800 !important;
-  box-sizing: border-box;
-  line-height: 1.2;
 }
 
-.theme-dark .player-name.is-self:hover,
-.theme-rexx .player-name.is-self:hover {
-  background-color: color-mix(in srgb, var(--color-accent) 18%, transparent);
+/* 自家玩家ID强调效果 (非雀魂主题：纯文字高亮强调，无背景框) */
+.theme-light .player-name.is-self,
+.theme-dark .player-name.is-self,
+.theme-electronic .player-name.is-self,
+.theme-rexx .player-name.is-self {
+  color: var(--color-accent) !important;
+  font-weight: 800 !important;
 }
 
 .player-score-container {
@@ -1704,20 +1677,20 @@ body {
   color: #fe639a !important;
 }
 
-/* 雀魂专属自家指示器 (参考实机：八角切角红底白边双层徽章 + 纯代码实现) */
+/* 雀魂专属自家指示器 (参考实机：八角切角红底白边双层徽章 + 调宽字体) */
 .theme-majsoul .majsoul-jika-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: #ffffff;
   clip-path: polygon(
-    3.5px 0%, calc(100% - 3.5px) 0%,
-    100% 3.5px, 100% calc(100% - 3.5px),
-    calc(100% - 3.5px) 100%, 3.5px 100%,
-    0% calc(100% - 3.5px), 0% 3.5px
+    4px 0%, calc(100% - 4px) 0%,
+    100% 4px, 100% calc(100% - 4px),
+    calc(100% - 4px) 100%, 4px 100%,
+    0% calc(100% - 4px), 0% 4px
   );
-  padding: 1.4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  padding: 1.6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
   flex-shrink: 0;
   vertical-align: middle;
 }
@@ -1726,21 +1699,23 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #b31e1e;
+  background: #b01414;
   clip-path: polygon(
-    2.5px 0%, calc(100% - 2.5px) 0%,
-    100% 2.5px, 100% calc(100% - 2.5px),
-    calc(100% - 2.5px) 100%, 2.5px 100%,
-    0% calc(100% - 2.5px), 0% 2.5px
+    3px 0%, calc(100% - 3px) 0%,
+    100% 3px, 100% calc(100% - 3px),
+    calc(100% - 3px) 100%, 3px 100%,
+    0% calc(100% - 3px), 0% 3px
   );
-  padding: 1px 6px;
+  padding: 2px 7px;
   color: #ffffff;
-  font-family: var(--majsoul-font-mashan), cursive, sans-serif !important;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  line-height: 1.25;
+  font-family: var(--majsoul-font-klee), cursive, sans-serif !important;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  line-height: 1.1;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  transform: scaleX(1.25);
+  transform-origin: center;
 }
 
 /* 点差模式下的轻提示 */
@@ -1974,7 +1949,7 @@ body {
 
 /* 1. 立直按钮文字 (实机原版：顶部桃粉 ➔ 中部暖金 ➔ 底部高光白 + 3px 深焦黑褐清晰描边) */
 .theme-majsoul .player-actions .btn-riichi .btn-text-shadow {
-  font-family: var(--majsoul-font-mashan) !important;
+  font-family: var(--majsoul-font-longcang) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -1989,7 +1964,7 @@ body {
 }
 
 .theme-majsoul .player-actions .btn-riichi .btn-text {
-  font-family: var(--majsoul-font-mashan) !important;
+  font-family: var(--majsoul-font-longcang) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -2024,7 +1999,7 @@ body {
 
 /* 2. 自摸按钮 (实机原版：顶部鲜艳桃红 ➔ 中部樱粉 ➔ 底部纯白 + 3px 深焦红描边) */
 .theme-majsoul .player-actions .btn-tsumo .btn-text-shadow {
-  font-family: var(--majsoul-font-mashan) !important;
+  font-family: var(--majsoul-font-longcang) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -2039,7 +2014,7 @@ body {
 }
 
 .theme-majsoul .player-actions .btn-tsumo .btn-text {
-  font-family: var(--majsoul-font-mashan) !important;
+  font-family: var(--majsoul-font-longcang) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -2057,7 +2032,7 @@ body {
 
 /* 3. 荣和按钮 (实机原版：顶部火焰朱橙 ➔ 中部亮金黄 ➔ 底部纯白 + 3px 深赤褐描边) */
 .theme-majsoul .player-actions .btn-ron .btn-text-shadow {
-  font-family: var(--majsoul-font-mashan) !important;
+  font-family: var(--majsoul-font-longcang) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -2072,7 +2047,7 @@ body {
 }
 
 .theme-majsoul .player-actions .btn-ron .btn-text {
-  font-family: var(--majsoul-font-mashan) !important;
+  font-family: var(--majsoul-font-longcang) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;

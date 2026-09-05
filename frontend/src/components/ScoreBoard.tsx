@@ -218,26 +218,17 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                 <span className={`player-wind ${isEast ? 'wind-east' : 'wind-other'}`}>
                   {windName}
                 </span>
-                {isMySelf && theme !== 'majsoul' ? (
-                  <span
-                    className="player-name is-self can-rename"
-                    onClick={() => onRenameClick(player)}
-                    style={{ cursor: 'pointer' }}
-                    title="点击修改自己设备的名字"
-                  >
-                    <span className="jika-prefix">[自家]</span>
-                    <span className="player-name-text">{displayName}</span>
-                  </span>
-                ) : (
-                  <span
-                    className={`player-name ${isMySelf ? 'is-self can-rename' : ''}`}
-                    onClick={isMySelf ? () => onRenameClick(player) : undefined}
-                    style={{ cursor: isMySelf ? 'pointer' : 'default' }}
-                    title={isMySelf ? '点击修改自己设备的名字' : undefined}
-                  >
-                    {displayName}
-                  </span>
+                {isMySelf && theme !== 'majsoul' && (
+                  <span className="jika-prefix">[自家]</span>
                 )}
+                <span
+                  className={`player-name ${isMySelf ? 'is-self can-rename' : ''}`}
+                  onClick={isMySelf ? () => onRenameClick(player) : undefined}
+                  style={{ cursor: isMySelf ? 'pointer' : 'default' }}
+                  title={isMySelf ? '点击修改自己设备的名字' : undefined}
+                >
+                  {displayName}
+                </span>
                 {isMySelf && theme === 'majsoul' && (
                   <span className="majsoul-jika-badge" title="自家">
                     <span className="majsoul-jika-badge-inner">自家</span>
