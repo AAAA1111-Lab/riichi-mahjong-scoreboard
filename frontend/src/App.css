@@ -529,52 +529,39 @@ body {
   line-height: 1;
 }
 
-/* 自家 (Self) 指示器 (非雀魂主题：透明底仅加在自家上) */
-.jika-badge,
-.jika-prefix {
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  flex-shrink: 0;
-  line-height: 1.1;
+/* 自家 (Self) 指示器 (浅色/深色主题：样式完全与点差显示模块一致) */
+.theme-light .jika-badge,
+.theme-dark .jika-badge {
+  font-size: 0.76rem;
+  font-weight: 700;
   padding: 1px 5px;
-  border-radius: 4px;
+  border-radius: 3px;
+  line-height: 1.2;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  color: var(--color-diff-zero);
+  background-color: var(--bg-diff-zero);
+  border: 1px solid var(--border-diff-zero);
   box-sizing: border-box;
+}
+
+/* 电子主题自家指示器：与点差模块 (14px) 严格等高 */
+.theme-electronic .jika-badge {
+  height: 14px;
+  max-height: 14px;
+  box-sizing: border-box;
+  font-size: 0.62rem;
+  line-height: 12px;
+  padding: 0 4px;
+  border-radius: 2px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.theme-light .jika-badge,
-.theme-light .jika-prefix {
-  color: var(--color-accent);
-  background-color: #f6ebe6;
-  border: 1px solid var(--border-color);
-}
-
-.theme-electronic .jika-badge,
-.theme-electronic .jika-prefix {
   color: var(--color-accent);
   background-color: #cddff0;
   border: 1px solid var(--border-color);
-}
-
-.theme-dark .jika-badge,
-.theme-dark .jika-prefix,
-.theme-rexx .jika-badge,
-.theme-rexx .jika-prefix {
-  color: var(--color-accent);
-  background-color: color-mix(in srgb, var(--color-accent) 14%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-accent) 26%, transparent);
-}
-
-/* 自家玩家ID强调效果 (非雀魂主题：纯文字高亮强调，无背景框) */
-.theme-light .player-name.is-self,
-.theme-dark .player-name.is-self,
-.theme-electronic .player-name.is-self,
-.theme-rexx .player-name.is-self {
-  color: var(--color-accent) !important;
-  font-weight: 800 !important;
 }
 
 .player-score-container {

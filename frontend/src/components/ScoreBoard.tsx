@@ -192,6 +192,24 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
     return winds[relativeIdx];
   };
 
+  // In REXX theme when showDiffMode is active, append directional arrows (→ for shimocha, ↑ for toimen, ← for kamicha)
+  const getRexxDirectionArrow = (playerId: number) => {
+    if (mySeatId === null || playerId === mySeatId) return '';
+    const myIdx = players.findIndex(p => p.id === mySeatId);
+    const pIdx = players.findIndex(p => p.id === playerId);
+    if (myIdx === -1 || pIdx === -1) return '';
+    const count = isSanma ? 3 : 4;
+    const rel = (pIdx - myIdx + count) % count;
+    if (rel === 1) return '→'; // 下家
+    if (count === 4) {
+      if (rel === 2) return '↑'; // 对家
+      if (rel === 3) return '←'; // 上家
+    } else {
+      if (rel === 2) return '←'; // 三麻上家
+    }
+    return '';
+  };
+
   return (
     <div className="scoreboard-grid">
       {displayPlayers.map((player, idx) => {
@@ -204,8 +222,10 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
         const windName = getWindName(idx);
         const isEast = windName === '東';
 
-        // In showDiffMode, replace player name with rank (1位, 2位, 3位...)
-        const displayName = showDiffMode ? getPlayerRank(player.id) : player.name;
+        // In showDiffMode, replace player name with rank (1位, 2位, 3位...) and optional directional arrow for REXX
+        const rankText = getPlayerRank(player.id);
+        const rexxArrow = (theme === 'rexx' && showDiffMode) ? getRexxDirectionArrow(player.id) : '';
+        const displayName = showDiffMode ? `${rankText}${rexxArrow}` : player.name;
 
         return (
           <div
@@ -259,7 +279,6 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
 
                     return (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        {isMySelf && <span className="jika-badge">自家</span>}
                         {scoreNode}
                       </div>
                     );
@@ -331,7 +350,7 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                       </span>
                     )}
                     {isMySelf && (
-                      <span className="jika-badge" style={{ alignSelf: 'center', marginLeft: '2px' }}>自家</span>
+                      <span className="player-diff-badge zero jika-badge">自家</span>
                     )}
                   </>
                 )}
