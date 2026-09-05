@@ -283,20 +283,15 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                     if (showDiffMode && !isSelf) {
                       const diff = player.score - targetPlayer.score;
                       const diffStr = diff > 0 ? `-${diff}` : (diff < 0 ? `+${-diff}` : '0');
-                      const cls = diff < 0 ? 'majsoul-diff-pos' : (diff > 0 ? 'majsoul-diff-neg' : 'majsoul-diff-zero');
+                      const cls = diff < 0 ? 'majsoul-diff-pos' : 'majsoul-diff-neg';
                       content = <span className={`majsoul-diff ${cls}`}>{diffStr}</span>;
                     } else {
-                      content = (
-                        <>
-                          <span className="player-score"><AnimatedCounter value={player.score} /></span>
-                          <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>点</span>
-                        </>
-                      );
+                      content = <span className="player-score"><AnimatedCounter value={player.score} /></span>;
                     }
                     return (
                       <span
                         className="majsoul-score-area"
-                        style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'baseline', gap: '4px' }}
+                        style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
                         onClick={() => onScoreClick?.(player)}
                         title={showDiffMode ? '点击恢复点数显示' : '点击切换点差显示'}
                       >

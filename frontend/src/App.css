@@ -865,9 +865,10 @@ body {
   color: var(--text-primary) !important;
   border-radius: var(--border-radius, 6px) !important;
   font-size: 0.85rem !important; /* 统一为 0.85rem 与规则设置严格一致 */
-  font-weight: 600;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
   cursor: pointer;
-  transition: all var(--transition-speed, 0.15s) ease !important;
+  transition: border-color var(--transition-speed, 0.15s) ease, background-color var(--transition-speed, 0.15s) ease, color var(--transition-speed, 0.15s) ease !important;
   box-sizing: border-box;
   box-shadow: none !important;
 }
@@ -880,14 +881,16 @@ body {
   border-color: var(--color-accent) !important;
   background-color: var(--bg-yaku-checked) !important;
   color: var(--color-accent) !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
 }
 
 .checkbox-label.danger.checked {
   border-color: var(--color-danger, #ff4d4f) !important;
   background-color: rgba(255, 77, 79, 0.15) !important;
   color: var(--color-danger, #ff4d4f) !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
 }
 
 .checkbox-label input[type="checkbox"],
@@ -1598,12 +1601,17 @@ body {
   font-weight: 800 !important; /* 严格对齐浅/深色主题 800 */
   letter-spacing: -1px !important; /* 严格对齐浅/深色主题 -1px */
   font-variant-numeric: tabular-nums !important;
+  display: inline-block;
+  line-height: 1;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(180deg, #f6cf67 0%, #e59c5d 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #f6cf67 !important;
-  filter: none !important; /* 彻底移除发光 */
+  filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.9)) !important;
 }
 
 /* 点差显示 */
@@ -1613,7 +1621,12 @@ body {
   font-size: 1.6rem !important;
   font-variant-numeric: tabular-nums !important;
   letter-spacing: -1px !important;
-  filter: none !important;
+  display: inline-block;
+  line-height: 1;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.9)) !important;
 }
 
 /* 点差- 负差 红: fe639a>b9395d */
@@ -1623,7 +1636,6 @@ body {
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #fe639a !important;
-  filter: none !important;
 }
 
 /* 点差+ 正差 蓝: 50c2ed>2c6882 */
@@ -1633,17 +1645,15 @@ body {
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #50c2ed !important;
-  filter: none !important;
 }
 
-/* 点差0 正常金: f6cf67>e59c5d */
+/* 点差0 统一使用点差- 负差红渐变: fe639a>b9395d */
 .theme-majsoul .majsoul-diff-zero {
-  background: linear-gradient(180deg, #f6cf67 0%, #e59c5d 100%) !important;
+  background: linear-gradient(180deg, #fe639a 0%, #b9395d 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: #f6cf67 !important;
-  filter: none !important;
+  color: #fe639a !important;
 }
 
 /* 点差模式下的轻提示 */
