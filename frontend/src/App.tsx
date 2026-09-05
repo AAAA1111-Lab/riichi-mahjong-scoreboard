@@ -497,27 +497,27 @@ function App() {
             <div
               className="check-indicator"
               style={{
-                display: 'flex',
-                flexDirection: 'column',
+                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                gap: '2px',
-                height: '30px',
-                fontWeight: 700,
-                fontSize: '0.52rem',
-                color: '#ffffff',
-                cursor: 'default'
+                gap: '5px',
+                height: '26px',
+                padding: '0 7px',
+                background: 'rgba(0, 0, 0, 0.35)',
+                border: '1px solid #283344',
+                borderRadius: '4px',
+                cursor: 'default',
+                boxSizing: 'border-box'
               }}
               title={isBalanced ? '全场点数正常（已对平）' : '全场点数异常（未对平）'}
             >
-              <span style={{ color: '#a1a1aa', letterSpacing: '1px', lineHeight: 1, fontSize: '0.52rem' }}>CHECK</span>
+              <span style={{ color: '#d1d5db', letterSpacing: '0.5px', fontSize: '0.62rem', fontWeight: 700, lineHeight: 1 }}>CHECK</span>
               <span
                 style={{
-                  width: '6px',
-                  height: '6px',
+                  width: '7px',
+                  height: '7px',
                   borderRadius: '50%',
                   backgroundColor: isBalanced ? '#30d158' : '#2b3630',
-                  boxShadow: isBalanced ? '0 0 4px #30d158, 0 0 8px #30d158' : 'none',
+                  boxShadow: isBalanced ? '0 0 5px #30d158, 0 0 8px rgba(48, 209, 88, 0.5)' : 'none',
                   transition: 'all 0.3s ease',
                   display: 'inline-block'
                 }}
@@ -560,14 +560,16 @@ function App() {
               onTouchCancel={handleDiffPressUp}
               onClick={handleDiffClick}
               style={{
-                width: '76px',
-                height: '20px',
-                lineHeight: '20px',
-                padding: 0,
-                fontSize: '0.68rem',
-                border: '1px solid rgba(255, 255, 255, 0.7)',
-                borderRadius: '3.5px',
-                fontWeight: 800,
+                height: '26px',
+                lineHeight: '24px',
+                padding: '0 9px',
+                fontSize: '0.72rem',
+                border: showDiffMode ? '1px solid #ff3344' : '1px solid rgba(255, 255, 255, 0.22)',
+                background: showDiffMode ? 'rgba(255, 51, 68, 0.22)' : 'rgba(255, 255, 255, 0.08)',
+                color: showDiffMode ? '#ff5566' : '#f4f4f5',
+                boxShadow: showDiffMode ? '0 0 6px rgba(255, 51, 68, 0.35)' : 'none',
+                borderRadius: '4px',
+                fontWeight: showDiffMode ? 800 : 700,
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
                 display: 'inline-flex',
@@ -575,9 +577,9 @@ function App() {
                 justifyContent: 'center',
                 boxSizing: 'border-box'
               }}
-              title="单击展示得点差2s（多次单击刷新时间）；长按2s锁定展示，再次单击退出；按钮颜色保持不变"
+              title="单击展示得点差2s（多次单击刷新时间）；长按2s锁定展示，再次单击退出"
             >
-              顺位/得点差
+              {showDiffMode ? '● 顺位/得点差' : '顺位/得点差'}
             </button>
           )}
         </div>
@@ -1094,28 +1096,27 @@ function App() {
         <>
           {/* HUD Info Panel */}
           {theme === 'rexx' ? (
-            <section className="hud-panel rexx-hud-panel" style={{ height: '64px', minHeight: '64px' }}>
-              {/* 格子 1 (25%): 局况文本 */}
-              <div className="rexx-hud-col rexx-hud-col-1" onClick={openHudModal} style={{ cursor: 'pointer' }} title="点击修改局况/本场数">
-                <div className="hud-item">
-                  <span className="hud-label">局况</span>
-                  <span className="hud-value dealer-round">
-                    {windText}{round}局
-                  </span>
-                </div>
+            <section className="hud-panel rexx-hud-panel">
+              {/* 格子 1: 局况文本 */}
+              <div className="rexx-hud-col rexx-hud-col-1" onClick={openHudModal} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} title="点击修改局况/本场数">
+                <span className="hud-label" style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', fontWeight: 600, lineHeight: 1 }}>局况</span>
+                <span className="hud-value dealer-round" style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ff3344', lineHeight: 1.3, marginTop: '2px' }}>
+                  {windText}{round}局
+                </span>
               </div>
 
-              {/* 格子 2 (25%): 本场 5-LED 拟物组件 */}
-              <div className="rexx-hud-col rexx-hud-col-2" onClick={openHudModal} style={{ cursor: 'pointer' }} title="点击修改局况/本场数">
+              {/* 格子 2: 本场 5-LED 拟物组件 */}
+              <div className="rexx-hud-col rexx-hud-col-2" onClick={openHudModal} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="点击修改局况/本场数">
                 <HonbaLedBar honba={honba} />
               </div>
 
-              {/* 格子 3 (25%): 宝蓝银点立直棒拟物组件 */}
-              <div className="rexx-hud-col rexx-hud-col-3">
+              {/* 格子 3: 宝蓝银点立直棒拟物组件 (增加供托标签) */}
+              <div className="rexx-hud-col rexx-hud-col-3" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
+                <span className="hud-label" style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', fontWeight: 600, lineHeight: 1 }}>供托</span>
                 <RiichiStickDisplay count={riichiSticks} />
               </div>
 
-              {/* 格子 4 (25%): 荒牌流局按钮 */}
+              {/* 格子 4: 荒牌流局按钮 */}
               <div className="rexx-hud-col rexx-hud-col-4">
                 <button
                   type="button"
@@ -1125,13 +1126,13 @@ function App() {
                     setSettleWinnerId(null);
                   }}
                   style={{
-                    width: '96px',
-                    height: '32px',
-                    lineHeight: '32px',
+                    width: '86px',
+                    height: '34px',
+                    lineHeight: '34px',
                     padding: 0,
-                    fontSize: '0.8rem',
+                    fontSize: '0.82rem',
                     fontWeight: 800,
-                    borderRadius: '3.5px',
+                    borderRadius: '4px',
                     cursor: 'pointer',
                     whiteSpace: 'nowrap',
                     display: 'inline-flex',

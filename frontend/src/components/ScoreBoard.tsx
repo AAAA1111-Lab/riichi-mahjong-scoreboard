@@ -233,7 +233,7 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
             className={`player-card ${isDealer ? 'is-dealer' : ''} ${isMySelf ? 'is-myself' : ''}`}
           >
             {/* Top row: Horizontally aligned Player Info (Left) and Score Display (Right) */}
-            <div className="player-main-info-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', gap: '8px' }}>
+            <div className="player-main-info-row" style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', gap: '8px' }}>
               <div className="player-header" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span className={`player-wind ${isEast ? 'wind-east' : 'wind-other'}`}>
                   {windName}
@@ -252,6 +252,76 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                   </span>
                 )}
               </div>
+
+              {/* REXX / 雀魂主题宣告立直时居中立直棒 */}
+              {player.riichi && (theme === 'rexx' || theme === 'majsoul') && (
+                <div
+                  className="player-card-riichi-stick"
+                  style={{
+                    position: 'absolute',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    pointerEvents: 'none'
+                  }}
+                >
+                  {theme === 'rexx' ? (
+                    // REXX 现成宝蓝银点立直棒组件
+                    <div
+                      style={{
+                        width: '58px',
+                        height: '8.5px',
+                        borderRadius: '2px',
+                        background: 'linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%)',
+                        border: '1px solid #1e40af',
+                        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '3.5px',
+                          height: '3.5px',
+                          borderRadius: '50%',
+                          background: 'radial-gradient(circle, #ffffff 0%, #cbd5e1 60%, #94a3b8 100%)',
+                          boxShadow: '0 0 2px rgba(255, 255, 255, 0.9)'
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    // 雀魂 白色+红点立直棒
+                    <div
+                      style={{
+                        width: '58px',
+                        height: '8.5px',
+                        borderRadius: '2px',
+                        background: '#ffffff',
+                        border: '1px solid #c4c8d0',
+                        boxShadow: '0 1.5px 4px rgba(0, 0, 0, 0.45)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '4px',
+                          height: '4px',
+                          borderRadius: '50%',
+                          background: '#be353d',
+                          boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)'
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
 
               <div className="player-score-container" style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
                 {theme === 'rexx' ? (

@@ -247,20 +247,22 @@ body {
   box-sizing: border-box;
 }
 
-/* REXX Theme Special: 局况居左，本场与立直棒紧凑左移，流局按钮靠右 (与所有主题 padding 12px 严格对齐) */
+/* REXX Theme Special: 局况、本场、供托、荒牌流局均匀分布，视觉平衡 */
 .hud-panel.rexx-hud-panel {
-  display: grid !important;
-  grid-template-columns: auto auto auto 1fr !important;
+  display: flex !important;
+  justify-content: space-between !important;
   align-items: center !important;
-  padding: 0 12px !important;
-  gap: 12px !important;
+  height: 60px !important;
+  min-height: 60px !important;
+  padding: 0 14px !important;
+  gap: 8px !important;
   box-sizing: border-box !important;
 }
 
 .rexx-hud-panel .rexx-hud-col {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   box-sizing: border-box;
   white-space: nowrap !important;
   flex-shrink: 0;
@@ -271,16 +273,15 @@ body {
 }
 
 .rexx-hud-panel .rexx-hud-col-2 {
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .rexx-hud-panel .rexx-hud-col-3 {
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .rexx-hud-panel .rexx-hud-col-4 {
   justify-content: flex-end;
-  width: 100%;
 }
 
 /* REXX Oval LED Indicator for Settlement Preview - Instant Switch (No Transition) */
