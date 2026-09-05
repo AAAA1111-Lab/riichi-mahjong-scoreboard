@@ -36,9 +36,9 @@
   --bg-diff-neg: rgba(224, 70, 70, 0.12);
   --color-diff-neg: #e04646;
   --border-diff-neg: rgba(224, 70, 70, 0.25);
-  --bg-diff-zero: rgba(0, 0, 0, 0.04);
-  --color-diff-zero: #5a7a9a;
-  --border-diff-zero: rgba(0, 0, 0, 0.08);
+  --bg-diff-zero: #f6ebe6;
+  --color-diff-zero: #806b6b;
+  --border-diff-zero: #dfd0ca;
 
   --color-accent-text: #ffffff;
   --bg-yaku-checked: rgba(231, 76, 60, 0.1);
@@ -83,9 +83,9 @@
   --bg-diff-neg: rgba(224, 70, 70, 0.12);
   --color-diff-neg: #e04646;
   --border-diff-neg: rgba(224, 70, 70, 0.25);
-  --bg-diff-zero: rgba(0, 0, 0, 0.04);
-  --color-diff-zero: #5a7a9a;
-  --border-diff-zero: rgba(0, 0, 0, 0.06);
+  --bg-diff-zero: #cddff0;
+  --color-diff-zero: #3a6a9a;
+  --border-diff-zero: rgba(12, 42, 92, 0.15);
 
   --color-accent-text: #ffffff;
   --bg-yaku-checked: rgba(12, 42, 92, 0.12);
@@ -539,10 +539,44 @@ body {
   line-height: 1;
 }
 
-/* 自家玩家标识 (非雀魂主题：半透明底覆盖 [自家] 与 ID 文本) */
-.theme-light .player-name.is-self,
+/* 自家玩家标识 (非雀魂主题：覆盖 [自家] 与 ID 文本) */
+.theme-light .player-name.is-self {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #f6ebe6 !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--color-accent) !important;
+  font-weight: 800 !important;
+  box-sizing: border-box;
+  line-height: 1.2;
+}
+
+.theme-light .player-name.is-self:hover {
+  background-color: #ebdcd6 !important;
+}
+
+.theme-electronic .player-name.is-self {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #cddff0 !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--color-accent) !important;
+  font-weight: 800 !important;
+  box-sizing: border-box;
+  line-height: 1.2;
+}
+
+.theme-electronic .player-name.is-self:hover {
+  background-color: #bccfe0 !important;
+}
+
 .theme-dark .player-name.is-self,
-.theme-electronic .player-name.is-self,
 .theme-rexx .player-name.is-self {
   display: inline-flex;
   align-items: center;
@@ -557,9 +591,7 @@ body {
   line-height: 1.2;
 }
 
-.theme-light .player-name.is-self:hover,
 .theme-dark .player-name.is-self:hover,
-.theme-electronic .player-name.is-self:hover,
 .theme-rexx .player-name.is-self:hover {
   background-color: color-mix(in srgb, var(--color-accent) 18%, transparent);
 }
@@ -868,7 +900,7 @@ body {
   box-shadow: none !important;
 }
 
-/* 选中态下的子元素文字全部统一为重点色文字，纯实色绝不发淡 */
+/* 选中态下的子元素文字全部统一为重点色文字，纯实色绝不发淡，保持原有字重防止跳字抖动 */
 .player-select-btn.selected *,
 .player-select-btn.selected-win *,
 .player-select-btn.selected-lose *,
@@ -877,8 +909,21 @@ body {
 .btn.btn-preset.selected *,
 .btn.btn-preset.btn-primary * {
   color: var(--color-accent-text) !important;
-  font-weight: 700 !important;
   opacity: 1 !important;
+}
+
+.btn-preset.selected .preset-score,
+.btn-preset.btn-primary .preset-score,
+.btn.btn-preset.selected .preset-score,
+.btn.btn-preset.btn-primary .preset-score {
+  font-weight: 800 !important;
+}
+
+.btn-preset.selected .preset-desc,
+.btn-preset.btn-primary .preset-desc,
+.btn.btn-preset.selected .preset-desc,
+.btn.btn-preset.btn-primary .preset-desc {
+  font-weight: 400 !important;
 }
 
 /* =========================================================
@@ -1690,7 +1735,7 @@ body {
   );
   padding: 1px 6px;
   color: #ffffff;
-  font-family: var(--majsoul-font-klee), cursive, sans-serif;
+  font-family: var(--majsoul-font-mashan), cursive, sans-serif !important;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -1929,7 +1974,7 @@ body {
 
 /* 1. 立直按钮文字 (实机原版：顶部桃粉 ➔ 中部暖金 ➔ 底部高光白 + 3px 深焦黑褐清晰描边) */
 .theme-majsoul .player-actions .btn-riichi .btn-text-shadow {
-  font-family: var(--majsoul-font-longcang) !important;
+  font-family: var(--majsoul-font-mashan) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -1944,7 +1989,7 @@ body {
 }
 
 .theme-majsoul .player-actions .btn-riichi .btn-text {
-  font-family: var(--majsoul-font-longcang) !important;
+  font-family: var(--majsoul-font-mashan) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -1979,7 +2024,7 @@ body {
 
 /* 2. 自摸按钮 (实机原版：顶部鲜艳桃红 ➔ 中部樱粉 ➔ 底部纯白 + 3px 深焦红描边) */
 .theme-majsoul .player-actions .btn-tsumo .btn-text-shadow {
-  font-family: var(--majsoul-font-longcang) !important;
+  font-family: var(--majsoul-font-mashan) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -1994,7 +2039,7 @@ body {
 }
 
 .theme-majsoul .player-actions .btn-tsumo .btn-text {
-  font-family: var(--majsoul-font-longcang) !important;
+  font-family: var(--majsoul-font-mashan) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -2012,7 +2057,7 @@ body {
 
 /* 3. 荣和按钮 (实机原版：顶部火焰朱橙 ➔ 中部亮金黄 ➔ 底部纯白 + 3px 深赤褐描边) */
 .theme-majsoul .player-actions .btn-ron .btn-text-shadow {
-  font-family: var(--majsoul-font-longcang) !important;
+  font-family: var(--majsoul-font-mashan) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
@@ -2027,7 +2072,7 @@ body {
 }
 
 .theme-majsoul .player-actions .btn-ron .btn-text {
-  font-family: var(--majsoul-font-longcang) !important;
+  font-family: var(--majsoul-font-mashan) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
