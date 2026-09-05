@@ -205,6 +205,8 @@ io.on('connection', (socket) => {
     if (socketToSeat.has(socket.id)) {
       const prevSeat = socketToSeat.get(socket.id);
       currentState.connectedPlayers[prevSeat] = false;
+      currentState.players[prevSeat].name = `玩家 ${prevSeat + 1}`;
+      currentState.players[prevSeat].deviceId = `dev_seat_${prevSeat}`;
     }
     
     // 2. Assign new seat
@@ -219,6 +221,18 @@ io.on('connection', (socket) => {
     
     socket.emit('claim-seat-result', { success: true, playerId });
     io.emit('state-updated', currentState);
+  });
+
+  // Handle client seat release (换座 / 释放玩家ID与席位)
+  socket.on('release-seat', () => {
+    if (socketToSeat.has(socket.id)) {
+      const seatIdx = socketToSeat.get(socket.id);
+      currentState.connectedPlayers[seatIdx] = false;
+      currentState.players[seatIdx].name = `玩家 ${seatIdx + 1}`;
+      currentState.players[seatIdx].deviceId = `dev_seat_${seatIdx}`;
+      socketToSeat.delete(socket.id);
+      io.emit('state-updated', currentState);
+    }
   });
 
   // Update complete state

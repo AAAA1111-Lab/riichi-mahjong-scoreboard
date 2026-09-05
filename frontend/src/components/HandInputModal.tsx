@@ -828,12 +828,12 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
     } else if (mode === 'tsumo') {
       if (isDealerWinner) {
         if (tsumoKoPay <= 0 || tsumoKoPay % 100 !== 0) {
-          alert('自摸得点必须大于 0 且为 100 的整数倍！');
+          alert('点数必须大于 0 且为 100 的整数倍');
           return;
         }
       } else {
         if (tsumoKoPay <= 0 || tsumoOyaPay <= 0 || tsumoKoPay % 100 !== 0 || tsumoOyaPay % 100 !== 0) {
-          alert('自摸得点必须大于 0 且为 100 的整数倍！');
+          alert('点数必须大于 0 且为 100 的整数倍');
           return;
         }
       }
@@ -944,9 +944,9 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
                 </div>
               )}
 
-              {/* 3. 快捷录入分值 (3列布局，点击再次撤销) */}
+              {/* 3. 快捷录入点数 (3列布局，点击再次撤销) */}
               <div className="form-group" style={{ marginTop: '10px' }}>
-                <label className="form-label">快捷录入分值</label>
+                <label className="form-label">快捷录入点数</label>
                 {mode === 'ron' ? (
                   <>
                     {/* Normal hands */}
@@ -1059,7 +1059,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
                       />
                       {isRonInvalid && (
                         <div className="validation-warning-text">
-                          得点必须大于 0 且为 100 的整数倍
+                          点数必须大于 0 且为 100 的整数倍
                         </div>
                       )}
                     </div>
@@ -1088,7 +1088,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
                         </div>
                         {isDealerTsumoInvalid && (
                           <div className="validation-warning-text">
-                            得点必须大于 0 且为 100 的整数倍
+                            点数必须大于 0 且为 100 的整数倍
                           </div>
                         )}
                       </div>
@@ -1132,7 +1132,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
                         </div>
                         {isNonDealerTsumoInvalid && (
                           <div className="validation-warning-text">
-                            得点必须大于 0 且为 100 的整数倍
+                            点数必须大于 0 且为 100 的整数倍
                           </div>
                         )}
                       </div>

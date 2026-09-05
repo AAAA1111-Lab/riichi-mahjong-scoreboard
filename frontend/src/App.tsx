@@ -210,7 +210,7 @@ function App() {
   const handleSaveSettings = () => {
     // 统一的分数合法性检查 (大于0且为100的整数倍)
     if (!tempStartingPoints || isNaN(tempStartingPoints) || tempStartingPoints <= 0 || tempStartingPoints % 100 !== 0) {
-      alert('起始点数必须大于 0 且为 100 的整数倍 (例如 25000)！');
+      alert('点数必须大于 0 且为 100 的整数倍');
       return;
     }
 
@@ -445,9 +445,11 @@ function App() {
   // Release/switch seats
   const handleReleaseSeat = () => {
     if (window.confirm('您确定要切换座位吗？释放后您需要重新选择座位连线。')) {
+      socket.emit('release-seat');
+      setMySeatId(null);
       localStorage.removeItem('mahjong-claimed-seat');
-      // Preserve mahjong-player-name and mahjong-device-id so player name stays bound to device when switching seats!
-      window.location.reload();
+      localStorage.removeItem('mahjong-player-name');
+      localStorage.removeItem('mahjong-device-id');
     }
   };
 
