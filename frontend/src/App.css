@@ -30,15 +30,15 @@
   --border-danger-muted: rgba(192, 57, 43, 0.25);
 
   /* Diff Badges */
-  --bg-diff-pos: rgba(39, 174, 96, 0.12);
-  --color-diff-pos: #27ae60;
-  --border-diff-pos: rgba(39, 174, 96, 0.3);
-  --bg-diff-neg: rgba(231, 76, 60, 0.12);
-  --color-diff-neg: #c0392b;
-  --border-diff-neg: rgba(231, 76, 60, 0.3);
+  --bg-diff-pos: rgba(26, 138, 58, 0.12);
+  --color-diff-pos: #1a8a3a;
+  --border-diff-pos: rgba(26, 138, 58, 0.25);
+  --bg-diff-neg: rgba(224, 70, 70, 0.12);
+  --color-diff-neg: #e04646;
+  --border-diff-neg: rgba(224, 70, 70, 0.25);
   --bg-diff-zero: rgba(0, 0, 0, 0.04);
-  --color-diff-zero: #7f8c8d;
-  --border-diff-zero: rgba(0, 0, 0, 0.15);
+  --color-diff-zero: #5a7a9a;
+  --border-diff-zero: rgba(0, 0, 0, 0.08);
 
   --color-accent-text: #ffffff;
   --bg-yaku-checked: rgba(231, 76, 60, 0.1);
@@ -127,15 +127,15 @@
   --border-danger-muted: rgba(255, 77, 77, 0.35);
 
   /* Diff Badges */
-  --bg-diff-pos: rgba(46, 204, 113, 0.15);
+  --bg-diff-pos: rgba(46, 204, 113, 0.16);
   --color-diff-pos: #2ecc71;
   --border-diff-pos: rgba(46, 204, 113, 0.35);
-  --bg-diff-neg: rgba(255, 77, 77, 0.15);
-  --color-diff-neg: #ff7373;
-  --border-diff-neg: rgba(255, 77, 77, 0.35);
-  --bg-diff-zero: rgba(255, 255, 255, 0.05);
-  --color-diff-zero: #888;
-  --border-diff-zero: #444;
+  --bg-diff-neg: rgba(255, 82, 82, 0.16);
+  --color-diff-neg: #ff5252;
+  --border-diff-neg: rgba(255, 82, 82, 0.35);
+  --bg-diff-zero: rgba(255, 255, 255, 0.06);
+  --color-diff-zero: #9e9e9e;
+  --border-diff-zero: rgba(255, 255, 255, 0.15);
 }
 
 * {
@@ -538,31 +538,37 @@ body {
 }
 
 .player-diff-badge {
-  font-size: 0.65rem;
-  font-weight: 800;
-  padding: 1px 4px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 1px 5px;
   border-radius: 3px;
-  margin-left: 4px;
+  margin-left: 6px;
   line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  font-variant-numeric: tabular-nums;
   border: 1px solid transparent;
 }
 
-.player-diff-badge.pos {
-  color: var(--color-diff-pos);
-  background-color: var(--bg-diff-pos);
-  border-color: var(--border-diff-pos);
+.player-diff-badge.pos,
+.player-diff-badge.positive {
+  color: var(--color-diff-pos, #1a8a3a);
+  background-color: var(--bg-diff-pos, rgba(26, 138, 58, 0.12));
+  border: 1px solid var(--border-diff-pos, rgba(26, 138, 58, 0.25));
 }
 
-.player-diff-badge.neg {
-  color: var(--color-diff-neg);
-  background-color: var(--bg-diff-neg);
-  border-color: var(--border-diff-neg);
+.player-diff-badge.neg,
+.player-diff-badge.negative {
+  color: var(--color-diff-neg, #e04646);
+  background-color: var(--bg-diff-neg, rgba(224, 70, 70, 0.12));
+  border: 1px solid var(--border-diff-neg, rgba(224, 70, 70, 0.25));
 }
 
 .player-diff-badge.zero {
-  color: var(--color-diff-zero);
-  background-color: var(--bg-diff-zero);
-  border-color: var(--border-diff-zero);
+  color: var(--color-diff-zero, #5a7a9a);
+  background-color: var(--bg-diff-zero, rgba(0, 0, 0, 0.04));
+  border: 1px solid var(--border-diff-zero, rgba(0, 0, 0, 0.08));
 }
 
 .player-score {

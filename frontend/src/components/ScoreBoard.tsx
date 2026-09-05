@@ -197,9 +197,10 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
       {displayPlayers.map((player, idx) => {
         const isDealer = idx === dealerIndex;
         const isMySelf = mySeatId === player.id;
-        const myPlayer = mySeatId !== null ? players.find(p => p.id === mySeatId) : null;
-        const showDiff = myPlayer !== null && player.id !== mySeatId;
-        const diffVal = myPlayer ? myPlayer.score - player.score : 0;
+        const myPlayer = mySeatId !== null ? players.find(p => p.id === mySeatId) || null : null;
+        const targetPlayer = myPlayer || (showDiffMode ? players[0] : null);
+        const showDiff = targetPlayer !== null && player.id !== targetPlayer.id;
+        const diffVal = targetPlayer ? targetPlayer.score - player.score : 0;
         const windName = getWindName(idx);
         const isEast = windName === '東';
 
