@@ -222,7 +222,6 @@ export const FontStudioModal: React.FC<{ isOpen: boolean; onClose: () => void }>
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '1.3rem' }}>🀄</span>
           <div>
             <div style={{ fontWeight: 'bold', fontSize: '0.98rem', color: '#e8af71' }}>雀魂全量书法字库对比工作台</div>
             <div style={{ fontSize: '0.72rem', color: '#9ca5b4' }}>Fontworks原厂 · 衡山毛笔 · 4大流派20+款 · 即点即变</div>
@@ -250,7 +249,7 @@ export const FontStudioModal: React.FC<{ isOpen: boolean; onClose: () => void }>
         {/* Presets List */}
         <div>
           <div style={{ fontSize: '0.82rem', fontWeight: 'bold', color: '#e8af71', marginBottom: '8px' }}>
-            ⚡ 10 套流派一键预设方案 (点击即刻全局切换)：
+            10 套流派一键预设方案 (点击即刻全局切换)：
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
             {ALL_PRESETS.map((preset, idx) => {
@@ -296,7 +295,7 @@ export const FontStudioModal: React.FC<{ isOpen: boolean; onClose: () => void }>
           {/* 1. 风位 & HUD 局况 (核心重点) */}
           <div>
             <label style={{ fontSize: '0.8rem', color: '#ffd285', fontWeight: 'bold', display: 'block', marginBottom: '4px' }}>
-              🎯 风位指示器 & HUD 局况字体 (20+ 款中日名作全量)：
+              风位指示器 & HUD 局况字体 (20+ 款中日名作全量)：
             </label>
             <select
               value={hudFont}
@@ -403,7 +402,7 @@ export const FontStudioModal: React.FC<{ isOpen: boolean; onClose: () => void }>
               boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
             }}
           >
-            {copied ? '✅ 已复制配置代码！' : '📋 复制当前选定配置'}
+            {copied ? '已复制配置代码！' : '复制当前选定配置'}
           </button>
         </div>
 

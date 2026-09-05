@@ -584,7 +584,7 @@ function App() {
       {gameState.isOver ? (
         /* Game Over Panel */
         <section className="game-over-panel">
-          <h2 className="game-over-title">🎉 对局完场 (半庄结束)</h2>
+          <h2 className="game-over-title">对局完场 (半庄结束)</h2>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
             本半庄对局已全部结束。各家最终排名及得分如下：
           </p>
@@ -609,7 +609,7 @@ function App() {
             style={{ width: '100%', padding: '14px', fontSize: '1.05rem', marginTop: '12px' }}
             onClick={handleReset}
           >
-            开始新半庄 🀄
+            开始新半庄
           </button>
 
           {/* SVG Score History Line Chart */}
@@ -1378,7 +1378,7 @@ function App() {
         <div className="modal-overlay" onClick={() => setIsShareModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '420px', textAlign: 'center' }}>
             <div className="modal-header" style={{ justifyContent: 'center', textAlign: 'center', position: 'relative' }}>
-              <h3 className="modal-title" style={{ margin: '0 auto' }}>📱 手机扫码加入对局</h3>
+              <h3 className="modal-title" style={{ margin: '0 auto' }}>手机扫码加入对局</h3>
               <button className="modal-close" onClick={() => setIsShareModalOpen(false)} style={{ position: 'absolute', right: '16px' }}>&times;</button>
             </div>
             <div className="qr-modal-body" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '12px 0' }}>

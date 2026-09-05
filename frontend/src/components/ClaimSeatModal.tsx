@@ -97,7 +97,7 @@ export const ClaimSeatModal: React.FC<ClaimSeatModalProps> = ({
               style={{ width: '100%', marginBottom: '8px', padding: '10px', fontSize: '0.85rem', fontWeight: 600 }}
               onClick={randomSeat}
             >
-              🎲 随机摸风
+              随机摸风
             </button>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -129,8 +129,8 @@ export const ClaimSeatModal: React.FC<ClaimSeatModalProps> = ({
                         ({p.name || `玩家 ${idx + 1}`})
                       </span>
                     </span>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>
-                      {isClaimed ? '🔴 已连线' : '🟢 空闲'}
+                    <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: isClaimed ? 'var(--color-danger, #ff4d4f)' : 'var(--color-success, #2ec4b6)' }}>
+                      {isClaimed ? '已连线' : '空闲'}
                     </span>
                   </button>
                 );
