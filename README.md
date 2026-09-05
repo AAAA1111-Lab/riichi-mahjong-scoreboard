@@ -59,23 +59,43 @@ npm run build --prefix frontend
 
 ---
 
-## Android Termux 手机部署指南
+## Android Termux 手机部署与开局指南
 
-1. 在 Android 上打开 **Termux**，安装 Node.js：
-   ```bash
-   pkg update && pkg install nodejs git -y
-   ```
-2. 拉取 release 分支并运行：
-   ```bash
-   git clone -b release --single-branch https://github.com/<YOUR_USERNAME>/<YOUR_REPO>.git riichi-scoreboard
-   cd riichi-scoreboard
-   npm install --production
-   bash start.sh
-   ```
-3. 保持后台常驻（防手机休眠）：
-   ```bash
-   termux-wake-lock
-   ```
+本项目支持直接在 Android 手机的 **Termux** 中作为**全功能日麻计分板主机**运行。无需电脑，无需任何第三方 GUI 插件，随时随地开局。
+
+### 1. 环境准备 (仅需 1 个标准包)
+在 Termux 终端中执行：
+```bash
+pkg update -y && pkg install -y nodejs-lts git
+```
+*注：完全不需要 Python，亦不需要安装任何第三方 APK 插件。*
+
+### 2. 部署与启动
+拉取 `release` 编译产物分支（或下载解压 Release ZIP 包）：
+```bash
+git clone -b release --single-branch https://github.com/AAAA1111-Lab/riichi-mahjong-scoreboard.git riichi-scoreboard
+cd riichi-scoreboard
+npm install --production
+bash start.sh
+```
+*启动后，在手机任意浏览器中访问 `http://localhost:32000` 即可使用。*
+
+### 3. 后台保活防休眠
+在 Termux 中执行以下命令，防止系统在锁屏或息屏时休眠后台进程：
+```bash
+termux-wake-lock
+```
+
+### 4. 沉浸式体验：一键生成全屏独立 App (PWA)
+在手机浏览器打开计分板后：
+1. 点击浏览器菜单（右上角或右下角三点 `...`）；
+2. 选择 **「添加到主屏幕」** 或 **「安装应用」**；
+3. 手机桌面上将生成独立的 **「日麻计分板」** 图标，启动后享受完全无浏览器地址栏的原生全屏 App 体验。
+
+### 5. 4 人无网络离线对局方案 (零电脑·完全离线)
+1. **手机开启个人热点**；
+2. **在 Termux 中启动计分板**（本机作为主机加入）；
+3. **其他 3 位玩家连接该手机热点**，在浏览器中输入热点 IP（如控制台提示的 `http://192.168.43.1:32000`）即可完成选座与全场毫秒级同步对局。
 
 ---
 
