@@ -529,21 +529,23 @@ body {
   line-height: 1;
 }
 
-/* 自家 (Self) 指示器 (通用与默认主题：使用各主题重点色) */
-.player-jika-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1px 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  line-height: 1.2;
-  border-radius: 4px;
-  background-color: var(--color-accent);
-  color: var(--color-accent-text, #ffffff);
+/* 自家 (Self) 前缀指示器 [自家] (非雀魂主题) */
+.jika-prefix {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--color-accent);
   letter-spacing: 0.5px;
   flex-shrink: 0;
-  box-sizing: border-box;
+  line-height: 1;
+}
+
+/* 自家玩家ID强调效果 (非雀魂主题) */
+.theme-light .player-name.is-self,
+.theme-dark .player-name.is-self,
+.theme-electronic .player-name.is-self,
+.theme-rexx .player-name.is-self {
+  color: var(--color-accent) !important;
+  font-weight: 800 !important;
 }
 
 .player-score-container {
@@ -1610,71 +1612,35 @@ body {
 }
 
 /* =========================================================
-   雀魂点数显示 - 字体字号严格对齐浅/深色主题 (1.6rem, 800字重, -1px字距)，保留专属立体金与点差配色
+   雀魂点数与点差显示 - 基于浅色主题数字文本，直接附加专属渐变配色
    ========================================================= */
 .theme-majsoul .player-score {
-  font-family: var(--font-family) !important;
-  font-size: 1.6rem !important; /* 严格对齐浅/深色主题 1.6rem */
-  font-weight: 800 !important; /* 严格对齐浅/深色主题 800 */
-  letter-spacing: -1px !important; /* 严格对齐浅/深色主题 -1px */
-  font-variant-numeric: tabular-nums !important;
-  display: inline-block;
-  line-height: 1;
-  text-rendering: geometricPrecision;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(180deg, #f6cf67 0%, #e59c5d 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #f6cf67 !important;
-  -webkit-text-stroke: 0.35px #f6cf67 !important;
-  filter: none !important;
 }
 
-/* 点差显示 */
-.theme-majsoul .majsoul-diff {
-  font-family: var(--font-family) !important;
-  font-weight: 800 !important;
-  font-size: 1.6rem !important;
-  font-variant-numeric: tabular-nums !important;
-  letter-spacing: -1px !important;
-  display: inline-block;
-  line-height: 1;
-  text-rendering: geometricPrecision;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  filter: none !important;
-}
-
-/* 点差- 负差 红: fe639a>b9395d */
-.theme-majsoul .majsoul-diff-neg {
-  background: linear-gradient(180deg, #fe639a 0%, #b9395d 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: #fe639a !important;
-  -webkit-text-stroke: 0.35px #fe639a !important;
-}
-
-/* 点差+ 正差 蓝: 50c2ed>2c6882 */
+/* 点差+ 蓝: 50c2ed>2c6882 */
+.theme-majsoul .player-score.majsoul-diff-pos,
 .theme-majsoul .majsoul-diff-pos {
   background: linear-gradient(180deg, #50c2ed 0%, #2c6882 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #50c2ed !important;
-  -webkit-text-stroke: 0.35px #50c2ed !important;
 }
 
-/* 点差0 统一使用点差- 负差红渐变: fe639a>b9395d */
+/* 点差- 与 0 负差红: fe639a>b9395d */
+.theme-majsoul .player-score.majsoul-diff-neg,
+.theme-majsoul .majsoul-diff-neg,
 .theme-majsoul .majsoul-diff-zero {
   background: linear-gradient(180deg, #fe639a 0%, #b9395d 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #fe639a !important;
-  -webkit-text-stroke: 0.35px #fe639a !important;
 }
 
 /* 雀魂专属自家指示器 (参考实机：八角切角红底白边双层徽章 + 纯代码实现) */

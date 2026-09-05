@@ -218,24 +218,21 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                 <span className={`player-wind ${isEast ? 'wind-east' : 'wind-other'}`}>
                   {windName}
                 </span>
+                {isMySelf && theme !== 'majsoul' && (
+                  <span className="jika-prefix">[自家]</span>
+                )}
                 <span
-                  className={`player-name ${isMySelf ? 'can-rename' : ''}`}
+                  className={`player-name ${isMySelf ? 'is-self can-rename' : ''}`}
                   onClick={isMySelf ? () => onRenameClick(player) : undefined}
                   style={{ cursor: isMySelf ? 'pointer' : 'default' }}
                   title={isMySelf ? '点击修改自己设备的名字' : undefined}
                 >
                   {displayName}
                 </span>
-                {isMySelf && (
-                  theme === 'majsoul' ? (
-                    <span className="majsoul-jika-badge" title="自家">
-                      <span className="majsoul-jika-badge-inner">自家</span>
-                    </span>
-                  ) : (
-                    <span className="player-jika-badge" title="自家">
-                      自家
-                    </span>
-                  )
+                {isMySelf && theme === 'majsoul' && (
+                  <span className="majsoul-jika-badge" title="自家">
+                    <span className="majsoul-jika-badge-inner">自家</span>
+                  </span>
                 )}
               </div>
 
@@ -290,23 +287,29 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                   (() => {
                     const isSelf = mySeatId !== null && player.id === mySeatId;
                     const targetPlayer = mySeatId !== null ? players.find(p => p.id === mySeatId) || players[0] : players[0];
-                    let content: React.ReactNode;
                     if (showDiffMode && !isSelf) {
                       const diff = player.score - targetPlayer.score;
                       const diffStr = diff > 0 ? `-${diff}` : (diff < 0 ? `+${-diff}` : '0');
                       const cls = diff < 0 ? 'majsoul-diff-pos' : 'majsoul-diff-neg';
-                      content = <span className={`majsoul-diff ${cls}`}>{diffStr}</span>;
-                    } else {
-                      content = <span className="player-score"><AnimatedCounter value={player.score} /></span>;
+                      return (
+                        <span
+                          className={`player-score majsoul-diff ${cls}`}
+                          style={{ cursor: 'pointer' }}
+                          onClick={() => onScoreClick?.(player)}
+                          title="点击恢复点数显示"
+                        >
+                          {diffStr}
+                        </span>
+                      );
                     }
                     return (
                       <span
-                        className="majsoul-score-area"
-                        style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                        className="player-score"
+                        style={{ cursor: 'pointer' }}
                         onClick={() => onScoreClick?.(player)}
-                        title={showDiffMode ? '点击恢复点数显示' : '点击切换点差显示'}
+                        title="点击切换点差显示"
                       >
-                        {content}
+                        <AnimatedCounter value={player.score} />
                       </span>
                     );
                   })()
