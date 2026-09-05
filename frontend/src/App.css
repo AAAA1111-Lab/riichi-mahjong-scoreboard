@@ -1598,11 +1598,11 @@ body {
   font-weight: 800 !important; /* 严格对齐浅/深色主题 800 */
   letter-spacing: -1px !important; /* 严格对齐浅/深色主题 -1px */
   font-variant-numeric: tabular-nums !important;
-  background: linear-gradient(180deg, #fff7d6 0%, #ffbe42 55%, #d97706 100%) !important;
+  background: linear-gradient(180deg, #f6cf67 0%, #e59c5d 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: #ffbe42 !important;
+  color: #f6cf67 !important;
   filter: none !important; /* 彻底移除发光 */
 }
 
@@ -1610,29 +1610,39 @@ body {
 .theme-majsoul .majsoul-diff {
   font-family: var(--font-family) !important;
   font-weight: 800 !important;
-  font-size: 1.35rem !important;
+  font-size: 1.6rem !important;
   font-variant-numeric: tabular-nums !important;
-  letter-spacing: -0.5px !important;
+  letter-spacing: -1px !important;
   filter: none !important;
 }
 
-/* 对方多于自己 → 负差 红 */
+/* 点差- 负差 红: fe639a>b9395d */
 .theme-majsoul .majsoul-diff-neg {
-  background: linear-gradient(180deg, #ff9492 0%, #ff4d4f 55%, #ba191b 100%) !important;
+  background: linear-gradient(180deg, #fe639a 0%, #b9395d 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: #ff4d4f !important;
+  color: #fe639a !important;
   filter: none !important;
 }
 
-/* 对方少于自己 → 正差 蓝 */
+/* 点差+ 正差 蓝: 50c2ed>2c6882 */
 .theme-majsoul .majsoul-diff-pos {
-  background: linear-gradient(180deg, #8ad8ff 0%, #29a0f5 55%, #1066b8 100%) !important;
+  background: linear-gradient(180deg, #50c2ed 0%, #2c6882 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: #29a0f5 !important;
+  color: #50c2ed !important;
+  filter: none !important;
+}
+
+/* 点差0 正常金: f6cf67>e59c5d */
+.theme-majsoul .majsoul-diff-zero {
+  background: linear-gradient(180deg, #f6cf67 0%, #e59c5d 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #f6cf67 !important;
   filter: none !important;
 }
 
