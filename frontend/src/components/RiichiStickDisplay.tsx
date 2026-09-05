@@ -18,12 +18,12 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
       title={`场上立直棒: ${count} 根 (${count * 1000} 点)`}
     >
       {count === 0 ? (
-        // 0 根立直棒时显示 1 根暗态契合轮廓槽
+        // 0 根立直棒时显示 1 根暗态契合轮廓槽 (48px x 10px)
         <div
           style={{
-            width: '58px', // 回调至黄金 58px
-            height: '9px',
-            borderRadius: '2px',
+            width: '48px',
+            height: '10px',
+            borderRadius: '2.5px',
             border: '1px solid #334155',
             background: 'rgba(15, 23, 42, 0.35)',
             opacity: 0.3,
@@ -42,7 +42,7 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
           />
         </div>
       ) : count <= 4 ? (
-        // 1~4 根以内：垂直向下美观堆叠 1~4 根实体宝蓝银点立直棒
+        // 1~4 根以内：垂直向下美观堆叠 1~4 根实体宝蓝银点立直棒 (48px x 10px)
         <div
           style={{
             display: 'flex',
@@ -55,12 +55,13 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
             <div
               key={idx}
               style={{
-                width: '58px', // 黄金 58px
-                height: '8.5px',
-                borderRadius: '2px',
+                width: '48px',
+                height: '10px',
+                borderRadius: '2.5px',
                 background: 'linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%)',
                 border: '1px solid #1e40af',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
+                borderBottom: '1.5px solid #172554',
+                boxShadow: '0 1.5px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -70,8 +71,8 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
               {/* 居中 1 个立体发光银点 */}
               <div
                 style={{
-                  width: '3.5px',
-                  height: '3.5px',
+                  width: '4px',
+                  height: '4px',
                   borderRadius: '50%',
                   background: 'radial-gradient(circle, #ffffff 0%, #cbd5e1 60%, #94a3b8 100%)',
                   boxShadow: '0 0 2px rgba(255, 255, 255, 0.9)'
@@ -91,12 +92,13 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
         >
           <div
             style={{
-              width: '58px',
-              height: '8.5px',
-              borderRadius: '2px',
+              width: '48px',
+              height: '10px',
+              borderRadius: '2.5px',
               background: 'linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%)',
               border: '1px solid #1e40af',
-              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
+              borderBottom: '1.5px solid #172554',
+              boxShadow: '0 1.5px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -106,8 +108,8 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
             {/* 居中 1 个立体发光银点 */}
             <div
               style={{
-                width: '3.5px',
-                height: '3.5px',
+                width: '4px',
+                height: '4px',
                 borderRadius: '50%',
                 background: 'radial-gradient(circle, #ffffff 0%, #cbd5e1 60%, #94a3b8 100%)',
                 boxShadow: '0 0 2px rgba(255, 255, 255, 0.9)'

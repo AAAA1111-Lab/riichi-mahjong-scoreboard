@@ -497,27 +497,27 @@ function App() {
             <div
               className="check-indicator"
               style={{
-                display: 'inline-flex',
+                display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                gap: '5px',
-                height: '26px',
-                padding: '0 7px',
-                background: 'rgba(0, 0, 0, 0.35)',
-                border: '1px solid #283344',
-                borderRadius: '4px',
-                cursor: 'default',
-                boxSizing: 'border-box'
+                justifyContent: 'center',
+                gap: '2px',
+                height: '30px',
+                fontWeight: 700,
+                fontSize: '0.52rem',
+                color: '#ffffff',
+                cursor: 'default'
               }}
               title={isBalanced ? '全场点数正常（已对平）' : '全场点数异常（未对平）'}
             >
-              <span style={{ color: '#d1d5db', letterSpacing: '0.5px', fontSize: '0.62rem', fontWeight: 700, lineHeight: 1 }}>CHECK</span>
+              <span style={{ color: '#a1a1aa', letterSpacing: '1px', lineHeight: 1, fontSize: '0.52rem' }}>CHECK</span>
               <span
                 style={{
-                  width: '7px',
-                  height: '7px',
+                  width: '6px',
+                  height: '6px',
                   borderRadius: '50%',
                   backgroundColor: isBalanced ? '#30d158' : '#2b3630',
-                  boxShadow: isBalanced ? '0 0 5px #30d158, 0 0 8px rgba(48, 209, 88, 0.5)' : 'none',
+                  boxShadow: isBalanced ? '0 0 4px #30d158, 0 0 8px #30d158' : 'none',
                   transition: 'all 0.3s ease',
                   display: 'inline-block'
                 }}
@@ -1096,55 +1096,48 @@ function App() {
         <>
           {/* HUD Info Panel */}
           {theme === 'rexx' ? (
-            <section className="hud-panel rexx-hud-panel">
-              {/* 格子 1: 局况文本 */}
-              <div className="rexx-hud-col rexx-hud-col-1" onClick={openHudModal} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} title="点击修改局况/本场数">
-                <span className="hud-label" style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', fontWeight: 600, lineHeight: 1 }}>局况</span>
-                <span className="hud-value dealer-round" style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ff3344', lineHeight: 1.3, marginTop: '2px' }}>
-                  {windText}{round}局
-                </span>
-              </div>
+            (() => {
+              const currentRoundRiichiCount = gameState.players.filter(p => p.riichi).length;
+              const rexxTableRiichiSticks = Math.max(0, riichiSticks - currentRoundRiichiCount);
+              return (
+                <section className="hud-panel rexx-hud-panel">
+                  {/* 格子 1: 局况文本 (与其他主题保持一致) */}
+                  <div className="rexx-hud-col rexx-hud-col-1" onClick={openHudModal} style={{ cursor: 'pointer' }} title="点击修改局况/本场数">
+                    <div className="hud-item">
+                      <span className="hud-label">局况</span>
+                      <span className="hud-value dealer-round">
+                        {windText}{round}局
+                      </span>
+                    </div>
+                  </div>
 
-              {/* 格子 2: 本场 5-LED 拟物组件 */}
-              <div className="rexx-hud-col rexx-hud-col-2" onClick={openHudModal} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="点击修改局况/本场数">
-                <HonbaLedBar honba={honba} />
-              </div>
+                  {/* 格子 2: 本场 5-LED 拟物组件 */}
+                  <div className="rexx-hud-col rexx-hud-col-2" onClick={openHudModal} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="点击修改局况/本场数">
+                    <HonbaLedBar honba={honba} />
+                  </div>
 
-              {/* 格子 3: 宝蓝银点立直棒拟物组件 (增加供托标签) */}
-              <div className="rexx-hud-col rexx-hud-col-3" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
-                <span className="hud-label" style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', fontWeight: 600, lineHeight: 1 }}>供托</span>
-                <RiichiStickDisplay count={riichiSticks} />
-              </div>
+                  {/* 格子 3: 宝蓝银点立直棒 (对局中仅显示前局积存棒，流局后本局立直棒移入上方) */}
+                  <div className="rexx-hud-col rexx-hud-col-3">
+                    <RiichiStickDisplay count={rexxTableRiichiSticks} />
+                  </div>
 
-              {/* 格子 4: 荒牌流局按钮 */}
-              <div className="rexx-hud-col rexx-hud-col-4">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => {
-                    setSettleMode('draw');
-                    setSettleWinnerId(null);
-                  }}
-                  style={{
-                    width: '86px',
-                    height: '34px',
-                    lineHeight: '34px',
-                    padding: 0,
-                    fontSize: '0.82rem',
-                    fontWeight: 800,
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxSizing: 'border-box'
-                  }}
-                >
-                  荒牌流局
-                </button>
-              </div>
-            </section>
+                  {/* 格子 4: 荒牌流局按钮 (与其他主题保持一致) */}
+                  <div className="rexx-hud-col rexx-hud-col-4">
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => {
+                        setSettleMode('draw');
+                        setSettleWinnerId(null);
+                      }}
+                      style={{ width: '96px', height: '32px', padding: 0, fontSize: '0.8rem', fontWeight: 700 }}
+                    >
+                      荒牌流局
+                    </button>
+                  </div>
+                </section>
+              );
+            })()
           ) : (
             <section className="hud-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', height: '64px', minHeight: '64px', whiteSpace: 'nowrap' }}>
               <div className="hud-info" onClick={openHudModal} style={{ cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }} title="点击修改局况/本场数">
@@ -1155,37 +1148,78 @@ function App() {
                   </span>
                 </div>
                 {theme === 'majsoul' ? (
-                  /* 雀魂专属实机胶囊：调换顺序 (立直棒在前、本场棒在后)，竖立白棒 + 斜体白字，数值与点棒下对齐 */
-                  <div className="majsoul-sticks-container" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    {/* 1. 立直棒胶囊 (千点棒在前，竖棒高度 40px) */}
-                    <div className="majsoul-stick-capsule" title="立直棒">
-                      <svg width="9" height="40" viewBox="0 0 9 40" style={{ display: 'block', flexShrink: 0, height: '40px' }}>
-                        <rect x="0.5" y="0.5" width="8" height="39" rx="4" fill="#ffffff" stroke="#c4c8d0" strokeWidth="0.9" />
-                        <circle cx="4.5" cy="20" r="2.2" fill="#be353d" />
-                      </svg>
-                      <span className="stick-text">
-                        <span className="stick-x">x</span>
-                        <span className="stick-num">{riichiSticks}</span>
-                      </span>
-                    </div>
+                  (() => {
+                    const isTwoDigits = riichiSticks >= 10 || honba >= 10;
+                    return (
+                      /* 雀魂专属实机胶囊：两个供托区单数字锁定间距，两位数时自适应间距 */
+                      <div className="majsoul-sticks-container" style={{ display: 'flex', alignItems: 'center', gap: isTwoDigits ? '8px' : '12px' }}>
+                        {/* 1. 立直棒胶囊 (千点棒在前，竖棒高度 40px) */}
+                        <div
+                          className="majsoul-stick-capsule"
+                          title="立直棒"
+                          style={{
+                            width: riichiSticks >= 10 ? 'auto' : '44px',
+                            minWidth: riichiSticks >= 10 ? '50px' : '44px',
+                            justifyContent: 'flex-start'
+                          }}
+                        >
+                          <svg width="9" height="40" viewBox="0 0 9 40" style={{ display: 'block', flexShrink: 0, height: '40px' }}>
+                            <rect x="0.5" y="0.5" width="8" height="39" rx="4" fill="#ffffff" stroke="#c4c8d0" strokeWidth="0.9" />
+                            <circle cx="4.5" cy="20" r="2.2" fill="#be353d" />
+                          </svg>
+                          <span className="stick-text">
+                            <span className="stick-x">x</span>
+                            <span
+                              className="stick-num"
+                              style={{
+                                display: 'inline-block',
+                                minWidth: riichiSticks >= 10 ? 'auto' : '14px',
+                                fontVariantNumeric: 'tabular-nums',
+                                textAlign: 'left'
+                              }}
+                            >
+                              {riichiSticks}
+                            </span>
+                          </span>
+                        </div>
 
-                    {/* 2. 本场棒胶囊 (百点棒在后，竖棒高度 40px) */}
-                    <div className="majsoul-stick-capsule" title="本场棒">
-                      <svg width="9" height="40" viewBox="0 0 9 40" style={{ display: 'block', flexShrink: 0, height: '40px' }}>
-                        <rect x="0.5" y="0.5" width="8" height="39" rx="4" fill="#ffffff" stroke="#c4c8d0" strokeWidth="0.9" />
-                        {[0, 1, 2, 3].map((r) => (
-                          <g key={r}>
-                            <circle cx="2.9" cy={14.75 + r * 3.5} r="1" fill="#1b253c" />
-                            <circle cx="6.1" cy={14.75 + r * 3.5} r="1" fill="#1b253c" />
-                          </g>
-                        ))}
-                      </svg>
-                      <span className="stick-text">
-                        <span className="stick-x">x</span>
-                        <span className="stick-num">{honba}</span>
-                      </span>
-                    </div>
-                  </div>
+                        {/* 2. 本场棒胶囊 (百点棒在后，竖棒高度 40px) */}
+                        <div
+                          className="majsoul-stick-capsule"
+                          title="本场棒"
+                          style={{
+                            width: honba >= 10 ? 'auto' : '44px',
+                            minWidth: honba >= 10 ? '50px' : '44px',
+                            justifyContent: 'flex-start'
+                          }}
+                        >
+                          <svg width="9" height="40" viewBox="0 0 9 40" style={{ display: 'block', flexShrink: 0, height: '40px' }}>
+                            <rect x="0.5" y="0.5" width="8" height="39" rx="4" fill="#ffffff" stroke="#c4c8d0" strokeWidth="0.9" />
+                            {[0, 1, 2, 3].map((r) => (
+                              <g key={r}>
+                                <circle cx="2.9" cy={14.75 + r * 3.5} r="1" fill="#1b253c" />
+                                <circle cx="6.1" cy={14.75 + r * 3.5} r="1" fill="#1b253c" />
+                              </g>
+                            ))}
+                          </svg>
+                          <span className="stick-text">
+                            <span className="stick-x">x</span>
+                            <span
+                              className="stick-num"
+                              style={{
+                                display: 'inline-block',
+                                minWidth: honba >= 10 ? 'auto' : '14px',
+                                fontVariantNumeric: 'tabular-nums',
+                                textAlign: 'left'
+                              }}
+                            >
+                              {honba}
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })()
                 ) : (
                   <>
                     <div className="hud-item">

@@ -253,7 +253,7 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                 )}
               </div>
 
-              {/* REXX / 雀魂主题宣告立直时居中立直棒 */}
+              {/* REXX / 雀魂主题宣告立直时居中立直棒 (比例 4.8:1，48px x 10px) */}
               {player.riichi && (theme === 'rexx' || theme === 'majsoul') && (
                 <div
                   className="player-card-riichi-stick"
@@ -268,41 +268,16 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                   }}
                 >
                   {theme === 'rexx' ? (
-                    // REXX 现成宝蓝银点立直棒组件
+                    // REXX 宝蓝银点立直棒 (48px x 10px, 比例 4.8:1)
                     <div
                       style={{
-                        width: '58px',
-                        height: '8.5px',
-                        borderRadius: '2px',
+                        width: '48px',
+                        height: '10px',
+                        borderRadius: '2.5px',
                         background: 'linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%)',
                         border: '1px solid #1e40af',
-                        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        position: 'relative'
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: '3.5px',
-                          height: '3.5px',
-                          borderRadius: '50%',
-                          background: 'radial-gradient(circle, #ffffff 0%, #cbd5e1 60%, #94a3b8 100%)',
-                          boxShadow: '0 0 2px rgba(255, 255, 255, 0.9)'
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    // 雀魂 白色+红点立直棒
-                    <div
-                      style={{
-                        width: '58px',
-                        height: '8.5px',
-                        borderRadius: '2px',
-                        background: '#ffffff',
-                        border: '1px solid #c4c8d0',
-                        boxShadow: '0 1.5px 4px rgba(0, 0, 0, 0.45)',
+                        borderBottom: '1.5px solid #172554',
+                        boxShadow: '0 1.5px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -314,8 +289,35 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                           width: '4px',
                           height: '4px',
                           borderRadius: '50%',
-                          background: '#be353d',
-                          boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)'
+                          background: 'radial-gradient(circle, #ffffff 0%, #cbd5e1 60%, #94a3b8 100%)',
+                          boxShadow: '0 0 2px rgba(255, 255, 255, 0.9)'
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    // 雀魂 白色+红点立直棒 (48px x 10px, 比例 4.8:1)
+                    <div
+                      style={{
+                        width: '48px',
+                        height: '10px',
+                        borderRadius: '2.5px',
+                        background: '#ffffff',
+                        border: '1px solid #c4c8d0',
+                        borderBottom: '1.5px solid #a8adb5',
+                        boxShadow: '0 1.5px 3px rgba(0, 0, 0, 0.4)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '5.5px',
+                          height: '5px',
+                          borderRadius: '50%',
+                          background: '#e60012',
+                          boxShadow: '0 0 1px rgba(230, 0, 18, 0.5)'
                         }}
                       />
                     </div>
