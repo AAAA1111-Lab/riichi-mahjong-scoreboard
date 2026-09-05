@@ -18,11 +18,16 @@ export const ClaimSeatModal: React.FC<ClaimSeatModalProps> = ({
   gameState,
   onConfirm
 }) => {
+  const [selectedSeat, setSelectedSeat] = useState<number>(0);
   const [playerName, setPlayerName] = useState('');
 
   // Auto initialize device bound player name when modal opens
   useEffect(() => {
     if (isOpen) {
+      // 默认选中东起位（座位 0）；若被占用则选第一个空闲座位
+      const count = gameState.gameMode === 'sanma' || gameState.players.length === 3 ? 3 : 4;
+      const freeSeats = Array.from({ length: count }, (_, i) => i).filter(i => !gameState.connectedPlayers[i]);
+      setSelectedSeat(freeSeats[0] ?? 0);
       const savedName = localStorage.getItem('mahjong-player-name');
       if (savedName && savedName.trim() !== '' && !isDefaultPlayerName(savedName)) {
         setPlayerName(savedName.trim());
@@ -35,114 +40,146 @@ export const ClaimSeatModal: React.FC<ClaimSeatModalProps> = ({
   const { connectedPlayers, players, gameMode } = gameState;
   const isSanma = gameMode === 'sanma' || players.length === 3;
   const seatWinds = isSanma ? SANMA_SEAT_WINDS : YONMA_SEAT_WINDS;
-  const seatCount = isSanma ? 3 : 4;
 
-  const handleClaim = (seatIdx: number) => {
-    if (connectedPlayers[seatIdx]) return;
+  const handleSeatSelect = (idx: number) => {
+    setSelectedSeat(idx);
+    const savedName = localStorage.getItem('mahjong-player-name');
+    if (savedName && savedName.trim() !== '' && !isDefaultPlayerName(savedName)) {
+      setPlayerName(savedName.trim());
+    } else {
+      const currentSeatName = players[idx]?.name;
+      if (currentSeatName && !currentSeatName.startsWith('玩家 ')) {
+        setPlayerName(currentSeatName);
+      } else {
+        setPlayerName(`玩家 ${idx + 1}`);
+      }
+    }
+  };
 
+  // 随机摸风：直接进入并占用随机可用风位
+  const randomSeat = () => {
+    const count = isSanma ? 3 : 4;
+    const freeSeats = Array.from({ length: count }, (_, i) => i).filter(i => !connectedPlayers[i]);
+    if (freeSeats.length === 0) {
+      alert('当前所有风位均已连线，无法加入');
+      return;
+    }
+    const pickedSeat = freeSeats[Math.floor(Math.random() * freeSeats.length)];
     const savedName = localStorage.getItem('mahjong-player-name');
     const customName = playerName.trim();
-    const finalName = customName || savedName || players[seatIdx]?.name || `玩家 ${seatIdx + 1}`;
+    const finalName = customName || (savedName && !isDefaultPlayerName(savedName) ? savedName : '') || players[pickedSeat]?.name || `玩家 ${pickedSeat + 1}`;
 
     if (customName && !isDefaultPlayerName(customName)) {
       localStorage.setItem('mahjong-player-name', customName);
     } else if (!customName && savedName && !isDefaultPlayerName(savedName)) {
-      // Keep savedName
+      // keep
     } else {
       localStorage.removeItem('mahjong-player-name');
     }
 
-    onConfirm(seatIdx, finalName);
+    onConfirm(pickedSeat, finalName);
   };
 
-  const hasFreeSeat = Array.from({ length: seatCount }, (_, i) => i).some(i => !connectedPlayers[i]);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const savedName = localStorage.getItem('mahjong-player-name');
+    const customName = playerName.trim();
+    const finalName = customName || (savedName && !isDefaultPlayerName(savedName) ? savedName : '') || `玩家 ${selectedSeat + 1}`;
+
+    if (customName && !isDefaultPlayerName(customName)) {
+      localStorage.setItem('mahjong-player-name', customName);
+    } else if (!customName && savedName && !isDefaultPlayerName(savedName)) {
+      // keep
+    } else {
+      localStorage.removeItem('mahjong-player-name');
+    }
+
+    onConfirm(selectedSeat, finalName);
+  };
 
   return (
     <div className="modal-overlay" style={{ zIndex: 2000 }}>
       <div className="modal-content" style={{ maxWidth: '400px' }}>
         <div className="modal-header">
-          <h3 className="modal-title">加入对局：选择风位 ({isSanma ? '三人麻将' : '四人麻将'})</h3>
+          <h3 className="modal-title">首次加入：请认领您的风位 ({isSanma ? '三人麻将' : '四人麻将'})</h3>
         </div>
-        <div className="modal-body">
-          <div className="form-group" style={{ marginBottom: '14px' }}>
-            <label className="form-label" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
-              选手昵称 (选填，绑定当前设备)
-            </label>
-            <input
-              type="text"
-              className="form-input"
-              value={playerName}
-              onChange={(e) => setPlayerName(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  const firstFreeSeat = Array.from({ length: seatCount }, (_, i) => i).find(i => !connectedPlayers[i]);
-                  if (firstFreeSeat !== undefined) {
-                    handleClaim(firstFreeSeat);
-                  }
-                }
-              }}
-              placeholder="留空则默认为席位名称"
-              maxLength={10}
-              autoFocus
-            />
-          </div>
-
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '10px' }}>
-            请直接选择可选风位进入：
-          </p>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {players.slice(0, seatCount).map((p, idx) => {
-              const isClaimed = connectedPlayers[idx];
-              const windLabel = seatWinds[idx];
-
-              return (
-                <button
-                  key={p.id}
-                  type="button"
-                  disabled={isClaimed}
-                  className={`btn ${isClaimed ? '' : 'btn-primary'}`}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '12px 16px',
-                    opacity: isClaimed ? 0.38 : 1,
-                    border: isClaimed ? '1px solid #3d3434' : '1px solid var(--color-accent)',
-                    cursor: isClaimed ? 'not-allowed' : 'pointer',
-                    textAlign: 'left'
-                  }}
-                  onClick={() => handleClaim(idx)}
-                >
-                  <span>
-                    <strong style={{ fontSize: '1.02rem', marginRight: '8px', color: isClaimed ? 'var(--text-secondary)' : 'var(--text-primary)' }}>
-                      {windLabel}
-                    </strong>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                      ({p.name || `玩家 ${idx + 1}`})
-                    </span>
-                  </span>
-                  <span
-                    style={{
-                      fontSize: '0.82rem',
-                      fontWeight: 'bold',
-                      color: isClaimed ? 'var(--color-danger, #ff4d4f)' : 'var(--color-success, #2ec4b6)'
-                    }}
-                  >
-                    {isClaimed ? '已连线' : '点击进入'}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {!hasFreeSeat && (
-            <p style={{ fontSize: '0.82rem', color: 'var(--color-danger, #ff4d4f)', marginTop: '12px', textAlign: 'center' }}>
-              当前所有席位均已连线，无法加入
+        <form onSubmit={handleSubmit}>
+          <div className="modal-body">
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>
+              请选择桌上的风位 ({isSanma ? '东/南/西' : '东/南/西/北'}) 加入对局。您的选手名称将跟随设备绑定。
             </p>
-          )}
-        </div>
+
+            <button
+              type="button"
+              className="btn btn-secondary"
+              style={{ width: '100%', marginBottom: '8px', padding: '10px', fontSize: '0.85rem', fontWeight: 600 }}
+              onClick={randomSeat}
+            >
+              随机摸风
+            </button>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {players.slice(0, isSanma ? 3 : 4).map((p, idx) => {
+                const isClaimed = connectedPlayers[idx];
+                const isSelected = selectedSeat === idx;
+                const windLabel = seatWinds[idx];
+
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    disabled={isClaimed && !isSelected}
+                    className={`btn ${isSelected ? 'btn-primary' : ''}`}
+                    style={{
+                      justifyContent: 'space-between',
+                      padding: '12px 16px',
+                      opacity: isClaimed && !isSelected ? 0.35 : 1,
+                      border: isSelected ? '1px solid var(--color-accent)' : '1px solid #4a3a3a',
+                      textAlign: 'left'
+                    }}
+                    onClick={() => handleSeatSelect(idx)}
+                  >
+                    <span>
+                      <strong style={{ fontSize: '1.02rem', marginRight: '8px', color: 'var(--text-primary)' }}>
+                        {windLabel}
+                      </strong>
+                      <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                        ({p.name || `玩家 ${idx + 1}`})
+                      </span>
+                    </span>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: isClaimed ? 'var(--color-danger, #ff4d4f)' : 'var(--color-success, #2ec4b6)' }}>
+                      {isClaimed ? '已连线' : '空闲'}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="form-group" style={{ marginTop: '16px' }}>
+              <label className="form-label">输入或确认您的选手昵称 (绑定当前设备)</label>
+              <input
+                type="text"
+                className="form-input"
+                value={playerName}
+                onChange={(e) => setPlayerName(e.target.value)}
+                placeholder={`玩家 ${selectedSeat + 1}`}
+                maxLength={10}
+                required
+                autoFocus
+              />
+            </div>
+          </div>
+
+          <div className="modal-footer" style={{ borderTop: 'none', paddingTop: 0 }}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ width: '100%', padding: '12px' }}
+            >
+              认领 {seatWinds[selectedSeat]}，进入计分板
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

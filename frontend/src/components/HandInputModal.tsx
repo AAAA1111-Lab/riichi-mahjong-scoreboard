@@ -12,7 +12,7 @@ const checkGameOver = (gameState: GameState, nextState: GameState, _isDealerWinn
       .filter(p => p.score < 0)
       .map(p => p.name)
       .join(', ');
-    return { isOver: true, msg: ` [被飞] 玩家 ${negativePlayers} 点数低于 0 触发击飞完场！` };
+    return { isOver: true, msg: ` [被飞] 玩家 ${negativePlayers} 点数低于 0 触发击飞完场` };
   }
 
   const westRoundEnabled = gameState.settings?.westRoundEnabled ?? false;
@@ -811,7 +811,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
     if (mode === 'ron') {
       const currentWinners = getActiveWinners();
       if (loserId === null) {
-        alert('请选择放铳（点炮）玩家！');
+        alert('请选择放铳玩家！');
         return;
       }
       if (currentWinners.length === 0) {
@@ -821,7 +821,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
       for (const wId of currentWinners) {
         const pts = winnerScores[wId]?.basePoints || 0;
         if (pts <= 0 || pts % 100 !== 0) {
-          alert(`玩家 [${players[wId]?.name}] 的荣和得点必须大于 0 且为 100 的整数倍！`);
+          alert(`点数必须大于 0 且为 100 的整数倍`);
           return;
         }
       }
