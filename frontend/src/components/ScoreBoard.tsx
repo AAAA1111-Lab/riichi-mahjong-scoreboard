@@ -226,6 +226,17 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                 >
                   {displayName}
                 </span>
+                {isMySelf && (
+                  theme === 'majsoul' ? (
+                    <span className="majsoul-jika-badge" title="自家">
+                      <span className="majsoul-jika-badge-inner">自家</span>
+                    </span>
+                  ) : (
+                    <span className="player-jika-badge" title="自家">
+                      自家
+                    </span>
+                  )
+                )}
               </div>
 
               <div className="player-score-container" style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>

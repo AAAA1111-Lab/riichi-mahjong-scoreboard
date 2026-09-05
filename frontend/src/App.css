@@ -529,6 +529,23 @@ body {
   line-height: 1;
 }
 
+/* 自家 (Self) 指示器 (通用与默认主题：使用各主题重点色) */
+.player-jika-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+  border-radius: 4px;
+  background-color: var(--color-accent);
+  color: var(--color-accent-text, #ffffff);
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
 .player-score-container {
   margin: 0;
   display: flex;
@@ -1611,7 +1628,8 @@ body {
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #f6cf67 !important;
-  filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.9)) !important;
+  -webkit-text-stroke: 0.35px #f6cf67 !important;
+  filter: none !important;
 }
 
 /* 点差显示 */
@@ -1626,7 +1644,7 @@ body {
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.9)) !important;
+  filter: none !important;
 }
 
 /* 点差- 负差 红: fe639a>b9395d */
@@ -1636,6 +1654,7 @@ body {
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #fe639a !important;
+  -webkit-text-stroke: 0.35px #fe639a !important;
 }
 
 /* 点差+ 正差 蓝: 50c2ed>2c6882 */
@@ -1645,6 +1664,7 @@ body {
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #50c2ed !important;
+  -webkit-text-stroke: 0.35px #50c2ed !important;
 }
 
 /* 点差0 统一使用点差- 负差红渐变: fe639a>b9395d */
@@ -1654,6 +1674,46 @@ body {
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #fe639a !important;
+  -webkit-text-stroke: 0.35px #fe639a !important;
+}
+
+/* 雀魂专属自家指示器 (参考实机：八角切角红底白边双层徽章 + 纯代码实现) */
+.theme-majsoul .majsoul-jika-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  clip-path: polygon(
+    3.5px 0%, calc(100% - 3.5px) 0%,
+    100% 3.5px, 100% calc(100% - 3.5px),
+    calc(100% - 3.5px) 100%, 3.5px 100%,
+    0% calc(100% - 3.5px), 0% 3.5px
+  );
+  padding: 1.4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.theme-majsoul .majsoul-jika-badge-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #b31e1e;
+  clip-path: polygon(
+    2.5px 0%, calc(100% - 2.5px) 0%,
+    100% 2.5px, 100% calc(100% - 2.5px),
+    calc(100% - 2.5px) 100%, 2.5px 100%,
+    0% calc(100% - 2.5px), 0% 2.5px
+  );
+  padding: 1px 6px;
+  color: #ffffff;
+  font-family: var(--majsoul-font-klee), cursive, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.25;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 /* 点差模式下的轻提示 */

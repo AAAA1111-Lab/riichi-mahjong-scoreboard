@@ -710,12 +710,27 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
         return { nextState, logMsg, scoreDiffs };
       }
 
+      const totalPlayers = isSanma ? 3 : 4;
       const tenpaiCount = tenpaiStates.filter(t => t).length;
       let logMsg = isMidGameDraw ? '中途流局 (九种九牌/四杠散打/四人立直)：' : '流局结算：';
 
-      if (tenpaiCount > 0 && tenpaiCount < 4) {
-        const winPoints = 3000 / tenpaiCount;
-        const losePoints = 3000 / (4 - tenpaiCount);
+      if (tenpaiCount > 0 && tenpaiCount < totalPlayers) {
+        let winPoints = 0;
+        let losePoints = 0;
+        if (isSanma) {
+          // 三麻荒牌流局罚符 (场况总额 2000 点):
+          // 1人听牌: 听牌者 +2000，2位未听者各 -1000
+          // 2人听牌: 2位听牌者各 +1000，1位未听者 -2000
+          winPoints = tenpaiCount === 1 ? 2000 : 1000;
+          losePoints = tenpaiCount === 1 ? 1000 : 2000;
+        } else {
+          // 四麻荒牌流局罚符 (场况总额 3000 点):
+          // 1人听牌: 听牌者 +3000，3位未听者各 -1000
+          // 2人听牌: 2位听牌者各 +1500，2位未听者各 -1500
+          // 3人听牌: 3位听牌者各 +1000，1位未听者 -3000
+          winPoints = 3000 / tenpaiCount;
+          losePoints = 3000 / (4 - tenpaiCount);
+        }
 
         nextState.players.forEach((p, idx) => {
           if (tenpaiStates[idx]) {
@@ -728,7 +743,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
         });
         const tenpaiNames = players.filter((_, idx) => tenpaiStates[idx]).map(p => p.name).join('、');
         logMsg += `听牌玩家 [${tenpaiNames}]，进行荒牌罚符转移 (+${winPoints}/-${losePoints})。`;
-      } else if (tenpaiCount === 4) {
+      } else if (tenpaiCount === totalPlayers) {
         const tenpaiNames = players.map(p => p.name).join('、');
         logMsg += `全部听牌 [${tenpaiNames}]，无罚符转移。`;
       } else {
