@@ -218,9 +218,6 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                 <span className={`player-wind ${isEast ? 'wind-east' : 'wind-other'}`}>
                   {windName}
                 </span>
-                {isMySelf && theme !== 'majsoul' && (
-                  <span className="jika-prefix">[自家]</span>
-                )}
                 <span
                   className={`player-name ${isMySelf ? 'is-self can-rename' : ''}`}
                   onClick={isMySelf ? () => onRenameClick(player) : undefined}
@@ -241,11 +238,12 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                   (() => {
                     // REXX 主题点数显示：省略后两位 00，4 位 LED，前导补 0
                     const scoreHundred = String(Math.floor(player.score / 100)).padStart(4, '0');
+                    let scoreNode: React.ReactNode;
                     if (showDiffMode) {
                       if (isMySelf) {
                         // 点差模式自家显示总点数（不含场供）
                         const totalSum = gameState.players.reduce((sum, p) => sum + p.score, 0);
-                        return <LedDigitDisplay value={String(Math.floor(totalSum / 100)).padStart(4, '0')} color="red" height={28} digits={4} />;
+                        scoreNode = <LedDigitDisplay value={String(Math.floor(totalSum / 100)).padStart(4, '0')} color="red" height={28} digits={4} />;
                       } else {
                         const targetScore = myPlayer ? myPlayer.score : Math.max(...players.map(p => p.score));
                         const diff = player.score - targetScore;
@@ -253,10 +251,18 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                         const isPos = diff >= 0;
                         const absVal = Math.abs(hundredDiff).toString().padStart(3, '0');
                         const diffStr = isPos ? 'P' + absVal : '-' + absVal;
-                        return <LedDigitDisplay value={diffStr} color="red" height={28} digits={4} />;
+                        scoreNode = <LedDigitDisplay value={diffStr} color="red" height={28} digits={4} />;
                       }
+                    } else {
+                      scoreNode = <LedDigitDisplay value={scoreHundred} color="red" height={28} digits={4} />;
                     }
-                    return <LedDigitDisplay value={scoreHundred} color="red" height={28} digits={4} />;
+
+                    return (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        {isMySelf && <span className="jika-badge">自家</span>}
+                        {scoreNode}
+                      </div>
+                    );
                   })()
                 ) : theme === 'electronic' ? (
                   (() => {
@@ -276,9 +282,10 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                     return (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <RankLamp rank={rankNum} height={22} />
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '2px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '3px' }}>
                           {scoreLed}
                           {diffLed}
+                          {isMySelfE && <span className="jika-badge" style={{ marginTop: '1px' }}>自家</span>}
                         </div>
                       </div>
                     );
@@ -322,6 +329,9 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                       <span className={`player-diff-badge ${diffVal > 0 ? 'pos' : diffVal < 0 ? 'neg' : 'zero'}`}>
                         {diffVal > 0 ? '+' : ''}{diffVal}
                       </span>
+                    )}
+                    {isMySelf && (
+                      <span className="jika-badge" style={{ alignSelf: 'center', marginLeft: '2px' }}>自家</span>
                     )}
                   </>
                 )}
