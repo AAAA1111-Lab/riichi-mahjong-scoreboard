@@ -12,8 +12,8 @@ if ! command -v node &> /dev/null; then
 fi
 
 # 检查依赖
-if [ ! -d "node_modules" ]; then
-    echo "[提示] 首次运行，正在安装后端依赖..."
+if [ ! -d "node_modules/express" ]; then
+    echo "[提示] 正在安装后端运行依赖 (express, socket.io, cors)..."
     npm install --production
 fi
 
