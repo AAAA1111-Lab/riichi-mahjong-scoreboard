@@ -182,14 +182,17 @@ body {
   }
 }
 
-/* Header */
+/* Header (Strictly locked 48px height across all themes) */
 .app-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 6px 16px;
+  height: 48px !important;
+  min-height: 48px !important;
+  max-height: 48px !important;
+  padding: 0 12px !important;
   border-bottom: 1px solid var(--border-color);
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 .app-title {
@@ -247,14 +250,15 @@ body {
   box-sizing: border-box;
 }
 
-/* REXX Theme Special: 局况、本场、供托、荒牌流局均匀分布，视觉平衡 */
+/* REXX Theme Special: 局况、本场、供托、荒牌流局均匀分布，视觉平衡 (高度严格锁定 64px 与全主题完全对齐) */
 .hud-panel.rexx-hud-panel {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  height: 60px !important;
-  min-height: 60px !important;
-  padding: 0 14px !important;
+  height: 64px !important;
+  min-height: 64px !important;
+  max-height: 64px !important;
+  padding: 0 12px !important;
   gap: 8px !important;
   box-sizing: border-box !important;
 }
@@ -1124,6 +1128,14 @@ body {
   gap: 8px;
 }
 
+.theme-light .preview-box {
+  border-color: #e2e8f0 !important;
+}
+
+.theme-rexx .preview-box {
+  border-color: #283344 !important;
+}
+
 .preview-title {
   font-size: 0.8rem;
   font-weight: 700;
@@ -1132,6 +1144,14 @@ body {
   padding-bottom: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.theme-light .preview-title {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+.theme-rexx .preview-title {
+  border-bottom-color: #283344 !important;
 }
 
 .preview-grid {
@@ -1146,6 +1166,18 @@ body {
   align-items: center;
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
+}
+
+.preview-row-dashed {
+  border-top: 1px dashed var(--border-color) !important;
+}
+
+.theme-light .preview-row-dashed {
+  border-top-color: #e2e8f0 !important;
+}
+
+.theme-rexx .preview-row-dashed {
+  border-top-color: #283344 !important;
 }
 
 .preview-player-name {
@@ -1187,12 +1219,20 @@ body {
 .preview-footer {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-accent);
-  background-color: var(--bg-yaku-checked, rgba(12, 42, 92, 0.08));
-  padding: 6px 10px;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  padding: 8px 10px;
   border-radius: 6px;
-  border-left: 3px solid var(--color-accent);
+  border: 1px solid var(--border-color);
   margin-top: 2px;
+}
+
+.theme-light .preview-footer {
+  border-color: #e2e8f0 !important;
+}
+
+.theme-rexx .preview-footer {
+  border-color: #283344 !important;
 }
 
 /* Unclaimed Player Seat Disconnected State */
@@ -1499,6 +1539,7 @@ body {
   --border-diff-neg: rgba(255, 51, 68, 0.35);
   --bg-diff-zero: rgba(255, 255, 255, 0.06);
   --color-diff-zero: #8e9bb0;
+  --border-diff-zero: rgba(255, 255, 255, 0.12);
 }
 
 .theme-rexx .btn-primary {

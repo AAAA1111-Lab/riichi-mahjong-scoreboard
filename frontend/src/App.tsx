@@ -471,8 +471,8 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Header */}
-      <header className="app-header" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', width: '100%', padding: '8px 12px', minHeight: '44px' }}>
+      {/* Header (Strictly locked 48px height across all themes) */}
+      <header className="app-header" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', width: '100%', height: '48px', minHeight: '48px', maxHeight: '48px', padding: '0 12px', boxSizing: 'border-box' }}>
         {/* Left: Check Component (REXX) or Left-aligned Title (Electronic) */}
         <div style={{ gridColumn: 1, justifySelf: 'start', display: 'flex', alignItems: 'center', height: '30px' }}>
           {theme === 'electronic' && (

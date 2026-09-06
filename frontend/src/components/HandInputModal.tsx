@@ -1215,7 +1215,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
 
                         if (initialSticksOnTable > 0 || nextSticksOnTable > 0) {
                           return (
-                            <div className="preview-row" style={{ borderTop: '1px dashed var(--border-color)', paddingTop: '6px', marginTop: '6px' }}>
+                            <div className="preview-row preview-row-dashed" style={{ paddingTop: '6px', marginTop: '6px' }}>
                               <span className="preview-player-name" style={{ color: 'var(--text-secondary)' }}>
                                 前局积存立直棒：
                               </span>
@@ -1405,7 +1405,7 @@ export const HandInputModal: React.FC<HandInputModalProps> = ({
 
                         if (initialSticksOnTable > 0 || nextSticksOnTable > 0) {
                           return (
-                            <div className="preview-row" style={{ borderTop: '1px dashed var(--border-color)', paddingTop: '6px', marginTop: '6px' }}>
+                            <div className="preview-row preview-row-dashed" style={{ paddingTop: '6px', marginTop: '6px' }}>
                               <span className="preview-player-name" style={{ color: 'var(--text-secondary)' }}>
                                 前局积存立直棒：
                               </span>
