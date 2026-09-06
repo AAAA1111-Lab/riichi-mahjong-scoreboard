@@ -283,14 +283,14 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                           boxSizing: 'border-box'
                         }}
                       >
-                        {/* 居中内框阴影凹槽 (约占总长 38%，22px x 5px，缩小色差微阴影) */}
+                        {/* 居中内框阴影凹槽 (约占总长 38%，22px x 5px，极低色差微凹槽) */}
                         <div
                           style={{
                             width: '22px',
                             height: '5px',
                             borderRadius: '1px',
-                            backgroundColor: 'rgba(0, 0, 0, 0.07)',
-                            boxShadow: 'inset 0 0.5px 1px rgba(0, 0, 0, 0.25)',
+                            backgroundColor: 'transparent',
+                            boxShadow: 'inset 0 0.5px 0.8px rgba(0, 0, 0, 0.12)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center'
@@ -335,7 +335,7 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                       </div>
                     )
                   ) : (
-                    // 未立直时显示放置立直棒的灰色槽
+                    // 未立直时显示放置立直棒的灰色槽 (上一版结构：外框槽 + 内凹槽 + 居中灰点)
                     theme === 'rexx' ? (
                       <div
                         className="player-riichi-slot"
@@ -344,12 +344,36 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                           width: '56px',
                           height: '7px',
                           borderRadius: '2px',
-                          border: '1px solid #283344',
-                          backgroundColor: 'rgba(10, 11, 14, 0.65)',
-                          boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.6)',
+                          border: '1px solid #334155',
+                          background: 'rgba(15, 23, 42, 0.35)',
+                          opacity: 0.4,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                           boxSizing: 'border-box'
                         }}
-                      />
+                      >
+                        <div
+                          style={{
+                            width: '22px',
+                            height: '5px',
+                            borderRadius: '1px',
+                            backgroundColor: 'rgba(0, 0, 0, 0.25)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: '2.5px',
+                              height: '2.5px',
+                              borderRadius: '50%',
+                              backgroundColor: '#64748b'
+                            }}
+                          />
+                        </div>
+                      </div>
                     ) : (
                       <div
                         className="player-riichi-slot"
@@ -358,12 +382,36 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                           width: '56px',
                           height: '7px',
                           borderRadius: '2px',
-                          border: '1px solid rgba(255, 255, 255, 0.09)',
-                          backgroundColor: 'rgba(16, 23, 38, 0.55)',
-                          boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.35)',
+                          border: '1px solid rgba(255, 255, 255, 0.15)',
+                          background: 'rgba(15, 23, 42, 0.35)',
+                          opacity: 0.4,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                           boxSizing: 'border-box'
                         }}
-                      />
+                      >
+                        <div
+                          style={{
+                            width: '22px',
+                            height: '5px',
+                            borderRadius: '1px',
+                            backgroundColor: 'rgba(0, 0, 0, 0.25)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: '2.5px',
+                              height: '2.5px',
+                              borderRadius: '50%',
+                              backgroundColor: '#90a4cb'
+                            }}
+                          />
+                        </div>
+                      </div>
                     )
                   )}
                 </div>
