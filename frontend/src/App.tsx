@@ -19,9 +19,9 @@ const SOCKET_URL = import.meta.env.DEV ? 'http://localhost:32000' : window.locat
 const socket: Socket = io(SOCKET_URL, {
   reconnection: true,
   reconnectionAttempts: Infinity, // 无限重试，持续保活
-  reconnectionDelay: 400, // 初始重连间隔缩短至 400ms (高频重试)
-  reconnectionDelayMax: 1200, // 最大重连间隔控制在 1.2s 以内
-  timeout: 4000, // 握手超时 4s
+  reconnectionDelay: 500, // 重连间隔 500ms
+  reconnectionDelayMax: 2000, // 最大重连间隔 2s
+  timeout: 20000, // 移动端休眠唤醒握手宽容超时 20s
 });
 
 // 默认风位 ID 格式（玩家 1/2/3/4 或 dev_seat_N），不作为有效设备 ID
@@ -328,7 +328,17 @@ function App() {
     void isHost;
   void setServerLanUrl;
 
-  return () => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && !socket.connected) {
+        socket.connect();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleVisibilityChange);
       socket.off('connect');
       socket.off('disconnect');
       socket.off('state-updated');

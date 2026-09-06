@@ -253,8 +253,8 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                 )}
               </div>
 
-              {/* REXX / 雀魂主题宣告立直时居中立直棒 (比例 8.1:1，56px x 7px) */}
-              {player.riichi && (theme === 'rexx' || theme === 'majsoul') && (
+              {/* REXX / 雀魂主题立直棒及卡片放置槽 (比例 8.1:1，56px x 7px) */}
+              {(theme === 'rexx' || theme === 'majsoul') && (
                 <div
                   className="player-card-riichi-stick"
                   style={{
@@ -267,85 +267,104 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                     pointerEvents: 'none'
                   }}
                 >
-                  {theme === 'rexx' ? (
-                    // REXX 纯正扁平宝蓝银点立直棒 (56px x 7px, 真实比例 8.1:1，圆角矩形外框 + 内框阴影 + 银色点)
-                    <div
-                      style={{
-                        width: '56px',
-                        height: '7px',
-                        borderRadius: '2px',
-                        background: '#0284c7',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        position: 'relative',
-                        boxSizing: 'border-box'
-                      }}
-                    >
-                      {/* 居中内框阴影凹槽 (约占总长 38%，22px x 5px) */}
+                  {player.riichi ? (
+                    theme === 'rexx' ? (
+                      // REXX 纯正扁平宝蓝银点立直棒 (56px x 7px, 真实比例 8.1:1，圆角矩形外框 + 微凹槽内框阴影 + 银色点，缩小色差)
                       <div
                         style={{
-                          width: '22px',
-                          height: '5px',
-                          borderRadius: '1px',
-                          backgroundColor: 'rgba(0, 0, 0, 0.16)',
-                          boxShadow: 'inset 0 1px 1.5px rgba(0, 0, 0, 0.45)',
+                          width: '56px',
+                          height: '7px',
+                          borderRadius: '2px',
+                          background: '#0284c7',
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent: 'center'
+                          justifyContent: 'center',
+                          position: 'relative',
+                          boxSizing: 'border-box'
                         }}
                       >
-                        {/* 银色点 */}
+                        {/* 居中内框阴影凹槽 (约占总长 38%，22px x 5px，缩小色差微阴影) */}
                         <div
                           style={{
-                            width: '2.5px',
-                            height: '2.5px',
-                            borderRadius: '50%',
-                            backgroundColor: '#e2e8f0'
+                            width: '22px',
+                            height: '5px',
+                            borderRadius: '1px',
+                            backgroundColor: 'rgba(0, 0, 0, 0.07)',
+                            boxShadow: 'inset 0 0.5px 1px rgba(0, 0, 0, 0.25)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                           }}
-                        />
+                        >
+                          {/* 银色点 */}
+                          <div
+                            style={{
+                              width: '2.5px',
+                              height: '2.5px',
+                              borderRadius: '50%',
+                              backgroundColor: '#e2e8f0'
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    // 雀魂 白色+红点立直棒 (56px x 7px, 真实比例 8.1:1，圆角矩形外框 + 内框阴影 + 红色点)
-                    <div
-                      style={{
-                        width: '56px',
-                        height: '7px',
-                        borderRadius: '2px',
-                        background: '#ffffff',
-                        border: '1px solid #c4c8d0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        position: 'relative',
-                        boxSizing: 'border-box'
-                      }}
-                    >
-                      {/* 居中内框阴影凹槽 (约占总长 38%，22px x 4.5px) */}
+                    ) : (
+                      // 雀魂 白色+红点立直棒 (56px x 7px, 真实比例 8.1:1，圆角矩形外框 + 居中红点，只有蓝色立直棒带凹槽阴影)
                       <div
                         style={{
-                          width: '22px',
-                          height: '4.5px',
-                          borderRadius: '1px',
-                          backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                          boxShadow: 'inset 0 1px 1.5px rgba(0, 0, 0, 0.2)',
+                          width: '56px',
+                          height: '7px',
+                          borderRadius: '2px',
+                          background: '#ffffff',
+                          border: '1px solid #c4c8d0',
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent: 'center'
+                          justifyContent: 'center',
+                          position: 'relative',
+                          boxSizing: 'border-box'
                         }}
                       >
-                        {/* 红色点 */}
+                        {/* 居中红色点 (无凹槽阴影) */}
                         <div
                           style={{
-                            width: '2.5px',
-                            height: '2.5px',
+                            width: '3px',
+                            height: '3px',
                             borderRadius: '50%',
                             backgroundColor: '#e60012'
                           }}
                         />
                       </div>
-                    </div>
+                    )
+                  ) : (
+                    // 未立直时显示放置立直棒的灰色槽
+                    theme === 'rexx' ? (
+                      <div
+                        className="player-riichi-slot"
+                        title="立直棒放置槽"
+                        style={{
+                          width: '56px',
+                          height: '7px',
+                          borderRadius: '2px',
+                          border: '1px solid #283344',
+                          backgroundColor: 'rgba(10, 11, 14, 0.65)',
+                          boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.6)',
+                          boxSizing: 'border-box'
+                        }}
+                      />
+                    ) : (
+                      <div
+                        className="player-riichi-slot"
+                        title="立直棒放置槽"
+                        style={{
+                          width: '56px',
+                          height: '7px',
+                          borderRadius: '2px',
+                          border: '1px solid rgba(255, 255, 255, 0.09)',
+                          backgroundColor: 'rgba(16, 23, 38, 0.55)',
+                          boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.35)',
+                          boxSizing: 'border-box'
+                        }}
+                      />
+                    )
                   )}
                 </div>
               )}

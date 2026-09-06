@@ -88,9 +88,9 @@ const io = new Server(server, {
     origin: '*',
     methods: ['GET', 'POST']
   },
-  pingTimeout: 25000,
-  pingInterval: 10000,
-  connectTimeout: 30000,
+  pingTimeout: 60000,
+  pingInterval: 15000,
+  connectTimeout: 45000,
   transports: ['websocket', 'polling']
 });
 
@@ -192,13 +192,26 @@ io.on('connection', (socket) => {
   // Handle client seat claim
   socket.on('claim-seat', ({ playerId, playerName, deviceId }) => {
     // Verify seat is not occupied by another active socket
-    const isSeatOccupied = Array.from(socketToSeat.entries()).some(
+    const existingEntry = Array.from(socketToSeat.entries()).find(
       ([sid, pid]) => pid === playerId && sid !== socket.id
     );
 
-    if (isSeatOccupied) {
-      socket.emit('claim-seat-result', { success: false, reason: '该位置已被其他玩家占用，请重新选择' });
-      return;
+    if (existingEntry) {
+      const [existingSid] = existingEntry;
+      const seatDeviceId = currentState.players[playerId]?.deviceId;
+      const isSameDevice = deviceId && seatDeviceId && deviceId === seatDeviceId;
+
+      if (isSameDevice) {
+        // Same device reconnecting: evict lingering stale socket
+        socketToSeat.delete(existingSid);
+        const oldSock = io.sockets.sockets.get(existingSid);
+        if (oldSock) {
+          oldSock.disconnect(true);
+        }
+      } else {
+        socket.emit('claim-seat-result', { success: false, reason: '该位置已被其他玩家占用，请重新选择' });
+        return;
+      }
     }
     
     // 1. Release previous seat claimed by this socket

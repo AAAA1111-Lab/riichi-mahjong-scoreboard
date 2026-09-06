@@ -18,44 +18,20 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
       title={`场上立直棒: ${count} 根 (${count * 1000} 点)`}
     >
       {count === 0 ? (
-        // 0 根立直棒时显示 1 根暗态契合轮廓槽 (56px x 7px, 真实比例 8.1:1)
+        // 0 根立直棒时显示 1 根暗态契合放置槽 (56px x 7px, 真实比例 8.1:1)
         <div
           style={{
             width: '56px',
             height: '7px',
             borderRadius: '2px',
-            border: '1px solid #334155',
-            background: 'rgba(15, 23, 42, 0.35)',
-            opacity: 0.3,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            border: '1px solid #283344',
+            backgroundColor: 'rgba(10, 11, 14, 0.65)',
+            boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.6)',
             boxSizing: 'border-box'
           }}
-        >
-          <div
-            style={{
-              width: '22px',
-              height: '5px',
-              borderRadius: '1px',
-              backgroundColor: 'rgba(0, 0, 0, 0.25)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <div
-              style={{
-                width: '2.5px',
-                height: '2.5px',
-                borderRadius: '50%',
-                backgroundColor: '#475569'
-              }}
-            />
-          </div>
-        </div>
+        />
       ) : count <= 4 ? (
-        // 1~4 根以内：垂直向下堆叠实体扁平宝蓝立直棒 (56px x 7px, 真实比例 8.1:1，圆角矩形外框 + 内框阴影 + 银色点)
+        // 1~4 根以内：垂直向下堆叠实体扁平宝蓝立直棒 (56px x 7px, 真实比例 8.1:1，圆角矩形外框 + 微凹槽内框阴影 + 银色点，缩小色差)
         <div
           style={{
             display: 'flex',
@@ -79,14 +55,14 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
                 boxSizing: 'border-box'
               }}
             >
-              {/* 居中内框阴影凹槽 (约占总长 38%，22px x 5px) */}
+              {/* 居中内框阴影凹槽 (约占总长 38%，22px x 5px，缩小色差微阴影) */}
               <div
                 style={{
                   width: '22px',
                   height: '5px',
                   borderRadius: '1px',
-                  backgroundColor: 'rgba(0, 0, 0, 0.16)',
-                  boxShadow: 'inset 0 1px 1.5px rgba(0, 0, 0, 0.45)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.07)',
+                  boxShadow: 'inset 0 0.5px 1px rgba(0, 0, 0, 0.25)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
@@ -127,14 +103,14 @@ export const RiichiStickDisplay: React.FC<RiichiStickDisplayProps> = ({ count })
               boxSizing: 'border-box'
             }}
           >
-            {/* 居中内框阴影凹槽 */}
+            {/* 居中内框阴影凹槽 (缩小色差微阴影) */}
             <div
               style={{
                 width: '22px',
                 height: '5px',
                 borderRadius: '1px',
-                backgroundColor: 'rgba(0, 0, 0, 0.16)',
-                boxShadow: 'inset 0 1px 1.5px rgba(0, 0, 0, 0.45)',
+                backgroundColor: 'rgba(0, 0, 0, 0.07)',
+                boxShadow: 'inset 0 0.5px 1px rgba(0, 0, 0, 0.25)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
