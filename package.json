@@ -1,0 +1,36 @@
+{
+  "name": "riichi-mahjong-scoreboard",
+  "version": "1.0.0",
+  "description": "Riichi Mahjong Scoreboard - Multi-device Synchronized Scoring Web Application",
+  "main": "server.js",
+  "type": "commonjs",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "node server.js",
+    "backend": "nodemon server.js",
+    "frontend:install": "npm install --prefix frontend",
+    "frontend:dev": "npm run dev --prefix frontend",
+    "frontend:build": "npm run build --prefix frontend",
+    "frontend:build:server": "npm run build:server --prefix frontend",
+    "build": "npm run frontend:build",
+    "build:server": "npm run frontend:build:server",
+    "start:server": "node -e \"process.env.TARGET_ENV='server'; require('./server.js');\"",
+    "package:zip": "node scripts/pack-zip.js",
+    "package:lan": "node scripts/pack-zip.js --target=lan",
+    "package:server": "node scripts/pack-zip.js --target=server",
+    "test:modules": "node scripts/test-modules.js",
+    "test:multi-room": "node scripts/test-multi-room.js",
+    "backup": "node scripts/backup.js",
+    "restore": "node scripts/restore.js",
+    "install-all": "npm install && npm run frontend:install",
+    "test:multi-room-deep": "node scripts/test-multi-room-deep.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

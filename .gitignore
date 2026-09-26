@@ -1,0 +1,17 @@
+node_modules/
+frontend/node_modules/
+frontend/dist/
+backups/
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+.gemini/
+.agents/
+
+# 维护与开发脚本 (仅本地保留，不上传仓库)
+scripts/
+setup-github.bat
+push-release-local.bat
+docs/
+*.ps1
