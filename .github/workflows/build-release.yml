@@ -1,9 +1,23 @@
-name: Build and Deploy Release Branches
+name: Build and Release Packages
 
 on:
-  # 已关闭自动推送触发，防止消耗 GitHub Actions 免费额度
-  # 如需使用云端构建，可在 GitHub Actions 页面手动点击 "Run workflow"
+  push:
+    tags:
+      - 'v*'
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release Tag (留空默认使用 package.json 版本号)'
+        required: false
+        default: ''
+      publish_release:
+        description: '是否发布/更新 GitHub Releases'
+        type: boolean
+        default: true
+      deploy_branches:
+        description: '是否同步部署到 release 与 release-server 分支'
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -15,6 +29,8 @@ jobs:
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
@@ -27,53 +43,80 @@ jobs:
           npm ci || npm install
           npm --prefix frontend ci || npm --prefix frontend install
 
-      - name: Build Frontend
-        run: npm run build --prefix frontend
-
-      - name: Determine Target Release Branch
-        id: branch-info
+      - name: Run Modular & Multi-Room Verification Tests
         run: |
-          if [ "${{ github.ref }}" = "refs/heads/public-server" ]; then
-            echo "target_branch=release-server" >> $GITHUB_OUTPUT
-            echo "artifact_name=riichi-scoreboard-server-release.zip" >> $GITHUB_OUTPUT
-          else
-            echo "target_branch=release" >> $GITHUB_OUTPUT
-            echo "artifact_name=riichi-scoreboard-lan-release.zip" >> $GITHUB_OUTPUT
-          fi
+          npm run test:modules
+          npm run test:multi-room
+          node scripts/test-multi-room-deep.js
 
-      - name: Prepare Release Artifacts
+      - name: Build Clean Packages (LAN & Server)
         run: |
-          mkdir -p ../release-bundle
-          cp server.js package.json package-lock.json start.sh start-server.bat README.md ../release-bundle/
-          if [ -f Dockerfile ]; then cp Dockerfile ../release-bundle/; fi
-          if [ -f docker-compose.yml ]; then cp docker-compose.yml ../release-bundle/; fi
-          if [ -f nginx.conf.example ]; then cp nginx.conf.example ../release-bundle/; fi
-          if [ -f .env.example ]; then cp .env.example ../release-bundle/; fi
-          
-          mkdir -p ../release-bundle/frontend
-          cp -r frontend/dist ../release-bundle/frontend/
-          cd ../release-bundle
-          zip -r "$GITHUB_WORKSPACE/${{ steps.branch-info.outputs.artifact_name }}" .
+          node scripts/pack-zip.js --target=all --keep-dir
 
-      - name: Deploy to Release Branch
-        if: startsWith(github.ref, 'refs/heads/')
+      - name: Archive Production Artifacts in GitHub Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-packages
+          path: |
+            riichi-scoreboard-lan-release.zip
+            riichi-scoreboard-server-release.zip
+          retention-days: 14
+
+      - name: Deploy LAN Clean Package to release branch
+        if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_branches != 'false')
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: ${{ steps.branch-info.outputs.target_branch }}
-          publish_dir: ../release-bundle
+          publish_branch: release
+          publish_dir: release-bundle-lan
+          user_name: 'AAAA1111-Lab'
+          user_email: '271276772+AAAA1111-Lab@users.noreply.github.com'
           keep_files: false
           force_orphan: true
 
-      - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Deploy Server Clean Package to release-server branch
+        if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_branches != 'false')
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: release-server
+          publish_dir: release-bundle-server
+          user_name: 'AAAA1111-Lab'
+          user_email: '271276772+AAAA1111-Lab@users.noreply.github.com'
+          keep_files: false
+          force_orphan: true
+
+      - name: Upload Clean Packages to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.publish_release != 'false')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Publishing release asset for $GITHUB_REF_NAME..."
-          gh release create "$GITHUB_REF_NAME" \
-            --title "Release $GITHUB_REF_NAME" \
-            --generate-notes \
-            "$GITHUB_WORKSPACE/${{ steps.branch-info.outputs.artifact_name }}" || \
-          gh release upload "$GITHUB_REF_NAME" "$GITHUB_WORKSPACE/${{ steps.branch-info.outputs.artifact_name }}" --clobber
+          # 确定 Release Tag
+          INPUT_TAG="${{ github.event.inputs.tag_name }}"
+          if [ -n "$INPUT_TAG" ]; then
+            RELEASE_TAG="$INPUT_TAG"
+          elif [ -n "$GITHUB_REF_NAME" ] && [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            RELEASE_TAG="$GITHUB_REF_NAME"
+          else
+            VERSION=$(node -p "require('./package.json').version")
+            RELEASE_TAG="v$VERSION"
+          fi
+
+          echo "Target Release Tag: $RELEASE_TAG"
+
+          # 检查并发布/更新 Release 资产
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release $RELEASE_TAG exists. Updating release assets..."
+            gh release upload "$RELEASE_TAG" \
+              riichi-scoreboard-lan-release.zip \
+              riichi-scoreboard-server-release.zip \
+              --clobber
+          else
+            echo "Creating Release $RELEASE_TAG..."
+            gh release create "$RELEASE_TAG" \
+              riichi-scoreboard-lan-release.zip \
+              riichi-scoreboard-server-release.zip \
+              --title "Riichi Mahjong Scoreboard $RELEASE_TAG" \
+              --generate-notes
+          fi

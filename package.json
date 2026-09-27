@@ -18,6 +18,7 @@
     "package:zip": "node scripts/pack-zip.js",
     "package:lan": "node scripts/pack-zip.js --target=lan",
     "package:server": "node scripts/pack-zip.js --target=server",
+    "package:all": "node scripts/pack-zip.js --target=all",
     "test:modules": "node scripts/test-modules.js",
     "test:multi-room": "node scripts/test-multi-room.js",
     "backup": "node scripts/backup.js",
