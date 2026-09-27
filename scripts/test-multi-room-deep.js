@@ -87,7 +87,7 @@ async function main() {
   console.log('  DEEP TEST SUITE: Multi-Room edge cases & abuse resistance');
   console.log('==============================================================');
 
-  const srv = spawn('node', ['server.js', '--target=server', '--multi-room'], {
+  const srv = spawn('node', ['server.js', '--target=server'], {
     cwd: rootDir,
     env: { ...process.env, PORT: String(PORT) }, // default TTLs (no interference)
     stdio: 'ignore'

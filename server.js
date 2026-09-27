@@ -192,8 +192,8 @@ if (isExtensionEnabled) {
   }
 }
 
-// Multi-Room optional capability (server mode only; requires server-extension for room routing)
-const isMultiRoom = isServerMode && process.env.ENABLE_MULTI_ROOM === 'true' && Boolean(serverExtension);
+// Multi-Room capability (server mode defaults to multi-room enabled; can be disabled with ENABLE_MULTI_ROOM=false or --no-multi-room)
+const isMultiRoom = isServerMode && process.env.ENABLE_MULTI_ROOM !== 'false' && Boolean(serverExtension);
 if (process.env.ENABLE_MULTI_ROOM === 'true' && !isMultiRoom) {
   console.warn('[WARN] ENABLE_MULTI_ROOM requires server mode with server-extension enabled; multi-room disabled.');
 }

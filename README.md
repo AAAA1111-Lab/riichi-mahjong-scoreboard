@@ -29,6 +29,8 @@ bash start-lan.sh
 start-server.bat
 # Linux / Android Termux / macOS:
 bash start-server.sh
+
+# 启动后，浏览器访问 <本机IP>:32000 连接
 ```
 
 ---
@@ -51,6 +53,8 @@ git clone -b release --single-branch https://github.com/AAAA1111-Lab/riichi-mahj
 cd rms
 npm install --production
 bash start.sh
+
+# 启动后，浏览器访问 <本机IP>:32000 连接
 ```
 
 ---
@@ -74,8 +78,13 @@ npm run build
 # 服务器版构建:
 npm run build:server
 
-# 4. 源码直接启动 Server 模式
-npm run start:server
+# 4. 运行服务
+# 局域网模式 (单桌):
+node server.js
+# 服务器模式 (多房间大厅):
+node server.js --target=server
+
+# 启动后，浏览器访问 <本机IP>:32000 连接
 ```
 
 ---

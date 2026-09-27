@@ -85,7 +85,7 @@ async function main() {
   console.log('  TEST SUITE: Multi-Room Isolation, Lobby Flow & Governance');
   console.log('==============================================================');
 
-  const multi = spawn('node', ['server.js', '--target=server', '--multi-room'], {
+  const multi = spawn('node', ['server.js', '--target=server'], {
     cwd: rootDir,
     env: {
       ...process.env,
@@ -98,9 +98,9 @@ async function main() {
     },
     stdio: 'ignore'
   });
-  const single = spawn('node', ['server.js', '--target=server'], {
+  const single = spawn('node', ['server.js', '--target=server', '--no-multi-room'], {
     cwd: rootDir,
-    env: { ...process.env, PORT: String(PORT_SINGLE) },
+    env: { ...process.env, PORT: String(PORT_SINGLE), ENABLE_MULTI_ROOM: 'false' },
     stdio: 'ignore'
   });
 

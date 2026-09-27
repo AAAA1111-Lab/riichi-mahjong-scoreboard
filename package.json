@@ -14,7 +14,7 @@
     "frontend:build:server": "npm run build:server --prefix frontend",
     "build": "npm run frontend:build",
     "build:server": "npm run frontend:build:server",
-    "start:server": "node -e \"process.env.TARGET_ENV='server'; require('./server.js');\"",
+    "start:server": "node server.js --target=server",
     "package:zip": "node scripts/pack-zip.js",
     "package:lan": "node scripts/pack-zip.js --target=lan",
     "package:server": "node scripts/pack-zip.js --target=server",

@@ -33,7 +33,7 @@ goto run_server
 :run_server
 echo [Startup] Launching Public Server Engine (Multi-Room Enabled)...
 set TARGET_ENV=server
-node server.js --target=server --multi-room
+node server.js --target=server
 if errorlevel 1 goto error_exit
 goto end
 

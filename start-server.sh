@@ -36,4 +36,4 @@ fi
 
 # 4. Start server in Server Mode (Multi-Room Enabled)
 export TARGET_ENV=server
-exec node server.js --target=server --multi-room
+exec node server.js --target=server
