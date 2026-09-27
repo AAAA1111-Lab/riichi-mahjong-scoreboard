@@ -36,7 +36,7 @@ jobs:
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install Dependencies
@@ -44,15 +44,15 @@ jobs:
           npm ci || npm install
           npm --prefix frontend ci || npm --prefix frontend install
 
+      - name: Build Clean Packages (LAN & Server)
+        run: |
+          node scripts/pack-zip.js --target=all --keep-dir
+
       - name: Run Modular & Multi-Room Verification Tests
         run: |
           npm run test:modules
           npm run test:multi-room
           node scripts/test-multi-room-deep.js
-
-      - name: Build Clean Packages (LAN & Server)
-        run: |
-          node scripts/pack-zip.js --target=all --keep-dir
 
       - name: Archive Production Artifacts in GitHub Actions
         uses: actions/upload-artifact@v4
