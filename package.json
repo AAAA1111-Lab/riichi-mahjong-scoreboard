@@ -1,6 +1,6 @@
 {
   "name": "riichi-mahjong-scoreboard",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Riichi Mahjong Scoreboard - Multi-device Synchronized Scoring Web Application",
   "main": "server.js",
   "type": "commonjs",
