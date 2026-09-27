@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- 45度倾角扁平化立直棒 (千点棒 - 方正微倒角无压痕版) -->
+  <g transform="rotate(-45 32 32)">
+    <!-- 棒体：方正微倒角 (rx="3")、纯净象牙白主体、深色抗混色边框 -->
+    <rect x="4" y="24" width="56" height="16" rx="3" ry="3" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" filter="url(#shadow)"/>
+    <!-- 中央标志性千点红点 (纯粹扁平，无多余压痕) -->
+    <circle cx="32" cy="32" r="4.8" fill="#dc2626"/>
+  </g>
+</svg>
