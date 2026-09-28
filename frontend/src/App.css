@@ -1,0 +1,3845 @@
+:root,
+.theme-light {
+  /* Light Theme (Default) */
+  --bg-primary: #fdfaf8; /* Soft warm ivory canvas background */
+  --bg-secondary: #f6ebe6; /* Warmer, slightly darker container background */
+  --bg-card: #ffffff; /* Pure white player cards */
+  --bg-card-hover: #faf3f0;
+  --bg-body: #eadcd6; /* Warmer body background outside container */
+  --text-primary: #2d1f1f; /* Charcoal brown text */
+  --text-secondary: #806b6b; /* Muted secondary text */
+  --color-accent: #e74c3c; /* Warm crimson red */
+  --color-riichi: #e74c3c;
+  --color-success: #27ae60;
+  --color-danger: #c0392b;
+  --border-color: #dfd0ca; /* Warm borders matching light theme */
+  
+  --bg-check-error: rgba(231, 76, 60, 0.12);
+  --color-check-error: #c0392b;
+  --border-check-error: rgba(231, 76, 60, 0.3);
+  --bg-check-riichi: rgba(0, 0, 0, 0.05);
+  --color-check-riichi: #7f8c8d;
+  --border-check-riichi: rgba(0, 0, 0, 0.15);
+  --bg-check-success: rgba(39, 174, 96, 0.12);
+  --color-check-success: #27ae60;
+  --border-check-success: rgba(39, 174, 96, 0.3);
+
+  --color-accent-hover: #d63031;
+  --bg-danger-muted: rgba(192, 57, 43, 0.1);
+  --color-danger-text: #c0392b;
+  --border-danger-muted: rgba(192, 57, 43, 0.25);
+
+  /* Diff Badges */
+  --bg-diff-pos: rgba(26, 138, 58, 0.12);
+  --color-diff-pos: #1a8a3a;
+  --border-diff-pos: rgba(26, 138, 58, 0.25);
+  --bg-diff-neg: rgba(224, 70, 70, 0.12);
+  --color-diff-neg: #e04646;
+  --border-diff-neg: rgba(224, 70, 70, 0.25);
+  --bg-diff-zero: #f6ebe6;
+  --color-diff-zero: #806b6b;
+  --border-diff-zero: #dfd0ca;
+
+  --color-accent-text: #ffffff;
+  --bg-yaku-checked: rgba(231, 76, 60, 0.1);
+  --border-radius: 12px;
+  --bg-rank-1-gradient: linear-gradient(135deg, #ffece6, #ffdcd1); /* Soft peach/gold gradient for light theme */
+  --transition-speed: 0.2s;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.theme-electronic {
+  --bg-body: #bccfe0;
+  --bg-primary: #dae8f5;
+  --bg-secondary: #cddff0;
+  --bg-card: #e0edf8;
+  --bg-card-hover: #d3e4f2;
+  --text-primary: #0c2a5c;
+  --text-secondary: #3a6a9a;
+  --color-accent: #0c2a5c;
+  --color-riichi: #e04646;
+  --color-success: #1a8a3a;
+  --color-danger: #e04646;
+  --border-color: rgba(12, 42, 92, 0.1);
+
+  --bg-check-error: rgba(224, 70, 70, 0.12);
+  --color-check-error: #e04646;
+  --border-check-error: rgba(224, 70, 70, 0.25);
+  --bg-check-riichi: rgba(12, 42, 92, 0.05);
+  --color-check-riichi: #1a4a7a;
+  --border-check-riichi: rgba(12, 42, 92, 0.12);
+  --bg-check-success: rgba(26, 138, 58, 0.12);
+  --color-check-success: #1a8a3a;
+  --border-check-success: rgba(26, 138, 58, 0.25);
+
+  --color-accent-hover: #1a4a7a;
+  --bg-danger-muted: rgba(224, 70, 70, 0.1);
+  --color-danger-text: #e04646;
+  --border-danger-muted: rgba(224, 70, 70, 0.2);
+
+  --bg-diff-pos: rgba(26, 138, 58, 0.12);
+  --color-diff-pos: #1a8a3a;
+  --border-diff-pos: rgba(26, 138, 58, 0.25);
+  --bg-diff-neg: rgba(224, 70, 70, 0.12);
+  --color-diff-neg: #e04646;
+  --border-diff-neg: rgba(224, 70, 70, 0.25);
+  --bg-diff-zero: #cddff0;
+  --color-diff-zero: #3a6a9a;
+  --border-diff-zero: rgba(12, 42, 92, 0.15);
+
+  --color-accent-text: #ffffff;
+  --bg-yaku-checked: rgba(12, 42, 92, 0.12);
+  --border-radius: 12px;
+  --bg-rank-1-gradient: linear-gradient(135deg, #cddff0, #b8cce0);
+  --transition-speed: 0.2s;
+}
+
+.theme-dark {
+  /* Dark Theme */
+  --bg-primary: #151111; /* Original dark red-gray */
+  --bg-secondary: #1d1818;
+  --bg-card: #282121;
+  --bg-card-hover: #332b2b;
+  --bg-body: #0b0909;
+  --text-primary: #f5eaea;
+  --text-secondary: #b8a6a6;
+  --color-accent: #ff4d4d;
+  --color-riichi: #ff2a2a;
+  --color-success: #2ecc71;
+  --color-danger: #ff4d4d;
+  --border-color: #3a2e2e;
+  --color-accent-text: #ffffff;
+  --bg-yaku-checked: rgba(255, 77, 77, 0.12);
+  --bg-rank-1-gradient: linear-gradient(135deg, rgba(255, 77, 77, 0.18), rgba(255, 77, 77, 0.05)), #282121;
+
+  --bg-check-error: rgba(255, 77, 77, 0.15);
+  --color-check-error: #ff4d4d;
+  --border-check-error: rgba(255, 77, 77, 0.4);
+  --bg-check-riichi: rgba(255, 255, 255, 0.05);
+  --color-check-riichi: #888;
+  --border-check-riichi: #444;
+  --bg-check-success: rgba(46, 204, 113, 0.15);
+  --color-check-success: #2ecc71;
+  --border-check-success: rgba(46, 204, 113, 0.4);
+
+  --color-accent-hover: #ff6666;
+  --bg-danger-muted: rgba(255, 77, 77, 0.15);
+  --color-danger-text: #ff7373;
+  --border-danger-muted: rgba(255, 77, 77, 0.35);
+
+  /* Diff Badges */
+  --bg-diff-pos: rgba(46, 204, 113, 0.16);
+  --color-diff-pos: #2ecc71;
+  --border-diff-pos: rgba(46, 204, 113, 0.35);
+  --bg-diff-neg: rgba(255, 82, 82, 0.16);
+  --color-diff-neg: #ff5252;
+  --border-diff-neg: rgba(255, 82, 82, 0.35);
+  --bg-diff-zero: rgba(255, 255, 255, 0.06);
+  --color-diff-zero: #9e9e9e;
+  --border-diff-zero: rgba(255, 255, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+}
+
+body {
+  background-color: var(--bg-body); /* Adaptive background outside the container on PC */
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Force mobile phone aspect ratio width - Perfect Responsive Adaptation */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Default to full width on mobile */
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 12px;
+  background-color: var(--bg-primary);
+  gap: 12px;
+  flex-shrink: 0; /* Prevent flex shrink in parent layouts */
+  box-sizing: border-box;
+}
+
+@media (min-width: 500px) {
+  .app-container {
+    width: 450px; /* Force lock exactly to 450px on PC, preventing flex-shrink content-dependent sizing */
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); /* Soft modern floating shadow on PC */
+  }
+}
+
+/* Header (Strictly locked 48px height across all themes) */
+.app-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 48px !important;
+  min-height: 48px !important;
+  max-height: 48px !important;
+  padding: 0 12px !important;
+  border-bottom: 1px solid var(--border-color);
+  box-sizing: border-box !important;
+}
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.connection-status .status-dot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  min-height: 7px;
+  border-radius: 50%;
+  box-shadow: none !important;
+  border: none !important;
+  flex-shrink: 0;
+  display: inline-block;
+  background-color: #94a3b8; /* 默认中性灰 */
+  transition: background-color 0.2s ease;
+}
+
+.connection-status .status-dot.connected {
+  background-color: #22c55e !important; /* 纯正扁平在线绿，不随主题混色 */
+  box-shadow: none !important;
+}
+
+.connection-status .status-dot.disconnected {
+  background-color: #ef4444 !important; /* 纯正扁平断开红，不随主题混色 */
+  box-shadow: none !important;
+}
+
+/* HUD / Center info - Strict Single Line No-Wrap Layout (Height: 64px) */
+.hud-panel {
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  height: 64px !important;
+  min-height: 64px !important;
+  padding: 0 12px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+/* REXX Theme Special: 局况、本场、供托、荒牌流局均匀分布，视觉平衡 (高度严格锁定 64px 与全主题完全对齐) */
+.hud-panel.rexx-hud-panel {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 64px !important;
+  min-height: 64px !important;
+  max-height: 64px !important;
+  padding: 0 12px !important;
+  gap: 8px !important;
+  box-sizing: border-box !important;
+}
+
+.rexx-hud-panel .rexx-hud-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+.rexx-hud-panel .rexx-hud-col-1 {
+  justify-content: flex-start;
+}
+
+.rexx-hud-panel .rexx-hud-col-2 {
+  justify-content: center;
+}
+
+.rexx-hud-panel .rexx-hud-col-3 {
+  justify-content: center;
+}
+
+.rexx-hud-panel .rexx-hud-col-4 {
+  justify-content: flex-end;
+}
+
+/* REXX Oval LED Indicator for Settlement Preview - Instant Switch (No Transition) */
+.rexx-led-oval {
+  display: inline-block;
+  width: 22px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #3f3f46;
+  box-sizing: border-box;
+  margin-right: 7px;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: none !important;
+}
+
+.rexx-led-oval.lit {
+  background-color: #fde047 !important;
+  box-shadow: 0 0 6px rgba(253, 224, 71, 0.85) !important;
+}
+
+.rexx-led-oval.off {
+  background-color: #3a320d !important;
+  box-shadow: none !important;
+}
+
+.rexx-led-oval.blinking {
+  animation: rexxLedPulse 1.5s step-start infinite !important;
+}
+
+@keyframes rexxLedPulse {
+  0% {
+    background-color: #fde047 !important;
+    box-shadow: 0 0 5px rgba(253, 224, 71, 0.75) !important;
+  }
+  50% {
+    background-color: #3a320d !important;
+    box-shadow: none !important;
+  }
+}
+
+.hud-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+.hud-label {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap !important;
+}
+
+.hud-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap !important;
+}
+
+.hud-value.dealer-round {
+  color: var(--color-accent);
+}
+
+.hud-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* 禁用流局按钮样式过渡动画，避免主题切换时字号与字形渐变拉伸 */
+.btn-draw,
+.hud-actions .btn,
+.rexx-hud-col-4 .btn {
+  transition: none !important;
+}
+
+/* Buttons */
+.btn {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--color-accent);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent); /* Match border thickness of .btn to prevent layout height jitter */
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-danger {
+  background-color: var(--bg-danger-muted);
+  color: var(--color-danger-text);
+  border: 1px solid var(--border-danger-muted); /* Explicitly set border to match standard button sizing */
+}
+
+.btn-danger:hover {
+  opacity: 0.85;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Scoreboard Layout (Grid) - Mobile Rows */
+.scoreboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  flex-grow: 1;
+  align-content: start; /* Prevent rows from stretching and causing layout gaps to shift */
+}
+
+/* Player Card mobile vertical flow */
+.player-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push action buttons to absolute bottom */
+  align-items: stretch;
+  gap: 8px;
+  transition: border-color var(--transition-speed);
+  height: 104px; /* Locked height to make all vertical stacked cards exactly equal in height */
+  box-sizing: border-box;
+}
+
+.player-info-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-card.is-dealer {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.12);
+}
+
+.player-card.is-riichi {
+  border: 1px solid var(--color-riichi); /* Explicitly set border to prevent layout height jitter */
+  box-shadow: 0 0 10px rgba(255, 42, 42, 0.15);
+}
+
+.player-header {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.player-wind-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.player-wind {
+  font-size: 1.2rem;
+  font-weight: 800;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+}
+
+.player-card.is-dealer .player-wind {
+  background-color: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.player-name-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+
+.player-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  max-width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-dealer-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.player-badges {
+  display: none; /* Hide large badge to save space */
+}
+
+/* 起家 (Starting East) Indicator styling */
+.chaki-indicator {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-secondary);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  height: 16px;
+  box-sizing: border-box;
+  margin-left: 2px;
+  line-height: 1;
+}
+
+/* 自家 (Self) 指示器 (浅色/深色/REXX主题：样式完全与点差显示模块一致) */
+.theme-light .jika-badge,
+.theme-dark .jika-badge,
+.theme-rexx .jika-badge {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  line-height: 1.2;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  color: var(--color-diff-zero);
+  background-color: var(--bg-diff-zero);
+  border: 1px solid var(--border-diff-zero);
+  box-sizing: border-box;
+}
+
+/* 电子主题自家指示器：与点差模块 (14px) 严格等高 */
+.theme-electronic .jika-badge {
+  height: 14px;
+  max-height: 14px;
+  box-sizing: border-box;
+  font-size: 0.62rem;
+  line-height: 12px;
+  padding: 0 4px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  background-color: #cddff0;
+  border: 1px solid var(--border-color);
+}
+
+.player-score-container {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.player-diff-badge {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 6px;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid transparent;
+}
+
+.player-diff-badge.pos,
+.player-diff-badge.positive {
+  color: var(--color-diff-pos, #1a8a3a);
+  background-color: var(--bg-diff-pos, rgba(26, 138, 58, 0.12));
+  border: 1px solid var(--border-diff-pos, rgba(26, 138, 58, 0.25));
+}
+
+.player-diff-badge.neg,
+.player-diff-badge.negative {
+  color: var(--color-diff-neg, #e04646);
+  background-color: var(--bg-diff-neg, rgba(224, 70, 70, 0.12));
+  border: 1px solid var(--border-diff-neg, rgba(224, 70, 70, 0.25));
+}
+
+.player-diff-badge.zero {
+  color: var(--color-diff-zero, #5a7a9a);
+  background-color: var(--bg-diff-zero, rgba(0, 0, 0, 0.04));
+  border: 1px solid var(--border-diff-zero, rgba(0, 0, 0, 0.08));
+}
+
+.player-score {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.player-actions {
+  width: 100%;
+  display: flex;
+  gap: 6px;
+}
+
+.player-actions .btn {
+  flex: 1; /* Stretch buttons to fill the card width equally */
+  height: 30px; /* Lock button height to exactly 30px */
+  padding: 0 12px; /* Zero vertical padding, vertical centering handled by flex align-items */
+  font-size: 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap; /* Prevents text from wrapping inside buttons */
+  min-width: 46px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Modals - Modern Full View overlay matching the container size - Native Scrolling & GPU Compositing */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow-y: auto; /* Enable native document scrolling inside the overlay container */
+  background-color: var(--bg-primary); /* Solid color matching theme */
+  display: block; /* Use block to let children stack naturally for page-level scrolling */
+  z-index: 1000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  overscroll-behavior: contain; /* Prevent scrolling background body under the modal overlay */
+  backface-visibility: hidden; /* Force separate paint layer */
+  -webkit-backface-visibility: hidden;
+}
+
+@media (min-width: 500px) {
+  .modal-overlay {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate3d(-50%, 0, 0);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    width: 450px;
+    max-width: 450px;
+    height: 100%;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    box-sizing: border-box;
+  }
+}
+
+.modal-content {
+  background-color: var(--bg-primary);
+  width: 100%;
+  min-height: 100%; /* Stretch to at least overlay height */
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure form stretches to fill modal content */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex: 1;
+}
+
+.modal-header {
+  height: 60px !important;
+  min-height: 60px !important;
+  max-height: 60px !important;
+  padding: 0 16px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.modal-title {
+  margin: 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.modal-close {
+  background: none !important;
+  border: none !important;
+  color: var(--text-secondary) !important;
+  font-size: 1.5rem !important;
+  cursor: pointer !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+.modal-body {
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  overflow-y: visible; /* Disable inner scrollbar so entire modal scrolls as a single page */
+}
+
+.modal-footer {
+  padding: 14px 12px 28px; /* Extra bottom padding for mobile safari bottom bars */
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: var(--bg-primary);
+  margin-top: auto; /* Pin footer to the absolute bottom of the form */
+}
+
+/* Input Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.form-label-divider {
+  margin: 10px 0 6px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 8px;
+}
+
+.form-input {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px; /* Strictly >= 16px to prevent mobile browser auto-zoom & bottom bar pop-up */
+  width: 100%;
+}
+
+.form-input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+/* Preset adjustment grid */
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.btn-preset {
+  padding: 6px 2px;
+  font-size: 0.75rem;
+  flex-direction: column; /* Force vertical stacking of children */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+}
+
+/* Hand Input Modal Tabs / Specifics */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 8px;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.tab.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.player-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.quick-scores-list-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+/* 状态一：所有按钮选择框未选中态 (各主题卡片底色 + 基础边框 + 主字色) */
+.player-select-btn,
+.btn-preset,
+.preset-grid .btn {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  transition: all var(--transition-speed);
+  box-shadow: none !important;
+}
+
+.player-select-btn {
+  padding: 8px 2px;
+  font-size: 0.85rem;
+}
+
+.btn-preset {
+  padding: 6px 2px;
+  font-size: 0.75rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+}
+
+.btn-preset .preset-score {
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: block;
+  color: var(--text-primary);
+}
+
+.btn-preset .preset-desc {
+  font-size: 0.62rem;
+  display: block;
+  margin-top: 2px;
+  color: var(--text-secondary);
+}
+
+.player-select-btn:not(:disabled):not(.selected):not(.selected-win):not(.selected-lose):hover,
+.btn-preset:not(:disabled):not(.selected):not(.btn-primary):hover,
+.preset-grid .btn:not(:disabled):not(.btn-primary):not(.selected):hover {
+  background-color: var(--bg-card-hover) !important;
+  background: var(--bg-card-hover) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--text-primary) !important;
+}
+
+.btn-preset:disabled,
+.btn.btn-preset:disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+  border-color: var(--border-color) !important;
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  color: var(--text-secondary) !important;
+  transform: none !important;
+}
+
+.btn-preset:disabled *,
+.btn.btn-preset:disabled * {
+  color: var(--text-secondary) !important;
+}
+
+/* 状态二：所有按钮选择框选中态 (各主题纯实色重点色 + 重点色文字，无发光，无半透明混色) */
+.player-select-btn.selected,
+.player-select-btn.selected-win,
+.player-select-btn.selected-lose,
+.btn-preset.selected,
+.btn-preset.btn-primary,
+.btn.btn-preset.selected,
+.btn.btn-preset.btn-primary,
+.preset-grid .btn.btn-primary,
+.preset-grid .btn.selected,
+.preset-grid button.btn-primary {
+  background-color: var(--color-accent) !important;
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  border: 1px solid var(--color-accent) !important;
+  color: var(--color-accent-text) !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+
+.player-select-btn.selected:hover,
+.player-select-btn.selected:focus,
+.player-select-btn.selected-win:hover,
+.player-select-btn.selected-win:focus,
+.player-select-btn.selected-lose:hover,
+.player-select-btn.selected-lose:focus,
+.btn-preset.selected:hover,
+.btn-preset.selected:focus,
+.btn-preset.btn-primary:hover,
+.btn-preset.btn-primary:focus,
+.btn.btn-preset.selected:hover,
+.btn.btn-preset.selected:focus,
+.btn.btn-preset.btn-primary:hover,
+.btn.btn-preset.btn-primary:focus,
+.preset-grid .btn.btn-primary:hover,
+.preset-grid .btn.btn-primary:focus,
+.preset-grid .btn.selected:hover,
+.preset-grid .btn.selected:focus,
+.preset-grid button.btn-primary:hover,
+.preset-grid button.btn-primary:focus {
+  background-color: var(--color-accent) !important;
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent-text) !important;
+}
+
+/* 选中态下的子元素文字全部统一为重点色文字，纯实色绝不发淡，保持原有字重防止跳字抖动 */
+.player-select-btn.selected *,
+.player-select-btn.selected-win *,
+.player-select-btn.selected-lose *,
+.btn-preset.selected *,
+.btn-preset.btn-primary *,
+.btn.btn-preset.selected *,
+.btn.btn-preset.btn-primary *,
+.preset-grid .btn.btn-primary *,
+.preset-grid .btn.selected *,
+.preset-grid button.btn-primary * {
+  color: var(--color-accent-text) !important;
+  opacity: 1 !important;
+}
+
+.btn-preset.selected .preset-score,
+.btn-preset.btn-primary .preset-score,
+.btn.btn-preset.selected .preset-score,
+.btn.btn-preset.btn-primary .preset-score {
+  font-weight: 800 !important;
+  color: var(--color-accent-text) !important;
+}
+
+.btn-preset.selected .preset-desc,
+.btn-preset.btn-primary .preset-desc,
+.btn.btn-preset.selected .preset-desc,
+.btn.btn-preset.btn-primary .preset-desc {
+  font-weight: 400 !important;
+  color: var(--color-accent-text) !important;
+  opacity: 0.9 !important;
+}
+
+/* =========================================================
+   全主题统一卡片式多选框样式 (规则设置/流局听牌选择，100% 对齐深色/雀魂高光卡片样式)
+   ========================================================= */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px !important;
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 6px !important;
+  font-size: 0.85rem !important; /* 统一为 0.85rem 与规则设置严格一致 */
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+  cursor: pointer;
+  transition: border-color var(--transition-speed, 0.15s) ease, background-color var(--transition-speed, 0.15s) ease, color var(--transition-speed, 0.15s) ease !important;
+  box-sizing: border-box;
+  box-shadow: none !important;
+  user-select: none;
+}
+
+.checkbox-label:hover {
+  border-color: var(--color-accent) !important;
+  background-color: var(--bg-card-hover) !important;
+}
+
+.checkbox-label.checked {
+  border-color: var(--color-accent) !important;
+  background-color: var(--bg-yaku-checked) !important;
+  color: var(--color-accent) !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+}
+
+.checkbox-label.danger.checked {
+  border-color: var(--color-danger, #ff4d4f) !important;
+  background-color: rgba(255, 77, 79, 0.15) !important;
+  color: var(--color-danger, #ff4d4f) !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+}
+
+.checkbox-label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  outline: none;
+  position: relative;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.checkbox-label:hover input[type="checkbox"]:not(:disabled) {
+  border-color: var(--color-accent);
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+}
+
+.checkbox-label input[type="checkbox"]::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 8px;
+  border: solid var(--color-accent-text, #ffffff);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  opacity: 0;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+}
+
+.checkbox-label input[type="checkbox"]:checked::after {
+  transform: rotate(45deg) scale(1);
+  opacity: 1;
+}
+
+.checkbox-label input[type="checkbox"]:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.checkbox-label.danger.checked input[type="checkbox"] {
+  background-color: var(--color-danger, #ff4d4f) !important;
+  border-color: var(--color-danger, #ff4d4f) !important;
+}
+
+.checkbox-label.danger.checked input[type="checkbox"]::after {
+  border-color: #ffffff !important;
+}
+
+/* 胡牌家普通复选框样式 */
+.winner-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.winner-checkbox-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transition-speed);
+}
+
+.winner-checkbox-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #ff5e57;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.winner-checkbox-item:hover {
+  border-color: var(--color-accent);
+}
+
+.winner-checkbox-item.checked {
+  border-color: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.winner-checkbox-item.active-editing {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 1.5px var(--color-accent);
+  background-color: rgba(255, 77, 77, 0.08) !important;
+}
+
+.winner-score-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+.winner-score-badge.pending {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-weight: 500;
+  border: 1px dashed var(--border-color);
+}
+
+/* Quick scores list */
+.quick-scores-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+/* History Log */
+.history-section {
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 122px; /* Lock history section height to display exactly 1 two-line log entry */
+  box-sizing: border-box;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.history-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.history-list {
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  flex: 1;
+  min-height: 0;
+  height: 50px; /* Window height for exactly one two-line log item */
+  box-sizing: border-box;
+}
+
+.history-list.is-rolling-back {
+  pointer-events: none !important;
+  user-select: none !important;
+  touch-action: none !important;
+}
+
+.history-item.is-revoking {
+  opacity: 0 !important;
+  transform: translateY(16px) !important;
+  transition: opacity 0.25s ease, transform 0.28s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  pointer-events: none !important;
+  border-left-color: #5a4a4a !important;
+}
+
+.history-item.is-revoking .history-item-tags,
+.history-item.is-revoking .history-item-inline-tag {
+  color: var(--text-secondary) !important;
+  font-weight: 700 !important;
+}
+
+.history-item.is-revoking .history-item-details,
+.history-item.is-revoking .history-item-inline-content {
+  color: var(--text-secondary) !important;
+  font-weight: normal !important;
+}
+
+.history-item {
+  flex-shrink: 0;
+  padding: 5px 8px;
+  background-color: var(--bg-card);
+  border-radius: 4px;
+  border-left: 3px solid #5a4a4a;
+  color: var(--text-secondary);
+  word-break: break-all; /* Prevent horizontal overflow */
+  white-space: pre-wrap; /* Wrap long lines */
+  transition: background-color 0.15s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.history-item-tags {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+.history-item-details {
+  color: var(--text-secondary);
+  word-break: break-all;
+  line-height: 1.35;
+  white-space: pre-line;
+}
+
+.history-item-single {
+  line-height: 1.4;
+}
+
+.history-item-inline-tag {
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.history-item-inline-content {
+  color: var(--text-secondary);
+}
+
+.history-item.is-latest,
+.history-item:not(.is-revoking):last-child {
+  border-left-color: var(--color-accent);
+  color: var(--text-primary);
+}
+
+.history-item.is-latest .history-item-tags,
+.history-item.is-latest .history-item-inline-tag,
+.history-item:not(.is-revoking):last-child .history-item-tags,
+.history-item:not(.is-revoking):last-child .history-item-inline-tag {
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+.history-item.is-latest .history-item-details,
+.history-item.is-latest .history-item-inline-content,
+.history-item:not(.is-revoking):last-child .history-item-details,
+.history-item:not(.is-revoking):last-child .history-item-inline-content {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* History item interactive rollback styles */
+.history-item-clickable {
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.15s ease;
+}
+
+.history-item-clickable:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.history-item-clickable:active {
+  opacity: 0.85;
+}
+
+/* Generic Centered Dialog System */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(8, 10, 15, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 3000;
+  overscroll-behavior: contain;
+  touch-action: none;
+  animation: dialogFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialog-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 18px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+  touch-action: auto;
+  animation: dialogScaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dialogFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes dialogScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dialog-header {
+  height: 60px !important;
+  min-height: 60px !important;
+  max-height: 60px !important;
+  padding: 0 18px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  margin: -18px -18px 0 -18px !important;
+}
+
+.dialog-title {
+  margin: 0 !important;
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: 0.3px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.dialog-header .modal-close {
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  min-height: 52px;
+  box-sizing: border-box;
+}
+
+.dialog-message-text {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  white-space: pre-line;
+  text-align: center;
+  width: 100%;
+  text-wrap: balance;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
+}
+
+.dialog-btn {
+  flex: 1;
+  padding: 9px 16px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* App Footer connection bar */
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 13px; /* 13px strictly matches 1px border + 12px inner padding of .history-section */
+  border-top: 1px solid var(--border-color);
+  margin-top: auto; /* Push footer to bottom */
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+.app-footer .btn {
+  width: 64px !important;
+  height: 30px !important;
+  padding: 6px 0 !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+/* QR Code Modal Content */
+.qr-modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.qr-placeholder {
+  background-color: white;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  word-break: break-all;
+}
+
+/* Settlement Preview Styles */
+.preview-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 12px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.theme-light .preview-box {
+  border-color: #e2e8f0 !important;
+}
+
+.theme-rexx .preview-box {
+  border-color: #283344 !important;
+}
+
+.preview-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.theme-light .preview-title {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+.theme-rexx .preview-title {
+  border-bottom-color: #283344 !important;
+}
+
+.preview-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.preview-row-dashed {
+  border-top: 1px dashed var(--border-color) !important;
+}
+
+.theme-light .preview-row-dashed {
+  border-top-color: #e2e8f0 !important;
+}
+
+.theme-rexx .preview-row-dashed {
+  border-top-color: #283344 !important;
+}
+
+.preview-player-name {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.preview-scores {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.preview-diff {
+  font-weight: 700;
+  margin-left: 6px;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.preview-diff.positive {
+  color: var(--color-diff-pos, #1a8a3a);
+  background-color: var(--bg-diff-pos, rgba(26, 138, 58, 0.12));
+  border: 1px solid var(--border-diff-pos, rgba(26, 138, 58, 0.25));
+}
+
+.preview-diff.negative {
+  color: var(--color-diff-neg, #e04646);
+  background-color: var(--bg-diff-neg, rgba(224, 70, 70, 0.12));
+  border: 1px solid var(--border-diff-neg, rgba(224, 70, 70, 0.25));
+}
+
+.preview-diff.zero {
+  color: var(--color-diff-zero, #5a7a9a);
+  background-color: var(--bg-diff-zero, rgba(0, 0, 0, 0.04));
+  border: 1px solid var(--border-diff-zero, rgba(0, 0, 0, 0.06));
+}
+
+.preview-footer {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  margin-top: 2px;
+}
+
+.theme-light .preview-footer {
+  border-color: #e2e8f0 !important;
+}
+
+.theme-rexx .preview-footer {
+  border-color: #283344 !important;
+}
+
+/* Unclaimed Player Seat Disconnected State */
+.player-card.is-disconnected {
+  border: 1px dashed #5a4a4a;
+}
+
+.player-card.is-disconnected .player-header {
+  opacity: 0.45;
+  filter: grayscale(60%);
+}
+
+.disconnect-lightning {
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: 0.7rem;
+  margin-left: 6px;
+  background-color: rgba(255, 77, 77, 0.1);
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 77, 77, 0.25);
+}
+
+/* Status-dot states for Score Verification */
+.status-dot.check-normal {
+  background-color: var(--color-success);
+  box-shadow: 0 0 6px var(--color-success);
+}
+
+.status-dot.check-riichi {
+  background-color: #776666; /* Off/gray state when riichi sticks on table */
+  box-shadow: none;
+}
+
+.status-dot.check-error {
+  background-color: var(--color-danger);
+  box-shadow: 0 0 6px var(--color-danger);
+}
+
+/* Scoring Table Grid (Han/Fu) */
+.score-table-container {
+  overflow-x: auto;
+  margin-top: 8px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  background-color: var(--bg-card);
+}
+
+.score-table th, .score-table td {
+  border: 1px solid var(--border-color);
+  padding: 6px 4px;
+  text-align: center;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.score-table th {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+}
+
+.score-btn {
+  width: 100%;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 2px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.score-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--color-accent);
+}
+
+.score-btn.active {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+  font-weight: 800; /* Extra bold text for readability when selected */
+}
+
+.score-btn-colspan {
+  background-color: rgba(255, 77, 77, 0.08);
+  color: #ff6666;
+  border-color: rgba(255, 77, 77, 0.25);
+  font-size: 0.75rem;
+}
+
+.score-btn-colspan.active {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+  font-weight: 800;
+}
+
+/* Game Over Card */
+.game-over-panel {
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-accent);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 0 20px rgba(255, 77, 77, 0.15);
+}
+
+.game-over-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  letter-spacing: 1px;
+}
+
+.rank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.rank-item.rank-1 {
+  border-color: var(--color-accent);
+  background: var(--bg-rank-1-gradient);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.rank-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.rank-1 .rank-badge {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text, #fff);
+}
+
+/* Tab Selector Styles in Modal */
+.tabs {
+  display: flex;
+  background-color: var(--bg-secondary);
+  border-radius: 6px;
+  padding: 3px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 8px;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--text-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  color: var(--text-primary);
+}
+
+.tab.active {
+  background-color: var(--bg-card);
+  color: var(--color-accent);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 3-Column Quick Preset Grid */
+.quick-scores-list-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+/* Yaku Checklist Grid */
+.yaku-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 6px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.yaku-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  user-select: none;
+  transition: all 0.15s;
+}
+
+.yaku-item:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-color);
+}
+
+.yaku-item.checked {
+  border-color: var(--color-accent);
+  color: var(--text-primary);
+  background-color: var(--bg-yaku-checked);
+}
+
+.yaku-item input[type="checkbox"] {
+  accent-color: #ff5e57;
+  cursor: pointer;
+  margin: 0;
+  width: 12px;
+  height: 12px;
+}
+
+
+.theme-light {
+  /* Inherits :root defaults */
+}
+
+/* Text Disconnect Badge replacing lightning emoji with matching height */
+.disconnect-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-danger-muted);
+  color: var(--color-danger-text);
+  border: 1px solid var(--border-danger-muted);
+  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  height: 16px;
+  box-sizing: border-box;
+  margin-left: 2px;
+  line-height: 1;
+}
+
+
+
+
+.theme-rexx {
+  /* REXX Hardware Geek Theme */
+  --bg-primary: #0a0b0e;
+  --bg-secondary: #14171d;
+  --bg-card: #101217;
+  --bg-card-hover: #1c2029;
+  --text-primary: #ffffff;
+  --text-secondary: #8e9bb0;
+  --color-accent: #ff3344;
+  --color-riichi: #ff2233;
+  --color-success: #30d158;
+  --color-danger: #ff3344;
+  --border-color: #242c38;
+  --color-accent-text: #ffffff;
+  --bg-yaku-checked: rgba(255, 51, 68, 0.15);
+  --bg-rank-1-gradient: linear-gradient(135deg, #300f13, #15090b);
+
+  --bg-check-error: rgba(255, 51, 68, 0.15);
+  --bg-danger-muted: rgba(255, 51, 68, 0.15);
+  --color-danger-text: #ff6b7a;
+  --border-danger-muted: rgba(255, 51, 68, 0.35);
+
+  --bg-diff-pos: rgba(48, 209, 88, 0.15);
+  --color-diff-pos: #30d158;
+  --border-diff-pos: rgba(48, 209, 88, 0.35);
+  --bg-diff-neg: rgba(255, 51, 68, 0.15);
+  --color-diff-neg: #ff5566;
+  --border-diff-neg: rgba(255, 51, 68, 0.35);
+  --bg-diff-zero: rgba(255, 255, 255, 0.06);
+  --color-diff-zero: #8e9bb0;
+  --border-diff-zero: rgba(255, 255, 255, 0.12);
+}
+
+.theme-rexx .btn-primary {
+  background: #ff3344;
+  background-color: #ff3344;
+  border-color: #ff3344;
+  color: #ffffff;
+}
+
+/* =========================================================
+   雀魂 (Majsoul) 主题 - 官方深绀青与金辉和风对局风格 (#222e4a)
+   ========================================================= */
+.theme-majsoul {
+  --bg-primary: #222e4a; /* 雀魂官方深绀青主色调 */
+  --bg-secondary: #1b253c; /* 次级容器 (深绀色) */
+  --bg-card: #283656; /* 玩家卡片 (清透蓝灰/绀青) */
+  --bg-card-hover: #314269; /* 卡片悬停 */
+  --bg-body: #141c2e; /* 页面外围极深绀青 */
+  --text-primary: #f0f4fc; /* 明亮清透白字 */
+  --text-secondary: #90a4cb; /* 蓝调灰次级字 */
+  --color-accent: #e8af71; /* 雀魂标志琥珀金重点色 (#e8af71) */
+  --color-riichi: #ff4d4f; /* 立直红 */
+  --color-success: #2ec4b6; /* 青绿 */
+  --color-danger: #ff4d4f;
+  --border-color: #384a73; /* 优雅蓝灰边框 */
+
+  --bg-check-error: rgba(255, 77, 79, 0.15);
+  --color-check-error: #ff7875;
+  --border-check-error: rgba(255, 77, 79, 0.4);
+  --bg-check-riichi: rgba(255, 255, 255, 0.06);
+  --color-check-riichi: #90a4cb;
+  --border-check-riichi: rgba(255, 255, 255, 0.15);
+  --bg-check-success: rgba(46, 196, 182, 0.15);
+  --color-check-success: #2ec4b6;
+  --border-check-success: rgba(46, 196, 182, 0.4);
+
+  --color-accent-hover: #f3c99a;
+  --bg-danger-muted: rgba(255, 77, 79, 0.15);
+  --color-danger-text: #ff7875;
+  --border-danger-muted: rgba(255, 77, 79, 0.35);
+
+  --bg-diff-pos: rgba(46, 196, 182, 0.15);
+  --color-diff-pos: #2ec4b6;
+  --border-diff-pos: rgba(46, 196, 182, 0.35);
+  --bg-diff-neg: rgba(255, 77, 79, 0.15);
+  --color-diff-neg: #ff7875;
+  --border-diff-neg: rgba(255, 77, 79, 0.35);
+  --bg-diff-zero: rgba(255, 255, 255, 0.05);
+  --color-diff-zero: #90a4cb;
+  --border-diff-zero: rgba(255, 255, 255, 0.12);
+
+  --color-accent-text: #1b253c; /* 重点色按钮文字 */
+  --bg-yaku-checked: rgba(232, 175, 113, 0.15);
+  --bg-rank-1-gradient: linear-gradient(135deg, rgba(232, 175, 113, 0.18), rgba(232, 175, 113, 0.06)), #283656;
+  /* 雀魂专属字体体系 (全部经开源版权核查：SIL Open Font License 1.1，100% 免费商用)
+     - 标题/流局/按钮：Long Cang (龙藏体行草，原生完美收录「日麻计分板」含简体「计」及「荒牌流局/立直/自摸/荣和/撤销」)
+     - 风位/局况：Klee One (Fontworks 克利和风楷，原生完整收录繁体「東/南/西/北」及「東1局」)
+     - 点数数字：系统标准极粗数字
+  */
+  --majsoul-font-mashan: 'Ma Shan Zheng', cursive;
+  --majsoul-font-longcang: 'Long Cang', cursive;
+  --majsoul-font-klee: 'Klee One', cursive, sans-serif;
+  --majsoul-font-score: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 雀魂专属沉稳纯色背景 (#18233c) */
+.theme-majsoul body {
+  background: #18233c !important;
+  background-color: #18233c !important;
+}
+
+.theme-majsoul .app-container {
+  background: #18233c !important;
+  background-color: #18233c !important;
+}
+
+/* 标题 - 马善政毛笔行书 (天然400字重，零加粗零描边，笔画清晰透气) + 无发光 */
+.theme-majsoul .app-title {
+  font-family: var(--majsoul-font-mashan) !important;
+  font-size: 1.55rem !important;
+  font-weight: 400 !important;
+  -webkit-text-stroke: 0 !important;
+  color: #e8af71 !important;
+  text-shadow: none !important;
+  letter-spacing: 1.5px;
+}
+
+/* 弹窗标题与完场标题 - 二级界面跟随使用默认字体 */
+.theme-majsoul .modal-header h3,
+.theme-majsoul .modal-title,
+.theme-majsoul .game-over-title {
+  font-family: var(--font-family) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  letter-spacing: normal !important;
+}
+
+/* 玩家卡片 Tab - 纯色 #222e4a */
+.theme-majsoul .player-card {
+  background: #222e4a !important;
+  border: 1px solid #384a73;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.theme-majsoul .player-card.is-dealer {
+  border-color: #bb343c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 14px rgba(187, 52, 60, 0.3);
+}
+
+/* 风位 (南/西/北) - 加重字重 + 参考实机左上&右下大圆角 + 4e4c58 边框 + 文字 #aaa5a2，背景 #11112c */
+.theme-majsoul .player-wind,
+.theme-majsoul .player-wind.wind-other {
+  font-family: var(--majsoul-font-klee) !important;
+  font-size: 1.25rem !important;
+  font-weight: 900 !important; /* 加重字重 */
+  -webkit-text-stroke: 0.85px #aaa5a2 !important; /* 加重描边 */
+  background-color: #11112c !important;
+  border: 2.5px solid #4e4c58 !important;
+  border-radius: 9px 1.5px 9px 1.5px !important; /* 左上与右下大圆角，右上与左下尖直角 */
+  color: #aaa5a2 !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35) !important;
+  text-shadow: none !important;
+}
+
+/* 庄位指示器 (东家/亲家) - 加重字重 + 保持同款形状 + 4e4c58 边框 + 文字纯黑 #000000，背景 #bb343c */
+.theme-majsoul .player-wind.wind-east,
+.theme-majsoul .player-card.is-dealer .player-wind {
+  background-color: #bb343c !important;
+  border: 2.5px solid #4e4c58 !important;
+  border-radius: 9px 1.5px 9px 1.5px !important;
+  color: #000000 !important;
+  font-weight: 900 !important; /* 加重字重 */
+  -webkit-text-stroke: 0.85px #000000 !important; /* 加重描边 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35) !important;
+  text-shadow: none !important;
+}
+
+/* =========================================================
+   雀魂点数与点差显示 - 基于参考图调优渐变 (顶部高亮金/蓝/红平滑过渡到底部暖暗色)
+   ========================================================= */
+.theme-majsoul .player-score {
+  background: linear-gradient(180deg, #f8d168 0%, #f7cd67 35%, #f5b161 70%, #eb9f5d 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #f7cd67 !important;
+}
+
+/* 点差+ 蓝: 50c2ed -> 2c6882 (参考实机调优) */
+.theme-majsoul .player-score.majsoul-diff-pos,
+.theme-majsoul .majsoul-diff-pos {
+  background: linear-gradient(180deg, #50c2ed 0%, #45a6ce 55%, #2c6882 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #50c2ed !important;
+}
+
+/* 点差- 与 0 负差红: fe639a -> b9395d (参考实机调优) */
+.theme-majsoul .player-score.majsoul-diff-neg,
+.theme-majsoul .majsoul-diff-neg,
+.theme-majsoul .majsoul-diff-zero {
+  background: linear-gradient(180deg, #fe639a 0%, #e85382 55%, #b9395d 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #fe639a !important;
+}
+
+/* 雀魂专属自家指示器 (参考实机：八角切角红底白边双层徽章 + 纯代码实现) */
+.theme-majsoul .majsoul-jika-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  clip-path: polygon(
+    3.5px 0%, calc(100% - 3.5px) 0%,
+    100% 3.5px, 100% calc(100% - 3.5px),
+    calc(100% - 3.5px) 100%, 3.5px 100%,
+    0% calc(100% - 3.5px), 0% 3.5px
+  );
+  padding: 1.4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.theme-majsoul .majsoul-jika-badge-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #b31e1e;
+  clip-path: polygon(
+    2.5px 0%, calc(100% - 2.5px) 0%,
+    100% 2.5px, 100% calc(100% - 2.5px),
+    calc(100% - 2.5px) 100%, 2.5px 100%,
+    0% calc(100% - 2.5px), 0% 2.5px
+  );
+  padding: 1px 6px;
+  color: #ffffff;
+  font-family: var(--majsoul-font-klee), cursive, sans-serif !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.25;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* 点差模式下的轻提示 */
+.theme-majsoul .majsoul-score-area:hover {
+  opacity: 0.85;
+}
+
+/* HUD 局况面板 - 纯色 #222e4a */
+.theme-majsoul .hud-panel,
+.theme-majsoul .game-over-panel {
+  background: #222e4a !important;
+  border: 1px solid #384a73;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.theme-majsoul .hud-item .hud-label {
+  font-family: var(--majsoul-font-klee) !important;
+  font-size: 0.68rem !important; /* 对齐其他主题 0.68rem */
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+}
+
+.theme-majsoul .hud-item .hud-value {
+  font-family: var(--majsoul-font-klee) !important;
+  font-size: 1.05rem !important; /* 对齐其他主题 1.05rem */
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+}
+
+/* 实机图1：東1局青蓝渐变 (缩小对齐其他主题) */
+.theme-majsoul .hud-value.dealer-round {
+  font-family: var(--majsoul-font-klee) !important;
+  background: linear-gradient(180deg, #99f5ff 0%, #30d5ec 55%, #10a8be 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #30d5ec !important;
+  font-size: 1.1rem !important; /* 缩小对齐 */
+  font-weight: 800 !important;
+  filter: none !important; /* 彻底移除发光 */
+}
+
+/* 场供模块（竖棒高度 40px，立直棒在前、本场棒在后，数值与点棒下对齐） */
+.theme-majsoul .majsoul-sticks-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  height: 40px !important; /* 与流局按钮 40px 等高 */
+  align-self: center !important;
+}
+
+.theme-majsoul .majsoul-stick-capsule {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: flex-end !important; /* 数值与点棒图案下对齐 */
+  height: 40px !important;
+  gap: 5px !important;
+  box-shadow: none !important;
+}
+
+.theme-majsoul .majsoul-stick-capsule svg {
+  height: 40px !important;
+  width: 9px !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+.theme-majsoul .stick-text {
+  color: #ffffff;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1 !important;
+  margin-bottom: 2px !important; /* 字符底边与点棒圆底精准平齐 */
+  filter: none !important;
+}
+
+.theme-majsoul .stick-x {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #f0f4fc;
+}
+
+.theme-majsoul .stick-num {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+/* 流局按钮 - 马善政毛笔行书 (天然400字重，零加粗零描边，笔画清晰透气)，尺寸严格与其他主题 96px x 32px 保持一致，字号调大为 0.95rem 补偿字形视觉体量 */
+.theme-majsoul .hud-actions .btn,
+.theme-majsoul .btn-draw {
+  font-family: var(--majsoul-font-mashan) !important;
+  font-size: 0.95rem !important;
+  width: 96px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  letter-spacing: 1px !important;
+  font-weight: 400 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  transition: none !important;
+}
+
+/* 对局变更记录及以下：纯色 #222e4a */
+.theme-majsoul .history-section {
+  background: #222e4a !important;
+  border: 1px solid #384a73;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: var(--font-family) !important;
+}
+
+.theme-majsoul .history-item:last-child {
+  border-left-color: #e8af71;
+  color: #f0f4fc;
+}
+
+.theme-majsoul .history-item-tags,
+.theme-majsoul .history-item-inline-tag {
+  color: #f0f4fc;
+  font-weight: 700;
+}
+
+.theme-majsoul .history-item:last-child .history-item-tags,
+.theme-majsoul .history-item:last-child .history-item-inline-tag {
+  color: #e8af71;
+  font-weight: 800;
+}
+
+.theme-majsoul .history-item-details,
+.theme-majsoul .history-item-inline-content {
+  color: #90a4cb;
+}
+
+.theme-majsoul .history-item:last-child .history-item-details,
+.theme-majsoul .history-item:last-child .history-item-inline-content {
+  color: #f0f4fc;
+}
+
+.theme-majsoul .history-item {
+  font-family: var(--font-family) !important;
+  font-size: 0.8rem !important;
+  letter-spacing: normal !important;
+  border-left-color: #384a73;
+  color: #90a4cb;
+}
+
+/* 弹窗 */
+.theme-majsoul .modal-overlay {
+  background-color: rgba(10, 15, 26, 0.75);
+}
+
+/* 弹窗二级界面统一跟随默认字体（不破坏等宽分数排版） */
+.theme-majsoul .modal-content {
+  font-family: var(--font-family);
+}
+
+.theme-majsoul .modal-content,
+.theme-majsoul .modal-footer {
+  background-color: #222e4a !important;
+  border-color: #384a73;
+  color: #f0f4fc;
+}
+
+/* 输入框 */
+.theme-majsoul .form-input {
+  background-color: #172035 !important;
+  border: 1px solid #384a73 !important;
+  color: #f0f4fc !important;
+}
+
+.theme-majsoul .form-input:focus {
+  border-color: #e8af71 !important;
+  box-shadow: 0 0 0 2px rgba(232, 175, 113, 0.25) !important;
+}
+
+
+
+/* =========================================================
+   雀魂专属：非平行切角令牌按钮 (手绘红框完全复刻 + 左右双樱花 + 字体后叠灰色)
+   ========================================================= */
+.theme-majsoul .player-actions {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 8px !important;
+  align-items: center !important;
+  padding: 0 2px !important;
+}
+
+.theme-majsoul .player-actions .btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative !important;
+  height: 36px !important;
+  padding: 0 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: transform 0.15s ease !important;
+}
+
+.theme-majsoul .player-actions .btn:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+}
+
+/* 1. 立直按钮 (矢量令牌底板已绘制非平行边框与深色底) */
+.theme-majsoul .player-actions .btn-riichi {
+  gap: 2px !important;
+}
+
+/* 左右两朵樱花定位 (通用于立直、自摸、荣和所有按钮) */
+.theme-majsoul .player-actions .btn .majsoul-sakura-left {
+  position: absolute !important;
+  left: 11px !important; /* 右移 1px (原 10px -> 11px) */
+  bottom: 4px !important; /* 下移 1px (原 5px -> 4px) */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+.theme-majsoul .player-actions .btn .majsoul-sakura-right {
+  position: absolute !important;
+  right: 11px !important; /* 左移 3px (原 8px -> 11px) */
+  bottom: 4px !important; /* 下移 1px (原 5px -> 4px) */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* 文字双层容器：字号适度放大，向上大幅提升避免溢出下边界，向左微偏 */
+.theme-majsoul .player-actions .btn-text-wrapper {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 3 !important;
+  margin-top: -22px !important; /* 向上大幅上提，彻底防止溢出下边界 */
+  margin-left: -14px !important; /* 向左适度偏移 */
+  margin-bottom: 0px !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+/* 1. 立直按钮文字 (实机原版：顶部桃粉 ➔ 中部暖金 ➔ 底部高光白 + 3px 深焦黑褐清晰描边) */
+.theme-majsoul .player-actions .btn-riichi .btn-text-shadow {
+  font-family: var(--majsoul-font-longcang) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  white-space: nowrap !important;
+  -webkit-text-stroke: 3px #3d1406 !important;
+  color: #3d1406 !important;
+  z-index: 1 !important;
+  filter: none !important;
+}
+
+.theme-majsoul .player-actions .btn-riichi .btn-text {
+  font-family: var(--majsoul-font-longcang) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  position: relative !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  z-index: 2 !important;
+  background: linear-gradient(180deg, #ff6080 0%, #ffcf40 50%, #ffffff 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  filter: none !important;
+}
+
+/* 激活状态（撤销立直：完全对照实机跳过按钮，上灰下银纯白渐变 + 3px 深焦黑描边） */
+.theme-majsoul .player-actions .btn-riichi.is-riichi-active .btn-text-shadow {
+  -webkit-text-stroke: 3px #181a1f !important;
+  color: #181a1f !important;
+  filter: none !important;
+}
+
+.theme-majsoul .player-actions .btn-riichi.is-riichi-active .btn-text {
+  background: linear-gradient(180deg, #686f7c 0%, #9ca5b4 40%, #eef1f6 78%, #ffffff 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  display: inline-block !important;
+  filter: none !important;
+}
+
+/* 2. 自摸按钮 (实机原版：顶部鲜艳桃红 ➔ 中部樱粉 ➔ 底部纯白 + 3px 深焦红描边) */
+.theme-majsoul .player-actions .btn-tsumo .btn-text-shadow {
+  font-family: var(--majsoul-font-longcang) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  white-space: nowrap !important;
+  -webkit-text-stroke: 3px #3d0a14 !important;
+  color: #3d0a14 !important;
+  z-index: 1 !important;
+  filter: none !important;
+}
+
+.theme-majsoul .player-actions .btn-tsumo .btn-text {
+  font-family: var(--majsoul-font-longcang) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  position: relative !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  z-index: 2 !important;
+  background: linear-gradient(180deg, #ff2466 0%, #ff85a2 50%, #ffffff 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  filter: none !important;
+}
+
+/* 3. 荣和按钮 (实机原版：顶部火焰朱橙 ➔ 中部亮金黄 ➔ 底部纯白 + 3px 深赤褐描边) */
+.theme-majsoul .player-actions .btn-ron .btn-text-shadow {
+  font-family: var(--majsoul-font-longcang) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  white-space: nowrap !important;
+  -webkit-text-stroke: 3px #420b0b !important;
+  color: #420b0b !important;
+  z-index: 1 !important;
+  filter: none !important;
+}
+
+.theme-majsoul .player-actions .btn-ron .btn-text {
+  font-family: var(--majsoul-font-longcang) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  position: relative !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  z-index: 2 !important;
+  background: linear-gradient(180deg, #f0481c 0%, #ffb62e 50%, #ffffff 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  filter: none !important;
+}
+
+/* 结算预览 - 雀魂金高亮 */
+.theme-majsoul .game-over-title {
+  color: #e8af71;
+}
+
+
+/* =========================================================
+   Traditional 7-Segment Hardware LED Display (Sharp & Crisp Version)
+   ========================================================= */
+.seg7-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #090c0a;
+  border: 1.5px solid #1a271f;
+  border-radius: 6px;
+  padding: 6px 12px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.95);
+}
+
+.seg7-digit {
+  height: 100%;
+  width: 100%;
+  transform: skewX(-6deg); /* Authentic slanted LCD feel */
+  display: block;
+}
+
+/* Sharp Color Profiles: Crisp bright on-segment, clean dark off-segment */
+.seg7-red .seg-on {
+  fill: #ff3b30;
+}
+.seg7-red .seg-off {
+  fill: #1e1212;
+}
+
+.seg7-blue .seg-on {
+  fill: #0c2a5c;
+}
+.seg7-blue .seg-off {
+  fill: rgba(12, 42, 92, 0.06);
+}
+
+/* Borderless Background-Unified Seg7 Display for Theme REXX */
+.theme-rexx .seg7-container {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  gap: 3px !important;
+}
+
+.theme-electronic .seg7-container {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  gap: 3px !important;
+}
+
+.theme-electronic .player-actions .btn-primary {
+  background-color: var(--color-accent) !important;
+  color: var(--color-accent-text) !important;
+  border: 1px solid var(--color-accent) !important;
+}
+
+/* 电子主题：撤销立直与立直按钮样式严格保持一致（不使用红色警告高亮） */
+.theme-electronic .player-actions .btn-riichi.is-riichi-active,
+.theme-electronic .player-actions .btn-riichi.btn-danger {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
+}
+
+.theme-electronic .player-actions .btn-riichi.is-riichi-active:hover,
+.theme-electronic .player-actions .btn-riichi.btn-danger:hover {
+  background-color: var(--bg-card-hover) !important;
+  border-color: var(--color-accent) !important;
+}
+
+/* 电子主题：弹窗确认按钮统一使用主题色（深绀色），不突兀显示红底或浅色 */
+.theme-electronic .dialog-footer .btn-primary,
+.theme-electronic .dialog-footer .btn-danger,
+.theme-electronic .modal-footer .btn-primary,
+.theme-electronic .modal-footer .btn-danger {
+  background-color: var(--color-accent) !important;
+  color: var(--color-accent-text, #ffffff) !important;
+  border: 1px solid var(--color-accent) !important;
+  box-shadow: none !important;
+}
+
+.theme-electronic .dialog-footer .btn-primary:hover,
+.theme-electronic .dialog-footer .btn-danger:hover,
+.theme-electronic .modal-footer .btn-primary:hover,
+.theme-electronic .modal-footer .btn-danger:hover {
+  background-color: var(--color-accent-hover) !important;
+  border-color: var(--color-accent-hover) !important;
+  color: var(--color-accent-text, #ffffff) !important;
+}
+
+.theme-electronic .dialog-footer .btn-primary:disabled,
+.theme-electronic .dialog-footer .btn-danger:disabled,
+.theme-electronic .modal-footer .btn-primary:disabled,
+.theme-electronic .modal-footer .btn-danger:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+}
+
+/* 顺位灯牌：平行四边形区域蓝色点亮（与 LED 同色），中间字符用暗色灯管条勾勒、不发光 */
+.rank-lamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  transform: skewX(-6deg);
+  background: #0c2a5c;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 3px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 8px rgba(90, 160, 255, 0.35), inset 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+/* 顺位字符：Michroma 几何直线字体，界面底色（不发光） */
+.rank-lamp-char {
+  font-family: 'Michroma', sans-serif;
+  color: var(--bg-primary);
+  line-height: 1;
+}
+
+/* Custom Self-Wind Text Rules (東 fixed white, others theme-reversed) */
+.player-wind {
+  font-weight: 800 !important;
+  transition: color 0.3s ease;
+}
+
+.player-wind.wind-east {
+  color: #ffffff !important;
+}
+
+.player-wind.wind-other {
+  color: var(--text-primary) !important;
+}
+
+/* Bottom Theme Selector - 100% Aligned with .btn Button Styles */
+select.bottom-theme-select {
+  height: 28px !important;
+  padding: 0 24px 0 10px !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  border-radius: var(--border-radius) !important;
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: var(--transition-fast) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  outline: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23888888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l4 4 4-4'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 8px center !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+select.bottom-theme-select:hover {
+  border-color: var(--color-accent) !important;
+}
+
+/* Lock score container height across all themes to eliminate layout switching jitter */
+.player-score-container {
+  height: 32px !important;
+  min-height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Bottom Theme Selector - 100% Strict High-Priority Alignment with .btn (64px width) */
+.app-footer select.bottom-theme-select,
+select.bottom-theme-select {
+  width: 64px !important;
+  height: 30px !important;
+  line-height: 28px !important;
+  padding: 0 16px 0 6px !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  font-family: inherit !important;
+  border-radius: var(--border-radius) !important;
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: var(--transition-fast) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  text-align-last: center !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23888888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l4 4 4-4'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 6px center !important;
+  box-sizing: border-box !important;
+}
+
+.app-footer select.bottom-theme-select:hover,
+select.bottom-theme-select:hover {
+  border-color: var(--color-accent) !important;
+}
+
+.bottom-theme-select option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+/* Player Name Truncation & Bottom Theme Select 6px Border Radius Alignment */
+.player-name {
+  max-width: 130px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: inline-block !important;
+}
+
+.app-footer select.bottom-theme-select,
+select.bottom-theme-select {
+  border-radius: 6px !important;
+}
+
+/* Bottom Theme Select Text 100% Vertical Centering Rules */
+.app-footer select.bottom-theme-select,
+select.bottom-theme-select {
+  width: 64px !important;
+  height: 30px !important;
+  line-height: 28px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 6px !important;
+  padding-right: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+}
+
+/* Strict Absolute Centering Rules for Settings Modal Elements */
+.settings-modal-box {
+  text-align: center !important;
+}
+
+.modal-header.app-header,
+.settings-modal-box .modal-header {
+  width: calc(100% - 24px) !important;
+  margin: 0 12px !important;
+  height: 60px !important;
+  min-height: 60px !important;
+  max-height: 60px !important;
+  padding: 12px 12px 0 12px !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-sizing: border-box !important;
+}
+
+.modal-header.app-header .modal-close,
+.settings-modal-box .modal-header .modal-close {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.settings-modal-box .modal-body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 14px 12px !important;
+  gap: 14px !important;
+}
+
+.settings-modal-box .form-group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.settings-modal-box .form-label,
+.settings-modal-box label:not(.checkbox-label) {
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  display: flex !important;
+  width: 100% !important;
+  margin: 0 auto 6px auto !important;
+}
+
+.settings-modal-box .checkbox-label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  width: 100% !important;
+  padding: 0 12px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  margin: 0 !important;
+  gap: 8px !important;
+  font-size: 0.85rem !important;
+  box-sizing: border-box !important;
+}
+
+.settings-modal-box .preset-grid .btn {
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  line-height: 36px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+.settings-modal-box select.form-input,
+.settings-modal-box input.form-input,
+.settings-modal-box .preset-grid {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  text-align-last: center !important;
+  width: 100% !important;
+}
+
+.settings-modal-box .modal-footer {
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 14px 12px 28px !important;
+  gap: 12px !important;
+  margin-top: auto !important;
+}
+
+/* =========================================================
+   统一警示文本与状态样式规范 (Unified Warning & Alert Typography)
+   ========================================================= */
+
+/* 1. 表单/输入框下方单行校验警示文本 */
+.validation-warning-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-danger-text, #ff4d4f);
+  margin-top: 4px;
+  line-height: 1.4;
+  text-align: center;
+  display: block;
+  width: 100%;
+  animation: warningFadeIn 0.2s ease-in-out;
+}
+
+/* 2. 块级警示提示卡片 (如诈和待选提示、结算警告横幅) */
+.warning-box,
+.alert-banner {
+  padding: 8px 12px;
+  background-color: var(--bg-danger-muted, rgba(255, 77, 77, 0.08));
+  border: 1px dashed var(--border-danger-muted, rgba(255, 77, 77, 0.4));
+  border-radius: 6px;
+  color: var(--color-danger-text, #ff4d4f);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 8px;
+  box-sizing: border-box;
+  animation: warningFadeIn 0.2s ease-in-out;
+}
+
+/* 3. 输入框非法/警告状态边框与实时焦点态（确保在输入非法时选框立即变红，而不是取消选中才变红） */
+.form-input.form-input-invalid,
+.form-input.is-invalid,
+[class*="theme-"] .form-input.form-input-invalid,
+[class*="theme-"] .form-input.is-invalid,
+.settings-modal-box .form-input.form-input-invalid,
+.settings-modal-box .form-input.is-invalid {
+  border: 1.5px solid var(--color-danger, #ff4d4f) !important;
+  border-color: var(--color-danger, #ff4d4f) !important;
+}
+
+.form-input.form-input-invalid:focus,
+.form-input.is-invalid:focus,
+[class*="theme-"] .form-input.form-input-invalid:focus,
+[class*="theme-"] .form-input.is-invalid:focus,
+.settings-modal-box .form-input.form-input-invalid:focus,
+.settings-modal-box .form-input.is-invalid:focus {
+  border: 1.5px solid var(--color-danger, #ff4d4f) !important;
+  border-color: var(--color-danger, #ff4d4f) !important;
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.35) !important;
+  outline: none !important;
+}
+
+@keyframes warningFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 4. 断线全屏弹窗重连加载动画 */
+.reconnecting-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ef4444;
+  border-radius: 50%;
+  animation: reconnectSpin 0.8s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@keyframes reconnectSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Full-screen Claim Seat Stage Styles (首次加入全屏阶段)
+   ========================================================================== */
+.claim-stage-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.claim-stage-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.claim-stage-header {
+  height: 60px;
+  min-height: 60px;
+  max-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.claim-stage-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px 16px 20px 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  width: 100%;
+}
+
+/* 选座卡片与操作区容器：居中紧凑布局，防止横向过度拉伸 */
+.claim-stage-content {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.claim-stage-card {
+  width: 100%;
+  max-width: 360px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 24px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: dialogScaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.claim-stage-heading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.claim-stage-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.claim-stage-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.claim-stage-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  background-color: var(--bg-secondary);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  margin-top: 4px;
+}
+
+.claim-stage-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.claim-stage-error {
+  padding: 8px 12px;
+  background-color: var(--bg-check-error);
+  color: var(--color-check-error);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.claim-stage-random-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.claim-stage-seats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.claim-seat-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.claim-seat-btn.selected {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.claim-seat-btn.occupied {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.claim-seat-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.claim-seat-wind {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.claim-seat-player-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.claim-seat-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.claim-seat-tag.tag-claimed {
+  color: var(--color-danger, #ff4d4f);
+}
+
+.claim-seat-tag.tag-free {
+  color: var(--color-success, #2ec4b6);
+}
+
+.claim-seat-tag.tag-host-locked {
+  color: var(--color-accent, #e74c3c);
+}
+
+/* 房主选择已被占用席位时的二级操作覆盖层（左侧交换席位，右侧移出） */
+.claim-seat-action-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-card);
+  display: flex;
+  align-items: stretch;
+  border-radius: 5px;
+  z-index: 10;
+  animation: dialogScaleIn 0.15s ease-out;
+}
+
+.claim-seat-overlay-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.claim-seat-overlay-action.btn-swap {
+  color: var(--color-accent);
+}
+
+.claim-seat-overlay-action.btn-swap:hover,
+.claim-seat-overlay-action.btn-swap:active {
+  background-color: var(--bg-card-hover, rgba(255, 255, 255, 0.08));
+}
+
+.claim-seat-overlay-action.btn-kick {
+  color: var(--color-danger, #ff4d4f);
+}
+
+.claim-seat-overlay-action.btn-kick:hover,
+.claim-seat-overlay-action.btn-kick:active {
+  background-color: var(--bg-danger-muted, rgba(239, 68, 68, 0.12));
+}
+
+.claim-seat-overlay-divider {
+  width: 1px;
+  height: 55%;
+  align-self: center;
+  background-color: var(--border-color);
+  opacity: 0.8;
+}
+
+/* 房主视角直观踢出/移出成员按钮 */
+.claim-seat-kick-btn {
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 4px;
+  border: 1px solid var(--color-danger, #ff4d4f);
+  color: var(--color-danger, #ff4d4f);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.2;
+}
+
+.claim-seat-kick-btn:hover,
+.claim-seat-kick-btn:active {
+  background-color: var(--bg-danger-muted, rgba(239, 68, 68, 0.12));
+}
+
+/* 电子主题认领对局席位：空闲/占用/锁定/移出使用主题色 */
+.theme-electronic .claim-seat-tag.tag-free,
+.theme-electronic .claim-seat-tag.tag-claimed,
+.theme-electronic .claim-seat-tag.tag-host-locked {
+  color: var(--color-accent) !important;
+}
+
+.theme-electronic .claim-seat-kick-btn {
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
+}
+
+.claim-stage-submit-btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 8px;
+  border-radius: 6px;
+}
+
+/* Modern Floating Popover Theme Selector */
+.theme-trigger-btn {
+  width: 64px !important;
+  height: 30px !important;
+  padding: 6px 0 !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.theme-trigger-btn.is-open {
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
+}
+
+.theme-picker-card {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 104px;
+  min-width: 104px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 10000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  animation: themeCardPop 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: bottom right;
+}
+
+@keyframes themeCardPop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.theme-picker-item {
+  width: 100%;
+  height: 28px;
+  padding: 0 8px;
+  margin: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.theme-picker-item:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.theme-picker-item.is-selected {
+  background-color: var(--bg-card-hover);
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Fullscreen & Standalone Safe Area Inset Rules (全屏/独立应用顶部安全区保护)
+   ========================================================================== */
+:fullscreen .app-container,
+:-webkit-full-screen .app-container,
+html.is-fullscreen .app-container {
+  padding-top: max(46px, env(safe-area-inset-top, 46px)) !important;
+  padding-bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
+}
+
+:fullscreen .modal-overlay,
+:-webkit-full-screen .modal-overlay,
+html.is-fullscreen .modal-overlay {
+  padding-top: max(46px, env(safe-area-inset-top, 46px)) !important;
+  padding-bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
+}
+
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  .app-container {
+    padding-top: max(46px, env(safe-area-inset-top, 46px)) !important;
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
+  }
+  .modal-overlay {
+    padding-top: max(46px, env(safe-area-inset-top, 46px)) !important;
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
+  }
+}
+
+
+/* ==========================================================================
+   Server Portal / Lobby Centered Layout & Riichi Stick Styles
+   ========================================================================== */
+.lobby-stage-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  min-height: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+/* 顶栏分割线保留 */
+.lobby-top-header {
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.lobby-stage-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 32px 20px;
+  box-sizing: border-box;
+}
+
+.lobby-stage-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  margin: auto 0;
+}
+
+/* 首次加载从上至下级联缓入效果 */
+@keyframes lobbyCascadeFadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.lobby-fade-in-1 {
+  animation: lobbyCascadeFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.lobby-fade-in-2 {
+  animation: lobbyCascadeFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.lobby-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin-top: 18px;
+  margin-bottom: 56px; /* 上下间隔进一步增大，大气舒适 */
+}
+
+.lobby-title {
+  margin: 0;
+  font-size: 2.15rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: 3px;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* 扁平化立直棒（和标题严格等宽，强制指定标准象牙白实物样式，不使用任何主题色） */
+.lobby-riichi-stick {
+  width: 100% !important;
+  height: 9px !important;
+  margin-top: 12px !important;
+  border-radius: 4.5px !important;
+  background-color: #f1f5f9 !important; /* 强制纯正骨白象牙色，不随深色/电子主题改变 */
+  border: 1px solid #cbd5e1 !important; /* 强制清晰细灰边框 */
+  box-shadow: none !important; /* 强制去除一切阴影发光 */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  user-select: none !important;
+}
+
+.lobby-riichi-stick-dot {
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  background-color: #dc2626 !important; /* 强制纯正赤红圆点，严禁被主题accent变色 */
+  box-shadow: none !important; /* 强制去除发光 */
+}
+
+.theme-majsoul .lobby-title {
+  font-family: var(--majsoul-font-mashan, inherit) !important;
+}
+
+.lobby-riichi-stick-groove {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* REXX 主题专属点棒（同局内配色：经典宝蓝主体与金属银圆点，居中内嵌凹槽阴影） */
+.theme-rexx .lobby-riichi-stick {
+  background-color: #0284c7 !important;
+  border: 1px solid #0369a1 !important;
+}
+
+.theme-rexx .lobby-riichi-stick-groove {
+  width: 38% !important;
+  max-width: 68px !important;
+  height: 5px !important;
+  border-radius: 1.5px !important;
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: inset 0 0.8px 1.5px rgba(0, 0, 0, 0.3) !important;
+}
+
+.theme-rexx .lobby-riichi-stick-dot {
+  width: 4px !important;
+  height: 4px !important;
+  background-color: #e2e8f0 !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 电子主题专属点棒（在 REXX 宝蓝点棒基础上，两端一定长度改为冷银钛金属色） */
+.theme-electronic .lobby-riichi-stick {
+  background: linear-gradient(
+    90deg,
+    #94a3b8 0%,
+    #cbd5e1 7%,
+    #94a3b8 14%,
+    #0284c7 14%,
+    #0284c7 86%,
+    #94a3b8 86%,
+    #cbd5e1 93%,
+    #94a3b8 100%
+  ) !important;
+  border: 1px solid #64748b !important;
+  box-shadow: none !important;
+}
+
+.theme-electronic .lobby-riichi-stick-dot {
+  background-color: #e2e8f0 !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/* Action buttons 组（布局放宽） */
+.lobby-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 250px;
+  align-items: stretch;
+}
+
+.lobby-btn {
+  width: 100%;
+  height: 48px;
+  font-size: 1.02rem;
+  font-weight: 800;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  letter-spacing: 0.5px;
+  transition: all 0.15s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* 两个按钮中间插入的“或”字分割元素 */
+.lobby-divider-or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin: 14px 0;
+  user-select: none;
+}
+
+.lobby-divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+  opacity: 0.6;
+}
+
+.lobby-divider-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.lobby-btn-secondary {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.lobby-btn-secondary:hover {
+  background-color: var(--bg-card-hover, rgba(255, 255, 255, 0.08));
+  border-color: var(--color-accent);
+}
+
+.lobby-error-tip {
+  color: var(--color-danger, #f44336);
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Built-in Numeric Room Keypad (内建数字输入器)
+   ========================================================================== */
+.numeric-keypad-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-end; /* Pull-up from bottom on mobile */
+  justify-content: center;
+  z-index: 5000;
+  overscroll-behavior: contain;
+  animation: keypadFadeIn 0.2s ease-out;
+}
+
+@media (min-width: 500px) {
+  .numeric-keypad-overlay {
+    align-items: center; /* Centered modal on desktop */
+  }
+  .numeric-keypad-sheet {
+    border-radius: 20px !important;
+    max-width: 360px !important;
+    margin: 0 auto;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45) !important;
+  }
+}
+
+.numeric-keypad-sheet {
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  padding: 8px 20px max(20px, calc(8px + env(safe-area-inset-bottom, 0px))) 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.25);
+  animation: keypadSlideUp 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes keypadFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes keypadSlideUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    opacity: 0.6;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.keypad-grab-bar {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--border-color);
+  margin: 4px auto 12px;
+  opacity: 0.8;
+}
+
+.keypad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.keypad-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.keypad-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  border-radius: 4px;
+}
+
+.keypad-pin-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.keypad-pin-slot {
+  width: 46px;
+  height: 52px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-color);
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+  font-variant-numeric: tabular-nums;
+}
+
+.keypad-pin-slot.is-active {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent-transparent, rgba(230, 81, 0, 0.2));
+}
+
+.keypad-pin-slot.is-filled {
+  border-color: var(--border-color-focus, var(--color-accent));
+}
+
+.keypad-pin-placeholder {
+  width: 8px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: var(--text-secondary);
+  opacity: 0.4;
+}
+
+.keypad-hint-tip {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  text-align: center;
+  height: 18px;
+  line-height: 18px;
+}
+
+.keypad-error-tip {
+  font-size: 0.78rem;
+  color: var(--color-danger, #f44336);
+  font-weight: 600;
+  margin-bottom: 14px;
+  text-align: center;
+  height: 18px;
+  line-height: 18px;
+  animation: keypadShake 0.25s ease-in-out;
+}
+
+@keyframes keypadShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.keypad-key-btn {
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color 0.1s ease, transform 0.08s ease;
+  font-variant-numeric: tabular-nums;
+}
+
+.keypad-key-btn:active {
+  background-color: var(--bg-card-hover, rgba(255, 255, 255, 0.12));
+  transform: scale(0.96);
+}
+
+.keypad-func-btn {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary, transparent);
+}
+
+.keypad-submit-btn {
+  width: 100%;
+  height: 46px;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+}
