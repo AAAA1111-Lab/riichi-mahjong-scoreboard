@@ -23,12 +23,5 @@ push-release-local.bat
 docs/*
 !docs/MULTI_ROOM_CHANGELOG.md
 *.ps1
-assets/promo-video.mp4
-assets/video_materials/
-assets/lobby-preview.*
-scratch-promo-scan.js
-scratch-history-scan.js
-scratch-state-check.js
-scratch-rebuild.js
-scratch-check-remote.js
-scratch-branch-scan.js
+
+video/

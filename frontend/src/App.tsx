@@ -90,6 +90,61 @@ function App() {
   const [canRedo, setCanRedo] = useState<boolean>(false);
   const [historyCount, setHistoryCount] = useState<number>(50);
 
+  // Viewport height tracker: Android Chrome 进入/退出全屏时都不重算 100vh/100dvh
+  //（也不触发 resize）。策略：**仅在全屏期间**用 --app-height 覆盖（dvh 失效才需要
+  // JS 兜底，进入后短时高频刷新捕获异步的 innerHeight 变化）；退出全屏立即移除变量，
+  // 回落到原生 100dvh——非全屏滚动到底时日志贴着工具栏、仅隔一条分隔线（error2.png
+  // 的目标状态），缝隙最小。
+  useEffect(() => {
+    const root = document.documentElement;
+    const isFs = () => !!(
+      (document as any).fullscreenElement ||
+      (document as any).webkitFullscreenElement ||
+      (document as any).mozFullScreenElement ||
+      (document as any).msFullscreenElement
+    );
+    const apply = () => {
+      if (isFs()) root.style.setProperty('--app-height', `${window.innerHeight}px`);
+      else root.style.removeProperty('--app-height');
+    };
+    // Keep the same viewport-height model as automatic browser fullscreen, while avoiding
+    // redundant style writes during the browser's fullscreen/viewport transition.
+    const applyIfChanged = () => {
+      const next = isFs() ? `${window.innerHeight}px` : '';
+      if (root.style.getPropertyValue('--app-height') !== next) apply();
+    };
+    let burstTimer: number | undefined;
+    let burstCount = 0;
+    const startBurst = () => {
+      applyIfChanged();
+      if (burstTimer !== undefined) window.clearInterval(burstTimer);
+      burstCount = 0;
+      burstTimer = window.setInterval(() => {
+        applyIfChanged();
+        if (++burstCount >= 12) {
+          window.clearInterval(burstTimer);
+          burstTimer = undefined;
+        }
+      }, 50);
+    };
+    startBurst();
+    window.addEventListener('resize', startBurst, { passive: true });
+    window.addEventListener('orientationchange', startBurst, { passive: true });
+    document.addEventListener('fullscreenchange', startBurst);
+    document.addEventListener('webkitfullscreenchange', startBurst);
+    const vv = window.visualViewport as VisualViewport | undefined;
+    vv?.addEventListener('resize', startBurst);
+    return () => {
+      window.removeEventListener('resize', startBurst);
+      window.removeEventListener('orientationchange', startBurst);
+      document.removeEventListener('fullscreenchange', startBurst);
+      document.removeEventListener('webkitfullscreenchange', startBurst);
+      vv?.removeEventListener('resize', startBurst);
+      if (burstTimer !== undefined) window.clearInterval(burstTimer);
+      root.style.removeProperty('--app-height');
+    };
+  }, []);
+
   // Global In-App Dialog State
   const [confirmDialog, setConfirmDialog] = useState<{
     isOpen: boolean;
@@ -2825,16 +2880,16 @@ function App() {
 
       {/* Full-Screen Disconnection Alert Modal */}
       {!connected && (
-        <div
-          className="disconnect-overlay"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: '100vw',
-            height: '100vh',
+    <div
+      className="disconnect-overlay"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100vw',
+        height: 'var(--app-height, 100vh)',
             backgroundColor: 'rgba(8, 10, 15, 0.85)',
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)',
