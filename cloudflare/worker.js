@@ -412,7 +412,9 @@ export default {
     if (url.pathname === '/admin') return new Response('<!doctype html><meta charset="utf-8"><title>麻将计分板管理</title><h1>Cloudflare Server Edition</h1><p>Durable Objects 多房间服务运行中。</p><pre id="status">读取状态中…</pre><script>fetch("/api/admin/status").then(r=>r.json()).then(d=>status.textContent=JSON.stringify(d,null,2))</script>', { headers: { 'content-type': 'text/html; charset=utf-8' } });
     if (url.pathname === '/') return Response.redirect(new URL('/home', url), 302);
     const isSpa = url.pathname === '/home' || /^\/\d{5}\/?$/.test(url.pathname);
-    const assetRequest = isSpa ? new Request(new URL('/index.html', url), request) : request;
+    // Fetch the root asset for SPA routes; asking Assets for /index.html redirects
+    // back to / and loops with the Worker's / -> /home redirect.
+    const assetRequest = isSpa ? new Request(new URL('/', url), request) : request;
     const asset = await env.ASSETS.fetch(assetRequest);
     if (!isSpa || !asset.ok) return asset;
     const roomId = url.pathname.match(/^\/(\d{5})\/?$/)?.[1] || '';
