@@ -4,6 +4,9 @@
   "main": "worker.js",
   "compatibility_date": "2026-09-29",
   "workers_dev": true,
+  "routes": [
+    { "pattern": "aaaa1111.cc/*", "zone_name": "aaaa1111.cc", "custom_domain": false }
+  ],
   "ratelimits": [
     {
       "name": "API_RATE_LIMITER",
