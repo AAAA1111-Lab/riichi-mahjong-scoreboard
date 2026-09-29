@@ -10,6 +10,7 @@ export class CloudflareSocket {
   private retryTimer: number | undefined;
   private heartbeat: number | undefined;
   private manuallyClosed = false;
+  private suppressNextJoinRoom: string | null = null;
   connected = false;
 
   constructor() {
@@ -33,17 +34,28 @@ export class CloudflareSocket {
   }
 
   emit(event: string, ...args: any[]) {
-    if (event === 'join-room' && args[0]?.roomId && args[0].roomId !== this.roomId) {
-      this.switchRoom(String(args[0].roomId));
-      return this;
+    const serialized = JSON.stringify({ event, args });
+    if (event === 'join-room' && args[0]?.roomId) {
+      const targetRoomId = String(args[0].roomId);
+      if (targetRoomId !== this.roomId) {
+        // Changing the Durable Object URL is only half of joining: preserve the
+        // join payload so the new room receives its device token after connect.
+        this.switchRoom(targetRoomId, serialized);
+        return this;
+      }
+      const signature = this.joinRoomSignature(args[0]);
+      if (this.suppressNextJoinRoom === signature) {
+        this.suppressNextJoinRoom = null;
+        return this;
+      }
     }
     if (this.ws?.readyState === WebSocket.OPEN) {
-      this.ws.send(JSON.stringify({ event, args }));
+      this.ws.send(serialized);
       if (event === 'leave-room') {
         window.setTimeout(() => this.switchRoom('default'), 250);
       }
     } else if (this.ws?.readyState === WebSocket.CONNECTING) {
-      this.pending.push(JSON.stringify({ event, args }));
+      this.pending.push(serialized);
     }
     return this;
   }
@@ -58,11 +70,20 @@ export class CloudflareSocket {
       if (this.ws !== ws) return;
       this.retry = 0;
       this.connected = true;
-      this.dispatch('connect');
       for (const queued of this.pending.splice(0)) {
         if (this.ws !== ws || ws.readyState !== WebSocket.OPEN) break;
         ws.send(queued);
+        try {
+          const packet = JSON.parse(queued);
+          if (packet?.event === 'join-room') {
+            this.suppressNextJoinRoom = this.joinRoomSignature(packet.args?.[0]);
+          }
+        } catch {}
       }
+      this.dispatch('connect');
+      // The app's connect handler also requests the current room. If a queued
+      // join already did that, suppress only this duplicate callback request.
+      this.suppressNextJoinRoom = null;
       this.heartbeat = window.setInterval(() => {
         if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify({ event: '__ping', args: [] }));
       }, 60_000);
@@ -101,11 +122,11 @@ export class CloudflareSocket {
     return this;
   }
 
-  private switchRoom(roomId: string) {
+  private switchRoom(roomId: string, joinPacket?: string) {
     if (this.roomId === roomId && this.ws && (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING)) return;
     this.roomId = roomId;
     this.manuallyClosed = true;
-    this.pending = [];
+    this.pending = joinPacket ? [joinPacket] : [];
     this.clearTimers();
     this.ws?.close();
     this.ws = null;
@@ -113,6 +134,10 @@ export class CloudflareSocket {
     this.manuallyClosed = false;
     this.retry = 0;
     this.connect();
+  }
+
+  private joinRoomSignature(payload: any): string {
+    return JSON.stringify([String(payload?.roomId ?? ''), String(payload?.deviceId ?? '')]);
   }
 
   private scheduleReconnect() {
