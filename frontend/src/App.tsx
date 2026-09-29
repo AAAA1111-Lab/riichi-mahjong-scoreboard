@@ -62,6 +62,26 @@ const socket: Socket = (import.meta.env.MODE === 'cloudflare'
   timeout: 20000, // 移动端休眠唤醒握手宽容超时 20s
   })) as unknown as Socket;
 
+const THEME_PREFERENCE_VERSION = '2';
+
+function getInitialTheme(): Theme {
+  const savedTheme = localStorage.getItem('mahjong-theme');
+  const savedVersion = localStorage.getItem('mahjong-theme-preference-version');
+  const isSupportedTheme = (value: string | null): value is Theme =>
+    value === 'light' || value === 'dark' || value === 'rexx' || value === 'electronic' || value === 'majsoul';
+
+  if (savedVersion !== THEME_PREFERENCE_VERSION) {
+    // Older builds persisted their implicit REXX default as if the user had chosen it.
+    // Migrate that ambiguous legacy value to the intended light default once.
+    const migratedTheme = isSupportedTheme(savedTheme) && savedTheme !== 'rexx' ? savedTheme : 'light';
+    localStorage.setItem('mahjong-theme', migratedTheme);
+    localStorage.setItem('mahjong-theme-preference-version', THEME_PREFERENCE_VERSION);
+    return migratedTheme;
+  }
+
+  return isSupportedTheme(savedTheme) ? savedTheme : 'light';
+}
+
 // Persistent Device Token (房间身份凭证):
 // - 首次访问生成随机 token 并长期缓存于 localStorage；刷新/重连不变
 // - 用于锁房期鉴权（已知 token 放行）、房主/成员权限判定，防止身份冒用
@@ -176,14 +196,7 @@ function App() {
 
 
   // Theme State (Supports 5 Official Themes: light, dark, rexx, electronic, majsoul)
-  const savedRaw = localStorage.getItem('mahjong-theme');
-  let initialTheme: Theme = 'rexx';
-  if (savedRaw === 'light') initialTheme = 'light';
-  if (savedRaw === 'dark') initialTheme = 'dark';
-  if (savedRaw === 'rexx') initialTheme = 'rexx';
-  if (savedRaw === 'electronic') initialTheme = 'electronic';
-  if (savedRaw === 'majsoul') initialTheme = 'majsoul';
-  const [theme, setTheme] = useState<Theme>(initialTheme);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [showDiffMode, setShowDiffMode] = useState<boolean>(false);
 
   // REXX Theme Diff Button Timers & Interaction State Handlers
@@ -690,7 +703,7 @@ function App() {
       console.log('Connected to server');
 
       // Join room (server mode: 对局已开始时服务端按 token 自动重绑并下发 gameStarted)
-      const targetRoom = isServer ? activeRoomId : 'default';
+      const targetRoom = isServer ? activeRoomIdRef.current : 'default';
       if (targetRoom) {
         socket.emit('join-room', { roomId: targetRoom, deviceId: getOrCreateDeviceId() });
       }
