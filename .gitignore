@@ -16,7 +16,6 @@ scripts/*
 !scripts/test-modules.js
 !scripts/test-multi-room.js
 !scripts/test-multi-room-deep.js
-!scripts/build_promo_video.js
 scratch/
 setup-github.bat
 push-release-local.bat
@@ -25,3 +24,6 @@ docs/*
 *.ps1
 
 video/
+/assets/promo-video.mp4
+/assets/video_materials/
+/scripts/build_promo_video.js

@@ -24,8 +24,7 @@
     "backup": "node scripts/backup.js",
     "restore": "node scripts/restore.js",
     "install-all": "npm install && npm run frontend:install",
-    "test:multi-room-deep": "node scripts/test-multi-room-deep.js",
-    "build:video": "node scripts/build_promo_video.js"
+    "test:multi-room-deep": "node scripts/test-multi-room-deep.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
