@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "riichi-mahjong-scoreboard",
+  "main": "worker.js",
+  "compatibility_date": "2026-09-29",
+  "workers_dev": true,
+  "ratelimits": [
+    {
+      "name": "API_RATE_LIMITER",
+      "namespace_id": "548215907301",
+      "simple": { "limit": 120, "period": 60 }
+    },
+    {
+      "name": "CREATE_ROOM_LIMITER",
+      "namespace_id": "548215907302",
+      "simple": { "limit": 5, "period": 60 }
+    },
+    {
+      "name": "WS_CONNECT_LIMITER",
+      "namespace_id": "548215907303",
+      "simple": { "limit": 20, "period": 60 }
+    },
+    {
+      "name": "FEEDBACK_RATE_LIMITER",
+      "namespace_id": "548215907304",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ],
+  "assets": {
+    "directory": "../frontend/dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/*"]
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "ROOMS", "class_name": "RoomDO" },
+      { "name": "HUB", "class_name": "RoomHub" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["RoomDO", "RoomHub"] }
+  ],
+  "observability": { "enabled": true }
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
+import { createCloudflareSocket } from './cloudflareSocket';
 import { QRCodeSVG } from 'qrcode.react';
 import type { Theme, GameState, Player } from './types';
 import { ScoreBoard } from './components/ScoreBoard';
@@ -51,13 +52,15 @@ function saveSeatForRoom(roomId: string | null, serverMode: boolean, playerId: n
 // In development mode, connect to backend at localhost:32000.
 // In production (served by Express), connect to the page's host origin.
 const SOCKET_URL = import.meta.env.DEV ? 'http://localhost:32000' : window.location.origin;
-const socket: Socket = io(SOCKET_URL, {
+const socket: Socket = (import.meta.env.MODE === 'cloudflare'
+  ? createCloudflareSocket()
+  : io(SOCKET_URL, {
   reconnection: true,
   reconnectionAttempts: Infinity, // 无限重试，持续保活
   reconnectionDelay: 500, // 重连间隔 500ms
   reconnectionDelayMax: 2000, // 最大重连间隔 2s
   timeout: 20000, // 移动端休眠唤醒握手宽容超时 20s
-});
+  })) as unknown as Socket;
 
 // Persistent Device Token (房间身份凭证):
 // - 首次访问生成随机 token 并长期缓存于 localStorage；刷新/重连不变
@@ -342,6 +345,9 @@ function App() {
   };
 
   const handleBackToPortal = () => {
+    if (import.meta.env.MODE === 'cloudflare' && activeRoomIdRef.current) {
+      socket.emit('leave-room', { roomId: activeRoomIdRef.current });
+    }
     window.history.pushState(null, '', '/home');
     setCurrentPath('/home');
     setActiveRoomId(null);

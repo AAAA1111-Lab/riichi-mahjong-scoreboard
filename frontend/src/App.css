@@ -3636,6 +3636,200 @@ html.is-fullscreen .modal-overlay {
   font-weight: 600;
 }
 
+.lobby-top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.lobby-header-github,
+.lobby-header-feedback {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.lobby-header-github {
+  width: 36px;
+}
+
+.lobby-header-github svg {
+  width: 22px;
+  height: 22px;
+}
+
+.lobby-header-feedback {
+  padding: 0 10px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+.lobby-header-feedback svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lobby-header-github:hover,
+.lobby-header-feedback:hover {
+  color: var(--text-primary);
+  background: var(--bg-card-hover, rgba(127, 127, 127, 0.12));
+}
+
+.lobby-header-github:focus-visible,
+.lobby-header-feedback:focus-visible,
+.lobby-feedback-close:focus-visible,
+.lobby-feedback-submit:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.lobby-feedback-backdrop {
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(3px);
+}
+
+.lobby-feedback-dialog {
+  width: min(100%, 440px);
+  max-height: min(90dvh, 600px);
+  overflow-y: auto;
+  padding: 22px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.lobby-feedback-heading,
+.lobby-feedback-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lobby-feedback-heading h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.lobby-feedback-close {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lobby-feedback-close:hover {
+  color: var(--text-primary);
+  background: var(--bg-card-hover, rgba(127, 127, 127, 0.12));
+}
+
+.lobby-feedback-note {
+  margin: 8px 0 18px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.lobby-feedback-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.lobby-feedback-input {
+  width: 100%;
+  min-height: 130px;
+  padding: 11px 12px;
+  box-sizing: border-box;
+  resize: vertical;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  background: var(--bg-main, transparent);
+  font: inherit;
+  line-height: 1.5;
+}
+
+.lobby-feedback-input:focus {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border-color: var(--color-accent);
+}
+
+.lobby-feedback-form-footer {
+  margin-top: 12px;
+}
+
+.lobby-feedback-counter {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.lobby-feedback-submit {
+  min-height: 38px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 9px;
+  color: var(--text-on-accent, #fff);
+  background: var(--color-accent);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.lobby-feedback-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.lobby-feedback-message {
+  margin: 12px 0 0;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.lobby-feedback-message.error {
+  color: var(--color-danger, #d33);
+}
+
+.lobby-feedback-message.success {
+  color: var(--color-success, #27834a);
+}
+
 /* ==========================================================================
    Built-in Numeric Room Keypad (内建数字输入器)
    ========================================================================== */

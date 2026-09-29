@@ -33,6 +33,11 @@ export const ServerPortalStage: React.FC<ServerPortalStageProps> = ({
   const [errorMessage, setErrorMessage] = useState('');
   const [creating, setCreating] = useState(false);
   const [isKeypadOpen, setIsKeypadOpen] = useState(false);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+  const [feedbackText, setFeedbackText] = useState('');
+  const [feedbackError, setFeedbackError] = useState('');
+  const [feedbackSent, setFeedbackSent] = useState(false);
+  const [sendingFeedback, setSendingFeedback] = useState(false);
 
   // 1. Create room via server (unique 5-digit id; creator token bound as host)
   const handleCreateRoom = async () => {
@@ -79,10 +84,71 @@ export const ServerPortalStage: React.FC<ServerPortalStageProps> = ({
     }
   };
 
+  const handleFeedbackSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (sendingFeedback) return;
+
+    const message = feedbackText.trim();
+    if (message.length < 5) {
+      setFeedbackError('建议至少填写 5 个字');
+      return;
+    }
+
+    setSendingFeedback(true);
+    setFeedbackError('');
+    try {
+      const res = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data?.success) {
+        setFeedbackError(data?.message || '提交失败，请稍后再试');
+        return;
+      }
+      setFeedbackSent(true);
+      setFeedbackText('');
+    } catch {
+      setFeedbackError('提交失败，请检查网络后重试');
+    } finally {
+      setSendingFeedback(false);
+    }
+  };
+
   return (
     <div className="lobby-stage-wrapper">
       {/* Top Header Divider Line preserved */}
-      <header className="lobby-top-header" aria-hidden="true" />
+      <header className="lobby-top-header">
+        <a
+          className="lobby-header-github"
+          href="https://github.com/AAAA1111-Lab/riichi-mahjong-scoreboard"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="打开 GitHub 仓库（新标签页）"
+          title="GitHub 仓库"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.77-.24.77-.54v-2.1c-3.14.68-3.8-1.33-3.8-1.33-.5-1.3-1.24-1.64-1.24-1.64-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 .72 2.52.5 3.13.38.1-.72.39-1.21.7-1.49-2.5-.28-5.14-1.25-5.14-5.57 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.13-1.45 3.07-1.15 3.07-1.15.61 1.55.23 2.7.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.33-2.64 5.28-5.15 5.56.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z" />
+          </svg>
+        </a>
+
+        <button
+          type="button"
+          className="lobby-header-feedback"
+          onClick={() => {
+            setFeedbackError('');
+            setFeedbackSent(false);
+            setIsFeedbackOpen(true);
+          }}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-6.5A7.5 7.5 0 1 1 20 11.5Z" />
+            <path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01" />
+          </svg>
+          <span>匿名建议</span>
+        </button>
+      </header>
 
       {/* Centered Main Stage Content with Cascade Fade-in */}
       <main className="lobby-stage-main">
@@ -148,6 +214,59 @@ export const ServerPortalStage: React.FC<ServerPortalStageProps> = ({
           handleJoinRoomSubmit(code);
         }}
       />
+
+      {isFeedbackOpen && (
+        <div
+          className="lobby-feedback-backdrop"
+          onClick={() => setIsFeedbackOpen(false)}
+        >
+          <section
+            className="lobby-feedback-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="lobby-feedback-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="lobby-feedback-heading">
+              <h2 id="lobby-feedback-title">匿名建议</h2>
+              <button
+                type="button"
+                className="lobby-feedback-close"
+                aria-label="关闭建议窗口"
+                onClick={() => setIsFeedbackOpen(false)}
+              >
+                ×
+              </button>
+            </div>
+            <p className="lobby-feedback-note">无需填写身份信息。请勿在建议中留下联系方式或其他个人信息。</p>
+            <form onSubmit={handleFeedbackSubmit}>
+              <label className="lobby-feedback-label" htmlFor="lobby-feedback-message">你希望改进什么？</label>
+              <textarea
+                id="lobby-feedback-message"
+                className="lobby-feedback-input"
+                value={feedbackText}
+                onChange={(event) => setFeedbackText(event.target.value)}
+                maxLength={1000}
+                minLength={5}
+                rows={5}
+                placeholder="描述你的想法或遇到的问题…"
+                required
+                disabled={feedbackSent}
+              />
+              <div className="lobby-feedback-form-footer">
+                <span className="lobby-feedback-counter">{feedbackText.length}/1000</span>
+                {!feedbackSent && (
+                  <button type="submit" className="lobby-feedback-submit" disabled={sendingFeedback}>
+                    {sendingFeedback ? '正在提交…' : '提交建议'}
+                  </button>
+                )}
+              </div>
+              {feedbackError && <p className="lobby-feedback-message error" role="alert">{feedbackError}</p>}
+              {feedbackSent && <p className="lobby-feedback-message success" role="status">收到建议，谢谢！</p>}
+            </form>
+          </section>
+        </div>
+      )}
     </div>
   );
 };

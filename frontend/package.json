@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:server": "tsc -b && vite build --mode server",
+    "build:cloudflare": "tsc -b && vite build --mode cloudflare",
     "lint": "oxlint",
     "preview": "vite preview"
   },
