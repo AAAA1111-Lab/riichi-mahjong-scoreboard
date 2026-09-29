@@ -10,12 +10,6 @@
 
 ## 项目介绍
 
-### 日麻计分板
-
-<p align="center">
-  <img src="assets/introduction/record.gif" alt="日麻计分板" width="360" />
-</p>
-
 ### 支持局域网/服务器部署
 
 <table>
