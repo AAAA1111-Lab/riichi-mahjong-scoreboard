@@ -8,6 +8,69 @@
 
 ---
 
+## 项目介绍
+
+### 日麻计分板
+
+<p align="center">
+  <img src="assets/introduction/record.gif" alt="日麻计分板" width="360" />
+</p>
+
+### 支持局域网/服务器部署
+
+<table>
+  <tr><th>局域网模式</th><th>服务器模式</th></tr>
+  <tr>
+    <td><img src="assets/introduction/lan01.png" alt="局域网模式：认领席位" width="320" /></td>
+    <td><img src="assets/introduction/server01.png" alt="服务器模式：房间号与开局准备" width="320" /></td>
+  </tr>
+</table>
+
+### 五种主题
+
+<table>
+  <tr><th>浅色</th><th>深色</th><th>REXX</th><th>电子</th><th>类魂</th></tr>
+  <tr>
+    <td><img src="assets/introduction/light01.png" alt="浅色主题" width="180" /></td>
+    <td><img src="assets/introduction/dark01.png" alt="深色主题" width="180" /></td>
+    <td><img src="assets/introduction/rexx01.png" alt="REXX主题" width="180" /></td>
+    <td><img src="assets/introduction/eletron01.png" alt="电子主题" width="180" /></td>
+    <td><img src="assets/introduction/soul01.png" alt="类魂主题" width="180" /></td>
+  </tr>
+</table>
+
+### 录分面板
+
+<p align="center">
+  <img src="assets/introduction/light02.png" alt="录分面板" width="360" />
+</p>
+
+### 设置选项
+
+<p align="center">
+  <img src="assets/introduction/light03.png" alt="设置选项" width="360" />
+</p>
+
+### 流局结算
+
+<p align="center">
+  <img src="assets/introduction/light04.png" alt="流局结算" width="360" />
+</p>
+
+### 扫码分享
+
+<p align="center">
+  <img src="assets/introduction/light05.png" alt="扫码分享" width="360" />
+</p>
+
+### 完场结算
+
+<p align="center">
+  <img src="assets/introduction/light06.png" alt="完场结算" width="360" />
+</p>
+
+---
+
 ## 部署流程 (Deployment)
 
 ### 1. 通过编译产物部署
